@@ -5,6 +5,8 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const app = express();
+
+app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
