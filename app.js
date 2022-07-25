@@ -3,12 +3,13 @@ const express = require('express');
 const { startup } = require('./startup');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const path = require('path')
+const path = require('path');
 
 const app = express();
 
 app.set('view engine', 'ejs');
-app.use('/publics',(express.static(path.join(__dirname,'./publics'))))
+app.use('/publics',(express.static(path.join(__dirname,'./publics'))));
+app.use('/publics',(express.static(path.join(__dirname,'./publics'))));
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
