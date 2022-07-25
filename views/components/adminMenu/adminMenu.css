@@ -1,0 +1,45 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 20%;
+  height: 100vh;
+  background: #172b4d;
+  color: white;
+}
+.img-user {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-bottom: 1px solid hsl(209, 39.5%, 76.7%);
+}
+.container h4 {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-bottom: 1px solid hsl(209, 39.5%, 76.7%);
+}
+.img-user img {
+  text-align: center;
+  display: inline;
+  height: 30px;
+}
+.row {
+  display: inline-grid;
+  grid-template-columns: 100%;
+}
+.row p {
+  padding: 8px 40px;
+  width: 100%;
+}
+.row p:hover{
+    cursor: pointer;
+    background: cadetblue;
+    
+}
+.text-center1 input {
+  margin-top: 10px;
+  padding: 5px 0px;
+}
