@@ -1,24 +1,13 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    height: 100vh;
-}
-.menu{
-    width: 100%;
-}
 /* PC */
 .menu__pc{
-    position: fixed;
-    width: 79px;
-    height: auto;
-    border-right: 0.5px solid rgba(145, 138, 138, 0.5);
-    box-shadow: 2px 0px 10px rgba(0,0,0,50%);
+    width: 80px;
+    position: sticky;
+    left: 0;
     top: 0;
     bottom: 0;
-    left: 0;
+    border-right: 0.5px solid rgba(145, 138, 138, 0.5);
+    box-shadow: 2px 0px 10px rgba(0,0,0,50%);
+    height: 100vh;
     background-color: rgba(255, 255, 255, 1);
     z-index: 500;
     display: flex;
@@ -79,6 +68,7 @@ body{
 .menu__mobile{
     display: none;
     width: 100%;
+
 }
 .menu__moblie--common{
     background-color: rgba(255, 255, 255, 1);
@@ -122,7 +112,7 @@ body{
     width: 25px;
 }
 
-@media (max-width:1025px) {
+@media (max-width:600px) {
     .menu__mobile{
         display: block;
     }
