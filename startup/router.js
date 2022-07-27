@@ -9,6 +9,7 @@ const savePostRoute = require('../routes/savePostRoute');
 const userRoute = require('../routes/userRoute');
 const index = require('../routes/index');
 
+
 router.use('/auth', authRoute);
 router.use('/block', blockRoute);
 router.use('/category', categoryRoute);
