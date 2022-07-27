@@ -34,5 +34,9 @@ router.get('/sign-up', async (req, res)  => {
         res.status(500).json({massage: "server error", error})
     }
 })
+router.get('/', (req, res) => {
+    res.render('./pages/user/home/Home')
+    //res.send('123456')
+})
 
 module.exports = router;

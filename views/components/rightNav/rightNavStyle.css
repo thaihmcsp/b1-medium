@@ -1,20 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    height: 100vh;
-}
-
-
-
 .rightNavbar{
-    width: 27.5%;
+    width: 394px;
     box-shadow: -2px 0px 10px rgba(0,0,0,50%);
     min-height: 100vh;
     overflow: hidden;
-    float: right;
     padding: 0 32px;
     background: rgba(255, 255, 255, 1);
     display: flex;
@@ -237,7 +225,7 @@ body{
     color: rgba(117, 117, 117, 1);
     margin-right: 6px;
 }
-@media (max-width:1025px) {
+@media (max-width:600px) {
     .rightNavbar{
         display: none;
     }
