@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #999;
+  flex-direction: column;
+  gap: 30px;
+}
+
+select {
+  width: 200px;
+  height: 50px;
+  background: rgb(67, 159, 47);
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+select option {
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.container {
+  width: 800px;
+}
+
+table {
+  border: 1px solid #999;
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  /* margin: 0 auto; */
+  text-align: center;
+}
+
+th,
+td {
+  padding-left: 8px;
+}
+
+thead {
+  background: #ffed86;
+}
+
+thead tr {
+  height: 60px;
+
+  font-size: 16px;
+}
+
+tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #e3f1d5;
+}
+
+tbody tr:last-child {
+  border: 0;
+}
+
+button {
+  border: none;
+  outline: none;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.btn-view {
+  background: blue;
+}
+
+.btn-edit {
+  background: green;
+}
+
+.btn-delete {
+  background: red;
+}
