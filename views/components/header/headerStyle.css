@@ -1,18 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    height: 100vh;
-}
 .header{
     width: 100%;
+    flex: 0;
+    display: none;
 }
 
 /* Mobile */
 .header__mobile{
-    display: none;
     width: 100%;
 }
 .header__moblie--common{
@@ -72,8 +65,8 @@ body{
 .topFeature-info a{
     color: white !important;
 }
-@media (max-width:1025px) {
-    .header__mobile{
+@media (max-width:600px) {
+    .header{
         display: block;
     }
 }

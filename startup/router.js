@@ -8,6 +8,7 @@ const postRoute = require('../routes/postRoute');
 const savePostRoute = require('../routes/savePostRoute');
 const userRoute = require('../routes/userRoute');
 const index = require('../routes/index');
+const adminRoute = require('../routes/adminRoute');
 
 
 router.use('/auth', authRoute);
@@ -18,6 +19,7 @@ router.use('/follow', followRoute);
 router.use('/post', postRoute);
 router.use('/save-post', savePostRoute);
 router.use('/user', userRoute);
+router.use('/admin', adminRoute);
 router.use('/', index);
 
 module.exports = router;
