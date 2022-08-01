@@ -39,4 +39,17 @@ router.get('/', (req, res) => {
     //res.send('123456')
 })
 
+
+router.get('/reading-list', async (req, res)  => {
+    try {
+
+        quotes = ["hix."]
+        res.render("pages/user/readingList/readinglist", {quotes})
+
+    } catch (error) {
+        res.status(500).json({massage: "server error", error})
+    }
+})
+
+
 module.exports = router;
