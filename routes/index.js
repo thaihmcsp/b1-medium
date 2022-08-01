@@ -43,7 +43,7 @@ router.get('/', (req, res) => {
 router.get('/reading-list', async (req, res)  => {
     try {
 
-        quotes = ["hix."]
+        quotes = ["check"]
         res.render("pages/user/readingList/readinglist", {quotes})
 
     } catch (error) {
@@ -51,5 +51,24 @@ router.get('/reading-list', async (req, res)  => {
     }
 })
 
+
+router.get('/your-post', async (req, res)  => {
+    try {
+        quotes = ["check"]
+        res.render("pages/user/yourPost/yourPost", {quotes})
+    } catch (error) {
+        res.status(500).json({massage: "server error", error})
+    }
+})
+
+
+router.get('/author', async (req, res)  => {
+    try {
+        quotes = ["check"]
+        res.render("pages/user/author/author", {quotes})
+    } catch (error) {
+        res.status(500).json({massage: "server error", error})
+    }
+})
 
 module.exports = router;
