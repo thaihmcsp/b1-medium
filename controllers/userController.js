@@ -2,12 +2,15 @@ const {User} = require("../models/User");
 const jwt = require("jsonwebtoken");
 module.exports.getProfile = async (req, res) => {
   try{
-    let user = await UserModel.find({_id: req.params.id})
-    if(user){
-      res.render("pages/admin/profileAdmin/profileAdmin", {user})
-    }else{
-      res.json('user khong toon tai')
-    }
+    // let token = jwt.verify(req.headers.authorization, '123') 
+    // let user = await User.findOne({_id: token._id})
+    // if(user){
+      res.render("pages/admin/profileAdmin/profileAdmin",
+      //  {user}
+       )
+    // }else{
+      // res.json('user khong toon tai')
+    // }
   }catch (err) {
     res.json(err);
   }
@@ -25,7 +28,7 @@ module.exports.getAllUsers = async (req, res) => {
     let users = await User.find();
     let listUsers = await User.find().limit(10);
     let total = users.length;
-    res.render("pages/admin/manageUser", { users, listUsers, total: total / 10 });
+    res.render("pages/admin/manageUser/mangageUser", { users, listUsers, total: total / 10 });
   } catch (e) {
     console.log(e);
   }
@@ -37,7 +40,7 @@ module.exports.getPaginationUsers = async (req, res) => {
     const list = await User.find()
       .skip(req.query.limit * (req.query.page - 1))
       .limit(req.query.limit);
-    res.render("pages/admin/pagination", { listUser: list });
+    res.render("pages/admin/mangageUser/paginationUser", { listUser: list });
   } catch (err) {
     console.log(err);
   }
@@ -45,7 +48,6 @@ module.exports.getPaginationUsers = async (req, res) => {
 
 module.exports.changeProfile = async (req, res) => {
   try{
-    console.log('object');
     let token = jwt.verify(req.headers.authorization, '123') 
     let user = await User.find({_id: token._id})
     console.log(user);
@@ -93,5 +95,20 @@ module.exports.changePassword = async(req, res)=>{
     }
   }catch (err) {
     console.log(err);
+  }
+}
+
+module.exports.changeStatue = async (req, res)=>{
+  let user = await User.findOne({_id: req.body.id})
+  let status = ""
+  if(user.status === "banned"){
+    status === "active"
+  }else{
+    status === "banned"
+  }
+  if(!user){
+    res.json('user khong ton tai')
+  }else{
+    let user = await User.findOneAndUpdate({_id: user._id}, {status: status})
   }
 }
