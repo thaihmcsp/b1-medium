@@ -3,7 +3,7 @@ async function createCategory(){
     console.log(categoryName);
     try{
         let data = await $.ajax({
-            url: 'create-cat',
+            url: '/api/category/create-cat',
             type: 'POST',
             data:{
                 categoryName
