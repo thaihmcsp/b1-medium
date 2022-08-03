@@ -2,9 +2,9 @@ const {Post} = require("../models/Post");
 const {User} = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-module.exports.getAllPosts = async function (req, res) {
+module.exports.getAllPosts = async (req, res) =>{
     try{
-        let posts =await  Post.find()
+        let posts = await  Post.find()
         let listPosts = await Post.find().limit(1)
         let total = posts.length
         let author = []
@@ -22,7 +22,7 @@ module.exports.getAllPosts = async function (req, res) {
     }
 }
 
-module.exports.getPaginationPost = async (req, res)=>{
+module.exports.getPaginationPost =async (req, res)=>{
     try{
         let  listposts = await Post.find()
       .skip(req.query.limit * (req.query.page - 1))
@@ -38,7 +38,7 @@ module.exports.getPaginationPost = async (req, res)=>{
     }
 }
 
-module.exports.viewDetails = async (req, res)=>{
+module.exports.viewDetails = async(req, res)=>{
     try{
         let post = await Post.findOne({_id : req.body.id})
         let user = await User.findOne({_id : post.authorId})
