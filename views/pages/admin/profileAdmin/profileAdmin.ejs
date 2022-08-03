@@ -15,31 +15,35 @@
       <h1>User Profile</h1>
       <div class="wrapper">
         <div class="content">
-          <a href="">Change password</a>
+          <div>
+            <input type="text" placeholder="Enter new password" id="newPassword">
+            <button onclick="changePassword()">changePassword</button>
+          </div>
           <h1>Personal Info</h1>
-          <form action="">
+          <form action="" enctype="multipart/form-data">
             <div class="form-control">
-              <div class="label">First Name</div>
+              <div class="label">Name</div>
               <div class="input">
-                <input />
+                <input type="text" id="username"/>
               </div>
             </div>
             <div class="form-control">
-              <div class="label">Last Name</div>
+              <div class="label">avatar</div>
               <div class="input">
-                <input />
+                <input type="file" id="avatar" />
               </div>
             </div>
             <div class="form-control">
-              <div class="label">Biography</div>
+              <div class="label">description</div>
               <div class="input-textarea">
-                <textarea rows="6" cols="100"></textarea>
+                <textarea rows="6" cols="100" id="description"></textarea>
               </div>
             </div>
-            <button class="btn-submit">SAVE CHANGE</button>
+            <button class="btn-submit" onclick="changInfo()">SAVE CHANGE</button>
           </form>
         </div>
       </div>
     </div>
   </body>
+  <script src="./profileAdmin.js"></script>
 </html>
