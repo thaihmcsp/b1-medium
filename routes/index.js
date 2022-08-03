@@ -36,7 +36,6 @@ router.get('/sign-up', async (req, res)  => {
 })
 router.get('/', (req, res) => {
     res.render('./pages/user/home/Home')
-    //res.send('123456')
 })
 
 
