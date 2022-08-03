@@ -2,6 +2,8 @@ const { CreateCategory, GetCategoryById, UpdateCategoryById, GetAllCategory, Get
 
 const router = require('express').Router();
 
+
+
 router.post('/create-cat',CreateCategory)
 router.get('/get-cat-by-id/:catId',GetCategoryById)
 router.get('/get-cat-by-name/:catName',GetCategoryByName)
