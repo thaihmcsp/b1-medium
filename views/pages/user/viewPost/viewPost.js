@@ -8,16 +8,16 @@ $(window).scroll((e)=>{
     else
         $('.stickyBarContainer').css({opacity:0}) 
 })
-//show morefeature by toggle
-document.querySelector('.infoRight__moreFeature').onclick = (e)=>{
-    document.querySelector('.moreFeature__top').classList.toggle('displayClass')
-}
-document.querySelector('.bottomFeatureRight__moreFeature').onclick = (e)=>{
-    document.querySelector('.moreFeature__bottom').classList.toggle('displayClass')
-}
-document.querySelector('.stickyBar__moreFeature').onclick = (e)=>{
-    document.querySelector('.moreFeature__stickyBar').classList.toggle('displayClass')
-}
+//show morefeature by toggle not use .displayClass
+$('.infoRight__moreFeature').click((e)=>{
+    $('.moreFeature__top').toggle()
+})
+$('.bottomFeatureRight__moreFeature').click((e)=>{
+    $('.moreFeature__bottom').toggle()
+})
+$('.stickyBar__moreFeature').click((e)=>{
+    $('.moreFeature__stickyBar').toggle()
+})
 //auto height textarea
 $('textarea').on('input', function () {
     this.style.height = 'auto';
@@ -34,7 +34,42 @@ $('.bottomFeatureLeft__comment').on('click',(e)=>{
 $('.exitComment__Btn').on('click',(e)=>{
     $('.commentLayout').css({display:'none'})
 })
-//Bold
-// document.querySelector('.bold-btn').onclick = (e)=>{
-//     document.querySelector('textarea').classList.toggle('boldClass')
-// }  
+
+//toggle Comment edit option
+function ShowCommentEditOption(optionIndex){
+    $(`#${optionIndex}`).toggle()
+}
+//show update button
+function ShowUpdateBtn(updateIndex){
+    $(`#update-${updateIndex}`).css({display:'block'})
+    $(`#content-${updateIndex}`).attr({"contentEditable":'true',"style":"outline:none"})
+    $(`#content-${updateIndex}`).focus()
+}
+//handle data functions
+async function AddComment(postId){
+    let content = $('#comment-content').val()
+    const res = await $.ajax({
+        url:'/api/comment/add-comment',
+        type: 'POST',
+        data:{ content,postId }
+    })
+    console.log(res)
+}
+async function RemoveComment(commentId){
+    const res = await $.ajax({
+        url:`/api/comment/remove-comment/${commentId}`,
+        type:'DELETE'
+    })
+    alert(res.mess);
+}   
+async function UpdateComment(cmtId,index){
+    let newContent = $(`#content-${index}`).html()
+    const res = await $.ajax({
+        url:'/api/comment/update-comment',
+        type:'PATCH',
+        data:{cmtId,newContent}
+    })
+    $(`#content-${index}`).attr({"contentEditable":'false'})
+    $(`#update-${index}`).attr({"style":"display:none"})
+    alert(res.mess)
+}                 
