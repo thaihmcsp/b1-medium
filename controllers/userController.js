@@ -1,5 +1,6 @@
 const {User} = require("../models/User");
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
 module.exports.getProfile = async (req, res) => {
   try{
     // let token = jwt.verify(req.headers.authorization, '123') 
@@ -28,7 +29,7 @@ module.exports.getAllUsers = async (req, res) => {
     let users = await User.find();
     let listUsers = await User.find().limit(10);
     let total = users.length;
-    res.render("pages/admin/manageUser/mangageUser", { users, listUsers, total: total / 10 });
+    res.render("pages/admin/manageUser/manageUser", { users, listUsers, total: total / 10 });
   } catch (e) {
     console.log(e);
   }
@@ -52,7 +53,9 @@ module.exports.changeProfile = async (req, res) => {
     let user = await User.find({_id: token._id})
     console.log(user);
     // console.log(token);
+
     if(user){
+      fs.unlinkSync(User.avatar.slice(1))
       let user = await User.updateOne({_id: token._id},{
         username: req.body.username,
         description: req.body.description,

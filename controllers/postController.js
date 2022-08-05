@@ -8,8 +8,8 @@ module.exports.getAllPosts = async (req, res) =>{
         let listPosts = await Post.find().limit(1)
         let total = posts.length
         let author = []
-        for(let i = 0; i < listposts.length; i++){
-            let user = await User.find({_id : listposts[i].authorId})
+        for(let i = 0; i < listPosts.length; i++){
+            let user = await User.find({_id : listPosts[i].authorId})
             author.push(user.username)
         }
         if(posts){
@@ -24,15 +24,15 @@ module.exports.getAllPosts = async (req, res) =>{
 
 module.exports.getPaginationPost =async (req, res)=>{
     try{
-        let  listposts = await Post.find()
+        let  listPosts = await Post.find()
       .skip(req.query.limit * (req.query.page - 1))
       .limit(req.query.limit);
     let author = []
-    for(let i = 0; i < listposts.length; i++){
-        let user = await User.find({_id : listposts[i].authorId})
+    for(let i = 0; i < listPosts.length; i++){
+        let user = await User.find({_id : listPosts[i].authorId})
         author.push(user.username)
     }
-        res.render('pages/admin/managePost/paginationPost',{listposts, author})
+        res.render('pages/admin/managePost/paginationPost',{listPosts, author})
     }catch(err){
         console.log(err);
     }
@@ -40,10 +40,12 @@ module.exports.getPaginationPost =async (req, res)=>{
 
 module.exports.viewDetails = async(req, res)=>{
     try{
-        let post = await Post.findOne({_id : req.body.id})
-        let user = await User.findOne({_id : post.authorId})
+        // let post = await Post.findOne({_id : req.body.id})
+        // let user = await User.findOne({_id : post.authorId})
         if(post){
-            res.render('pages/admin/managePost/viewdetails',{post, user})
+            res.render('pages/admin/managePost/viewdetails',
+            // {post, user}
+            )
         }else{
             console.log('post khoong ton tai');
         }

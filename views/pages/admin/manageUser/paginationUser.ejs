@@ -24,14 +24,14 @@
         </tr>
       </thead>
       <tbody>
-          <% listUser.map((user, index) =>{%>
+          <% listUsers.map((user, index) =>{%>
         <tr>
           <th scope="row">1</th>
-          <td><% user.username %></td>
-          <td><%  user.email %> </td>
-          <td><% user.description%></td>
+          <td><%= user.username %></td>
+          <td><%=  user.email %> </td>
+          <td><%= user.description%></td>
           <td>
-            <button onclick="changeStatus(user._id)"><% user.status %></button>
+            <button onclick="changeStatus('<%= user._id %>')"><%= user.status %></button>
           </td>
         </tr>
         <%})%>
