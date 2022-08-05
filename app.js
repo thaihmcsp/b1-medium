@@ -14,8 +14,6 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use("/publics", express.static(path.join(__dirname, 'publics')));
-app.use("/views", express.static(path.join(__dirname, 'views')));
 
 startup(app);
 

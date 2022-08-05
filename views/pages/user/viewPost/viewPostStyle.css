@@ -10,7 +10,9 @@ body{
 a{
     text-decoration: none;
 }
-
+button{
+    cursor: pointer;
+}
 .displayClass{
     display: block !important;
 }
@@ -360,15 +362,79 @@ a{
 }
 .showComment__info--nameAndTime > p{
     color: rgba(117, 117, 117, 1);
-    line-height: 16px;
-    font-size: 14px;
+    line-height: 14px;
+    font-size: 12px;
+}
+.editFeatureContainer{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.editFeatureContainer--btn{
+    border: none;
+    background: none;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.editFeatureContainer--option{
+    z-index: 600;
+    position: absolute;
+    box-shadow: rgb(230 230 230) 0px 1px 4px;
+    border: 2px solid rgba(230, 230, 230, 1);
+    border-radius: 4px;
+    right: 24px;
+    display: none;
+}
+.editFeatureContainer--option > ul{
+    align-items: stretch;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    background: white;
+}
+.editFeatureContainer--option > ul > li{
+    padding: 6px 12px;
+}
+.editFeatureContainer--option > ul > li:hover{
+    background: #eaeaea;
+}
+.editFeatureContainer--option > ul > li >a{
+    color: rgba(117, 117, 117, 1);
+    font-size:  14px;
+    line-height: 20px;
+}
+.showComment__contentContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.showComment__contentContainer > button{
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 3px 5px;
+    border-radius: 50px;
+    background: none;
+    display: none;
+    border: 1px solid black;
+}
+.showComment__contentContainer > button:hover{
+    color: white;
+    background: black;
 }
 .showComment__content{
     color: rgba(41, 41, 41, 1);
-    font-size: 14px;
+    font-size: 16px;
+    margin-top: 10px;
     line-height: 20px;
+    min-height: 26px;
     padding: 0px 5px;
-    min-height: fit-content;
+    margin-right: 5px;
+    max-width: 87%;
+}
+.display-false{
+    display: none;
 }
 @media (max-width:600px) {
     .allContainer{
@@ -397,5 +463,14 @@ a{
     }
     .moreFeature__bottom{
         right:0;
+    }
+    .commentMainLayout{
+        width: 100%;
+    }
+    .showComment__content{
+        margin-top: 5px;
+    }
+    .showComment__contentContainer > button{
+        margin-top: 5px;
     }
 }

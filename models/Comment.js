@@ -6,4 +6,4 @@ const CommentSchema = mongoose.Schema({
     postId: {type: String, ref: 'posts', required: true},
 }, {timestamps: true, collection: 'comments'});
 
-const Comment = mongoose.model('comments', CommentSchema);
+module.exports.Comment = mongoose.model('comments', CommentSchema);
