@@ -43,13 +43,13 @@ module.exports.viewDetails = async(req, res)=>{
     try{
         // let post = await Post.findOne({_id : req.body.id})
         // let user = await User.findOne({_id : post.authorId})
-        if(post){
+        // if(post){
             res.render('pages/admin/managePost/viewdetails',
             // {post, user}
             )
-        }else{
-            console.log('post khoong ton tai');
-        }
+        // }else{
+            // console.log('post khoong ton tai');
+        // }
     }catch(e){
         console.log(e);
     }

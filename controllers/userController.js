@@ -29,7 +29,7 @@ module.exports.getAllUsers = async (req, res) => {
     let users = await User.find();
     let listUsers = await User.find().limit(10);
     let total = users.length;
-    res.render("pages/admin/manageUser/manageUser", { users, listUsers, total: total / 10 });
+    res.render("pages/admin/manageUser/manageUser", { users, listUsers,  total: Math.ceil(total / 10),});
   } catch (e) {
     console.log(e);
   }
@@ -51,7 +51,7 @@ module.exports.changeProfile = async (req, res) => {
   try{
     let token = jwt.verify(req.headers.authorization, '123') 
     let user = await User.find({_id: token._id})
-    console.log(user);
+    // console.log(user);
     // console.log(token);
 
     if(user){
@@ -83,7 +83,7 @@ module.exports.changePassword = async(req, res)=>{
   try{
     let token = jwt.verify(req.headers.authorization, '123') 
     let user = await User.find({_id: token._id})
-    console.log(76, req.body);
+    // console.log(76, req.body);
     if(user){
       let user = await User.updateOne({_id: token._id},{
         password: req.body.password
@@ -113,5 +113,26 @@ module.exports.changeStatue = async (req, res)=>{
     res.json('user khong ton tai')
   }else{
     let user = await User.findOneAndUpdate({_id: user._id}, {status: status})
+  }
+}
+
+
+module.exports.getFindUserByNameUser = async (req, res)=>{
+  try{
+    const listUsers = await User.find({ username: { $regex: req.params.username }})
+    let users = await User.find();
+    let total = users.length;
+    console.log(125, listUsers.length);
+    if(listUsers.length > 0){
+      console.log(127, listUsers);
+      res.render('pages/admin/manageUser/manageUser', {listUsers, total: Math.ceil(total / 10)})
+    }else{
+      let listUsers = []
+      res.render('pages/admin/manageUser/manageUser', {listUsers, total: Math.ceil(total / 10)})
+    }
+  // res.status(200).json({mess:'found Category'})
+  }catch(e){
+    console.log(e);
+    // res.status(500).json({mess:'server error'})
   }
 }

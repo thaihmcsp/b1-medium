@@ -19,6 +19,7 @@ router.get('/manage-user', controller.getManageUser)
 router.post('/changStatus', controller.changeStatue)
 // lấyy user về và phân trang
 router.get('/getAllUsers', controller.getAllUsers)
+router.get('/findUserByName/:username', controller.getFindUserByNameUser)
 router.get('/paginationUsers', controller.getPaginationUsers)
 // thay đổi thông tin thì sẽ reload lại trang
 router.post('/changeProfile',upload.single('avatar'), controller.changeProfile)
