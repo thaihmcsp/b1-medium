@@ -15,11 +15,12 @@
 </head>
     <title>Document</title>
 </head>
+
 <body>
 
     <div class="container-Up">
         <div class="home-Up">
-            <h1>Sign Up width Email</h1>
+            <h1>Sign Up</h1>
             <div  class="menu-text">
                 <% quotes.map((ele, index) => {%>
                     <p class="quotes<%= index %>"><%= ele %></p>
@@ -31,6 +32,8 @@
                     <p class="title-Up">Your Email</p>
                     <input type="email" class="input<%= index %>"><%= ele %></input>
                     <p class="title-Up">Your Password</p>
+                    <input type="password" class="input<%= index %>"><%= ele %></input>
+                    <p class="title-Up">Confirm Password</p>
                     <input type="password" class="input<%= index %>"><%= ele %></input>
 
                 <%}) %>
