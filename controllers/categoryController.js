@@ -18,7 +18,7 @@ async function GetCategoryById(req,res){
     const { catId } = req.params
     try {
         const data = await Category.findOne({_id:catId})
-        res.render('/pages/admin/manageCategory/viewDatailCategory', {data})
+        res.render('pages/admin/manageCategory/viewDetailCategory', {data})
         // res.status(200).json({mess:'found Category',data})
     } catch (error) {
         res.status(500).json({mess:'server error'})
@@ -42,7 +42,6 @@ async function viewUpdateCategory(req, res){
 
 async function UpdateCategoryById(req,res){
     // const { catId, categoryName ,categoryNewName } = req.body
-
     // console.log(catId, categoryName, categoryNewName);
     try {
         const updateCat = await Category.findOne({_id : req.params.id})
