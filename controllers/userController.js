@@ -17,11 +17,7 @@ module.exports.getProfile = async (req, res) => {
   }
 };
 
-module.exports.getManageUser = async (req, res) => {
-  let users  = await User.find()
-  console.log(users);
-  res.render("pages/admin/manageUser/manageUser", {users});
-};
+
 
 // layas user
 module.exports.getAllUsers = async (req, res) => {
@@ -41,7 +37,7 @@ module.exports.getPaginationUsers = async (req, res) => {
     const list = await User.find()
       .skip(req.query.limit * (req.query.page - 1))
       .limit(req.query.limit);
-    res.render("pages/admin/mangageUser/paginationUser", { listUser: list });
+    res.render("pages/admin/manageUser/paginationUser", { listUsers: list });
   } catch (err) {
     console.log(err);
   }
@@ -53,7 +49,7 @@ module.exports.changeProfile = async (req, res) => {
     let user = await User.find({_id: token._id})
     // console.log(user);
     // console.log(token);
-
+    // console.log(56, req.body);
     if(user){
       fs.unlinkSync(User.avatar.slice(1))
       let user = await User.updateOne({_id: token._id},{

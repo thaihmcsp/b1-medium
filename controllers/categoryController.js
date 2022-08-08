@@ -24,16 +24,34 @@ async function GetCategoryById(req,res){
         res.status(500).json({mess:'server error'})
     }
 }
+
+async function viewUpdateCategory(req, res){
+    try{
+        console.log(30,req.params.id);
+        let findCategory = await Category.findOne({_id:req.params.id})
+        if(findCategory){
+            res.render('pages/admin/manageCategory/editCategory')
+        }else{
+            console.log('category not found');
+        }
+    }catch (error) {
+        console.log(error);
+    }
+}
+
+
 async function UpdateCategoryById(req,res){
-    const { catId, categoryName ,categoryNewName } = req.body
+    // const { catId, categoryName ,categoryNewName } = req.body
+
+    // console.log(catId, categoryName, categoryNewName);
     try {
-        const catList = await Category.find({ $and: [
-            { categoryName: { $ne: categoryName } },
-            { categoryName: categoryNewName }
-         ]})
-        if(!catList.length){
-            await Category.updateOne({_id:catId},{categoryName:categoryNewName})
-            const data = await Category.find({_id:catId})
+        const updateCat = await Category.findOne({_id : req.params.id})
+        console.log(49, req.body.categoryName);
+        if(updateCat){
+            console.log(50, updateCat);
+            let data = await Category.updateOne({_id:req.params.id},{categoryName:req.body.categoryName})
+            // const data = await Category.find({_id:catId})
+            console.log(53, data);
             res.status(200).json({mess:'updated Category',data})
         }else{
             res.status(300).json({mess:`Category ${categoryNewName} has existed`})
@@ -75,4 +93,4 @@ async function GetCategoryByName(req,res){
         res.status(500).json({mess:'server error'})
     }
 }
-module.exports = {CreateCategory, GetCategoryById, UpdateCategoryById, GetAllCategory, GetCategoryByName}
+module.exports = {viewUpdateCategory,CreateCategory, GetCategoryById, UpdateCategoryById, GetAllCategory, GetCategoryByName}
