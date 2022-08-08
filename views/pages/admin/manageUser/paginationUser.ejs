@@ -13,8 +13,9 @@
     <title>Document</title>
   </head>
   <body>
-    <table class="table">
-      <thead class="thead-dark">
+
+      <table class="table">
+        <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">ten nguoi dung</th>
@@ -24,14 +25,14 @@
         </tr>
       </thead>
       <tbody>
-          <% listUser.map((user, index) =>{%>
+          <% listUsers.map((user, index) =>{%>
         <tr>
           <th scope="row">1</th>
-          <td><% user.username %></td>
-          <td><%  user.email %> </td>
-          <td><% user.description%></td>
+          <td><%= user.username %></td>
+          <td><%=  user.email %> </td>
+          <td><%= user.description%></td>
           <td>
-            <button onclick="changeStatus(user._id)"><% user.status %></button>
+            <button onclick="changeStatus('<%= user._id %>')"><%= user.status %></button>
           </td>
         </tr>
         <%})%>

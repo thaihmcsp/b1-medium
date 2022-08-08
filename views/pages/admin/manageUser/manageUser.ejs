@@ -1,3 +1,8 @@
+<div>
+  <input type="text" id="searchUser" placeholder="Search User">
+  <button onclick="searchUser()">search</button>
+</div>
+
 <div class="pagination"><%- include('./paginationUser.ejs') %></div>
 
 <% for(let i = 1; i <= total; i++) {%>
@@ -11,8 +16,5 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 ></script>
-<link
-  rel="stylesheet"
-  href="/views/pages/manga/viewAllManga/viewAllManga.css"
-/>
+
 <script src="/views/pages/admin/manageUser/managaUser.js"></script>
