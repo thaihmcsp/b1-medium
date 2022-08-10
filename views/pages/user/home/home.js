@@ -4,9 +4,15 @@ document.querySelectorAll('.homeTab a').forEach(aNode=>{
         e.target.classList.add('tabActive')
     }
 })
-$(document).on('click',(e)=>{
-    if(e.target.parentNode == $('.homePost__otherInfoRight--moreFeature')[0])
-        $('.moreFeature').css({display:'block'})
-    else
-        $('.moreFeature').css({display:'none'})
-})
+function ShowHomeFeature(homeFeatureId){
+    $(`#${homeFeatureId}`).toggle()
+}
+//block author
+async function BlockAuthor(authorId){
+    let res = await $.ajax({
+        url:`/api/block/block-author`,
+        type:'POST',
+        data:{authorId}
+    })
+    alert(res.mess)
+}
