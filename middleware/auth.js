@@ -1,7 +1,17 @@
 const {User} = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-
+module.exports.checkRole = async (req, res, next)=>{
+    try{
+        if(req.user.role === 'admin'){
+            next();
+        }else{
+            res.status(403).json({message: 'role is not allowed'})
+        }
+    }catch(err){
+        console.log(err)
+    }
+}
 
 
 async function checkToken(req, res, next) {

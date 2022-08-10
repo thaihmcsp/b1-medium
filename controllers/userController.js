@@ -97,7 +97,7 @@ module.exports.changePassword = async(req, res)=>{
   }
 }
 
-module.exports.changeStatue = async (req, res)=>{
+module.exports.changeStatus = async (req, res)=>{
   let user = await User.findOne({_id: req.body.id})
   let status = ""
   if(user.status === "banned"){

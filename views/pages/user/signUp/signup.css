@@ -22,7 +22,7 @@
 
 }
 
-.menu-text,.menu-tex-button, .menu-text-input, .quotes0 {
+.menu-text,.menu-tex-button, .menu-text-input, .quotes {
     margin-bottom: 20px;
 }
 
@@ -31,7 +31,7 @@
     padding: 0px 15px 0px 15px;
 }
 
-.input0{
+.input{
    font-size:18px;
         padding:10px 10px 10px 5px;
         display:block;
@@ -52,7 +52,7 @@ font-weight: bold;
     margin-bottom: 20px;
 }
 
-.signUp0{
+.signUp{
     cursor: pointer;
     background-color: black;
     color: white;
@@ -62,22 +62,22 @@ font-weight: bold;
     font-size: 15px;
 }
 
-.signUpGG0, .signUpFB0{
+.signUpGG, .signUpFB{
     cursor: pointer;
     width: 200px;
     border-radius: 20px;
     padding: 10px;
 }
 
-.signUpGG0 i {
+.signUpGG i {
     text-align: start;
 }
 
-.signUpFB0 i {
+.signUpFB i {
     text-align: start;
 }
 
-.link0 a{
+.link a{
  color: rgb(87, 179, 116);
  text-decoration: none;
 }
