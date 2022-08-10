@@ -46,6 +46,8 @@ function ShowUpdateBtn(updateIndex){
     $(`#content-${updateIndex}`).focus()
 }
 //handle data functions
+let queryStringArr = window.location.href.split('/')
+let queryString = queryStringArr[queryStringArr.length-1]
 async function AddComment(postId){
     let content = $('#comment-content').val()
     const res = await $.ajax({
@@ -53,14 +55,22 @@ async function AddComment(postId){
         type: 'POST',
         data:{ content,postId }
     })
-    console.log(res)
+    const cmtRes = await $.ajax({
+        url:`/api/comment/get-cmt-by-post-id/${queryString}`
+    })
+    $('.commentLayout').html(cmtRes)
+    
 }
 async function RemoveComment(commentId){
     const res = await $.ajax({
         url:`/api/comment/remove-comment/${commentId}`,
         type:'DELETE'
     })
-    alert(res.mess);
+    const cmtRes = await $.ajax({
+        url:`/api/comment/get-cmt-by-post-id/${queryString}`
+    })
+    $('.commentLayout').html(cmtRes)
+    //alert(res.mess);
 }   
 async function UpdateComment(cmtId,index){
     let newContent = $(`#content-${index}`).html()
@@ -71,5 +81,10 @@ async function UpdateComment(cmtId,index){
     })
     $(`#content-${index}`).attr({"contentEditable":'false'})
     $(`#update-${index}`).attr({"style":"display:none"})
-    alert(res.mess)
+    const cmtRes = await $.ajax({
+        url:`/api/comment/get-cmt-by-post-id/${queryString}`
+    })
+    
+    $('.commentLayout').html(cmtRes)
+    //alert(res.mess)
 }                 
