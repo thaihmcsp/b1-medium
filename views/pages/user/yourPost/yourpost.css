@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.container_yourpost{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.yourpost_title{
+    display: flex;
+    width: 100%;
+}
+
+.yourpost_title h1{
+    width: 100%;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.Story-select{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    align-items: center;
+}
+
+.Story-select p{
+
+}
+
+.Story-select p:nth-child(1){
+    background-color: rgb(8, 133, 25);
+    border-radius: 20px;
+    padding: 10px 15px 10px 15px;
+    margin-right: 10px;
+    color: white;
+
+}
+
+.Story-select p:nth-child(2){
+    background-color:white;
+    border-radius: 20px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid black;
+}
+
+.yourpost_menu{
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: rgb(127, 124, 124);
+    border-bottom: 1px solid rgb(121, 121, 121);
+}
+
+.menu-drafts, .menu-published, .menu-responses{
+    margin-right: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+
+.content-title{
+    border-bottom: 1px solid rgb(121, 121, 121);   
+}
+
+.content-title h3{
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.content-title p{
+    margin-bottom: 10px;
+    color: rgb(127, 124, 124);
+}
+
+.content-title i{
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+}

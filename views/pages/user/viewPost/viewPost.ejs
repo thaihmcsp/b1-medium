@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/components/header/headerStyle.css">
+    <link rel="stylesheet" href="/views/pages/user/viewPost/viewPostStyle.css">
+    <link rel="stylesheet" href="/views/components/menu/menuStyle.css">
+    <link rel="stylesheet" href="/views/components/rightNav/rightNavHomeStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>View Post</title>
+</head>
+<body>
+    <div class="allContainer">
+        <!-- header -->
+        <%- include('../../../components/header/header') %>
+        <!-- header -->
+
+        <!-- menu -->
+        <%- include('../../../components/menu/menuUser') %>
+        <!-- menu -->
+
+        <!-- viewpost -->
+        <div class="mainViewPost">
+            <div class="viewPost__authorInfo">
+                <div class="infoLeft">
+                    <div class="infoLeft__avatar">
+                        <a href="http://">
+                            <img src="/<%= post.authorId.avatar %>">
+                        </a>
+                    </div>
+                    <div class="infoLeft__nameAndMore">
+                        <div class="infoLeft__name">
+                            <%= post.authorId.username %>
+                        </div>
+                        <div class="infoLeft__more">
+                            <div>
+                                <%= post.authorId.createdAt.toLocaleDateString() %>
+                            </div>
+                            <p>-</p>
+                            <a href="http://">Time read</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="infoRight">
+                    <div class="infoRight__feature">
+                        <button>
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                        
+                    </div>
+                    <div class="infoRight__moreFeature">
+                        <button>
+                            <i class="fa-solid fa-ellipsis"></i>
+                            <div class="moreFeature__top">
+                                <ul>
+                                    <li><a href="http://">Show Less Like This</a></li>
+                                    <hr class="post-spliter" style="margin:0px 20px">
+                                    <li><a href="http://">Mute Author</a></li>
+                                    <li><a href="http://">Report</a></li>
+                                </ul>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="featureMobile">
+                <button class="featureMobile__button--save"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <button class="featureMobile__button--follow"><i class="fa-solid fa-plus"></i> Follow </button>
+            </div>
+            <div class="viewPost__post">
+                <h1 class="viewPost__post--title">
+                    <%= post.title %>
+                </h1>
+                <div class="viewPost__post--content">
+                    <%= post.content %>
+                </div>
+            </div>
+            <div class="viewPost__bottomFeature">
+                <div class="viewPost__bottomFeatureLeft">
+                    <div class="bottomFeatureLeft__like">
+                        <button>
+                            <i class="fa-regular fa-hand"></i> <%= post.like.length %>
+                        </button>
+                    </div>
+                    <div class="bottomFeatureLeft__comment">
+                        <button>
+                            <i class="fa-regular fa-comment"></i> <%= commentList.length %>
+                        </button>
+                    </div>
+                    
+                </div>
+                <div class="viewPost__bottomFeatureRight">
+                    <div class="bottomFeatureRight__feature">
+                        <button>
+                            <i class="fa-regular fa-bookmark"></i> 
+                        </button>
+                    </div>
+                    <div class="bottomFeatureRight__moreFeature">
+                        <button>
+                            <i class="fa-solid fa-ellipsis"></i>
+                            <div class="moreFeature__bottom">
+                                <ul>
+                                    <li><a href="http://">Show Less Like This</a></li>
+                                    <hr class="post-spliter" style="margin:0px 20px">
+                                    <li><a href="http://">Mute Author</a></li>
+                                    <li><a href="http://">Report</a></li>
+                                </ul>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Like and comment sticky -->
+            <div class="stickyBarContainer">
+                <div class="stickyBar">
+                <div class="stickyBar__like">
+                    <button>
+                        <i class="fa-regular fa-hand"></i> <%= post.like.length %>
+                    </button>
+                </div>
+                <div class="stickyBar__comment">
+                    <button>
+                        <i class="fa-regular fa-comment"></i> <%= commentList.length %>
+                    </button>
+                </div>
+                <div class="stickyBar__moreFeature">
+                    <button>
+                        <i class="fa-solid fa-ellipsis"></i>
+                        <div class="moreFeature__stickyBar">
+                            <ul>
+                                <li><a href="http://">Show Less Like This</a></li>
+                                <hr class="post-spliter" style="margin:0px 20px">
+                                <li><a href="http://">Mute Author</a></li>
+                                <li><a href="http://">Report</a></li>
+                            </ul>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            </div>
+            <!-- Like and comment sticky -->
+            
+            <!--comment zone-->
+                <div class="commentLayout">
+                    <div class="commentMainLayout">
+                        <div class="commentContainer">
+                            <div class="commentContainer__topFeature">
+                                <h2>Responses (<%= commentList.length %>)</h2>
+                                <div class="exitComment__Btn"><i class="fa-solid fa-x"></i></div>
+                            </div>
+                            <div class="typeInput">
+                                <div class="typeInput__yourInfo">
+                                    <img src="/<%= user.avatar %>" alt=""> <p><%= user.username %></p>
+                                </div>
+                                <div class="typeInput__comment">
+                                    <textarea name="" id="comment-content" placeholder="What are your thoughts?"></textarea>
+                                </div>
+                                <div class="typeInput__commentFeature">
+                                    <div class="typeInput__commentFeatureLeft">
+                                        <button class="bold-btn"><b><i class="fa-solid fa-b"></i></b></button>
+                                        <button><i class="fa-solid fa-italic"></i></button>
+                                    </div>
+                                    <div class="typeInput__commentFeatureRight">
+                                        <button>Cancel</button>
+                                        <button onclick="AddComment('<%= post._id %>')" type="button" >Respond</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                            function DateConversion(dateString){
+                                let secondDeviant = (Date.now() - new Date(dateString))/1000
+                                return secondDeviant < 60 ? `${Math.floor(secondDeviant)} second(s) ago` :
+                                        secondDeviant < 60*60 ? `${Math.floor(secondDeviant/60)} minute(s) ago` :
+                                        secondDeviant < 60*60*24 ? `${Math.floor(secondDeviant/60/24)} hour(s) ago` :
+                                        secondDeviant < 60*60*24*30 ? `${Math.floor(secondDeviant/60/24/30)} day(s) ago` :
+                                        `${Math.floor(secondDeviant/60/24/30/365)} year(s) ago`
+                            }
+                        %>
+                        <hr class="post-spliter">
+                        <div class="allCommentContainer">
+                            <% commentList.forEach( (cmt,index) =>{ %>
+                                <div class="showComment">
+                                <div class="showComment__info">
+                                    <a href="" class="showComment__info--avatar"><img src="/<%= cmt.authorId.avatar %>" alt=""></a>
+                                    <div class="showComment__info--nameAndTime">
+                                        <a href="http://"><%= cmt.authorId.username %></a>
+                                        <p><%= DateConversion(cmt.createdAt) %></p>
+                                    </div>
+                                    <div class="editFeatureContainer">
+                                        <button class="editFeatureContainer--btn display-<%= cmt.authorId._id == user._id %>" onclick="ShowCommentEditOption('option-<%=index%>')">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                            <div id="option-<%= index %>" class="editFeatureContainer--option">
+                                                <ul>
+                                                    <li onclick="ShowUpdateBtn('<%=index%>')"><a >Edit</a></li>
+                                                    <li onclick="RemoveComment('<%= cmt._id %>')"><a >Remove</a></li>
+                                                </ul>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="showComment__contentContainer">
+                                    <div class="showComment__content" id="content-<%= index %>"> 
+                                        <%= cmt.content %>
+                                    </div>
+                                    <button id="update-<%= index %>" onclick="UpdateComment('<%= cmt._id %>','<%= index %>')">Done</button>
+                                </div>
+                            </div>
+                            <% }) %>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            <!--comment zone-->
+        </div>
+        <!-- viewpost -->
+        
+        <!-- rightNav -->
+        <%- include('../../../components/rightNav/rightNavHome') %>
+        <!-- rightNav -->
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/views/pages/user/viewPost/viewPost.js"></script>
+</html>

@@ -1,6 +1,6 @@
 const { Post } = require('../models/Post');
 const router = require('express').Router();
-
+const { GetPostById } = require('../controllers/postController');
 
 router.get('/createPost', (req, res) => {
     res.render('pages/user/createPost/createPost')
@@ -20,4 +20,5 @@ router.post('/createPost', async (req, res) => {
 
 })
 
+router.get('/get-post-by-id/:postId',GetPostById)
 module.exports = router;
