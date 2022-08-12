@@ -1,4 +1,4 @@
-const { GetPostById,GetAllFollowPost,GetUnblockPost } = require('../controllers/postController');
+const { GetPostById,GetAllFollowPost, GetAllUnblockPost } = require('../controllers/postController');
 const router = require('express').Router();
 const controller = require('../controllers/postController');
 
@@ -9,5 +9,5 @@ router.post('/changeStatusPost', controller.changeStatusPost)
 router.get('/get-post-by-id/:postId',GetPostById)
 
 router.get('/get-all-follow-post',GetAllFollowPost)
-router.get('/get-unblock-post',GetUnblockPost)
+router.get('/get-all-unblock-post',GetAllUnblockPost)
 module.exports = router;

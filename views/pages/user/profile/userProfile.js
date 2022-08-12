@@ -54,9 +54,23 @@ $('.editAvatar').on('click',(e)=>{
 $('.seeAllFollowing').on('click',(e)=>{
     $('.detailContainer').css({display:'flex'})
 })
-$('.seeAllBlock').on('click',(e)=>{
-    $('.detailContainer').css({display:'flex'})
-})
 $('.detailHideBtn').on('click',(e)=>{
     $('.detailContainer').css({display:'none'})
 })
+
+//show follow and block detail
+async function ShowDetail(route){
+    $('.detailContainer').css({display:'flex'})
+    let res = await $.ajax({
+        url:`/api/${route}/get-all-${route}-author`
+    })
+    $('.detailContainer').html(res)
+}
+async function UnfollowAndUnblockDetail(authorId,route,element){
+    await $.ajax({
+        url:`/api/${route}/un${route}-author/${authorId}`,
+        type:'DELETE'
+    })
+    $(element).text(`Un${route}ed`)
+    $(element).css({background:'rgb(26, 137, 23)',color:'white'})
+}

@@ -28,7 +28,7 @@
             <div class="mainUserProfile__item">
                 <div class="mainUserProfile__itemLeft">
                     <h3>Name</h3>
-                    <p class="Name-span">User name</p>
+                    <p class="Name-span"><%= user.username %></p>
                 </div>
                 <div class="mainUserProfile__itemRight">
                     <button class="btnEdit editName">Edit</button>
@@ -43,7 +43,7 @@
             <div class="mainUserProfile__item">
                 <div class="mainUserProfile__itemLeft">
                     <h3>Description</h3>
-                    <p class="Des-span">Writer of memoir essays, pop culture and all the trivia you never knew you wanted.</p>
+                    <p class="Des-span"><%= user.description %></p>
                 </div>
                 <div class="mainUserProfile__itemRight">
                     <button class="btnEdit editDes">Edit</button>
@@ -58,7 +58,7 @@
             <div class="mainUserProfile__item">
                 <div class="mainUserProfile__itemLeft">
                     <h3>Email</h3>
-                    <p class="Email-span">thp@gmail.com</p>
+                    <p class="Email-span"><%= user.email %></p>
                 </div>
                 <div class="mainUserProfile__itemRight">
                     <button class="btnEdit editEmail">Edit</button>
@@ -95,7 +95,7 @@
                     </form>
                 </div>
                 <div class="mainUserProfile__itemCenter">
-                    <img class="preview-avatar" src="https://miro.medium.com/fit/c/110/110/0*9nuFDuWbcBYFXVMk" alt="">
+                    <img class="preview-avatar" src="/<%= user.avatar %>" alt="">
                 </div>
                 <div class="mainUserProfile__itemRight">
                     <button class="btnEdit editAvatar">Edit</button>
@@ -110,7 +110,7 @@
             <div class="mainUserProfile__item">
                 <div class="mainUserProfile__itemLeft">
                     <h3>Status</h3>
-                    <p>Active</p>
+                    <p><%= user.status %></p>
                 </div>
             </div>
             <hr style="border: 0;height:1px;background: rgba(0,0,0,0.15);">
@@ -123,210 +123,12 @@
 
         <!-- follow & block detail -->
         <div class="detailContainer">
-            <button class="detailHideBtn"><i class="fa-solid fa-x"></i></button>
-            <div class="detailPart">
-                <div class="detailTitle">
-                    number following or block
-                </div>
-                <div class="detailList">
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div> 
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div> 
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div> 
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div> 
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div> 
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div> 
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div> 
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>description</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>
-                    <div class="detailItem">
-                        <div class="detailItem__left">
-                            <img class="detailItem__left--img" src="https://miro.medium.com/fit/c/40/40/1*bv432jmMNECokjdowm0qMA.jpeg">
-                            <div class="detailItem__left--info">
-                                <a href="http://">Name</a>
-                                <p>descrip asdf sf sdfdf dsfdfsdfsdf fs fsdfsdff sdf fsd sdf sfs fsf stion</p>
-                            </div>
-                        </div>
-                        <div class="detailItem__right">
-                            <button>Following/Blocking</button>
-                        </div>
-                    </div>                   
-                </div>
-            </div>
+            <%- include('./followAndBlockDetail') %>
         </div>
     <!-- follow & block detail -->
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/views/pages/user/profile/userProfile.js"></script>
+<script src="/views/components/rightNav/rightNavUser.js"></script>
 </html>
