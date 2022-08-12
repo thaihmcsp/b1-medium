@@ -1,3 +1,5 @@
+const { GetUnblockPostForHomeRendering } = require('../controllers/postController');
+
 const router = require('express').Router();
 router.get('/sign-in', async (req, res)  => {
     try {
@@ -34,10 +36,7 @@ router.get('/sign-up', async (req, res)  => {
         res.status(500).json({massage: "server error", error})
     }
 })
-router.get('/', (req, res) => {
-    res.render('./pages/user/home/Home')
-})
-
+router.get('/', GetUnblockPostForHomeRendering)
 
 router.get('/reading-list', async (req, res)  => {
     try {

@@ -1,0 +1,25 @@
+        <% if(data){ %>
+            <button class="detailHideBtn"><i class="fa-solid fa-x"></i></button>
+            <div class="detailPart">
+                <div class="detailTitle">
+                    <%= `${data.length} ${type}ing` %>
+                </div>
+                <div class="detailList">
+                    <% data.forEach((author,index)=>{ %>
+                    <div class="detailItem">
+                        <div class="detailItem__left">
+                            <img class="detailItem__left--img" src="/<%= author.authorId.avatar %>">
+                            <div class="detailItem__left--info">
+                                <a href="http://"><%= author.authorId.username %></a>
+                                <p><%= author.authorId.description %></p>
+                            </div>
+                        </div>
+                        <div class="detailItem__right">
+                            <button onclick="UnfollowAndUnblockDetail('<%= author.authorId._id %>','<%= type %>',this)"><%= `Un${type}` %></button>
+                        </div>
+                    </div> 
+                    <% }) %>
+                                    
+                </div>
+            </div>
+        <% } %>

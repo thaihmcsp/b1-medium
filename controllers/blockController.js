@@ -3,7 +3,7 @@ const { User } = require('../models/User')
 const { Follow } = require('../models/Follow')
 
 async function BlockAuthor(req,res){
-    let { authorId } = req.body
+    let { authorId } = req.params
     let user = {_id:"62eb6f9997380d24834631f6",
                 email:"thp@gmail.com",
                 username:    "Tran Huu Phuoc",
@@ -29,7 +29,7 @@ async function BlockAuthor(req,res){
     }
 }
 async function UnblockAuthor(req,res){
-    let { authorId } = req.body
+    let { authorId } = req.params
     let user = {_id:"62eb6f9997380d24834631f6",
                 email:"thp@gmail.com",
                 username:    "Tran Huu Phuoc",
@@ -62,7 +62,7 @@ async function GetAllBlockAuthor(req,res){
             }
     try {
         let blockAuthors = await Block.find({userId:user._id}).populate('authorId')
-        res.json({data:blockAuthors})
+        res.render('./pages/user/profile/followAndBlockDetail',{data:blockAuthors,type:'block'})
     } catch (error) {
         res.status(500).json({mess:'error',error})
     }
