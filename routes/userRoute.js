@@ -1,3 +1,5 @@
+const { UserProfileRender } = require('../controllers/userController');
+
 const router = require('express').Router();
 // const controller = require('../controllers/userController');
 
@@ -9,7 +11,5 @@ const router = require('express').Router();
 // router.post('changeStatus', controller.changeStatus)
 // router.get('/getFindUserByNameUser', controller.getFindUserByNameUser)
 
-router.get('/me',(req,res)=>{
-    res.render('./pages/user/profile/profile')
-})
+router.get('/me',UserProfileRender)
 module.exports = router;

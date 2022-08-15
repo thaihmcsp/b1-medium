@@ -169,7 +169,7 @@
     border: 2px solid rgba(230, 230, 230, 1);
     border-radius: 4px;
     right: 24px;
-    display: block;
+    display: none;
 }
 .followFeature > ul{
     align-items: stretch;

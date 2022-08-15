@@ -1,17 +1,25 @@
 const {User} = require("../models/User");
+const {Follow} = require("../models/Follow");
+const {Block} = require("../models/Block");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+
 module.exports.getProfile = async (req, res) => {
   try{
-    // let token = jwt.verify(req.headers.authorization, '123') 
-    // let user = await User.findOne({_id: token._id})
-    // if(user){
+    let tokken = req.cookies
+    // console.log(req.headers.authorization);
+    // let token = jwt.verify(, 'kai') 
+    console.log(tokken);
+
+    let user = await User.findOne({tokken: tokken.user})
+    console.log(user);
+    if(user){
       res.render("pages/admin/profileAdmin/profileAdmin",
-      //  {user}
+       {user}
        )
-    // }else{
-      // res.json('user khong toon tai')
-    // }
+    }else{
+      res.json('user khong toon tai')
+    }
   }catch (err) {
     res.json(err);
   }
@@ -45,7 +53,7 @@ module.exports.getPaginationUsers = async (req, res) => {
 
 module.exports.changeProfile = async (req, res) => {
   try{
-    let token = jwt.verify(req.headers.authorization, '123') 
+    let token = jwt.verify(req.headers.authorization, 'kai') 
     let user = await User.find({_id: token._id})
     // console.log(user);
     // console.log(token);
@@ -131,4 +139,27 @@ module.exports.getFindUserByNameUser = async (req, res)=>{
     console.log(e);
     // res.status(500).json({mess:'server error'})
   }
+}
+module.exports.UserProfileRender = async (req,res) => {
+    let user = {_id:"62eb6f9997380d24834631f6",
+                email:"thp@gmail.com",
+                username:    "Tran Huu Phuoc",
+                password:    "thp123",
+                status:    "active",
+                role:    "user",
+                description:    "thp des",
+                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+                createdAt:    "2022-08-04T07:04:57.829+00:00",
+                updatedAt:    "2022-08-04T07:04:57.829+00:00",
+            }
+    try {
+        const follows = await Follow.find({userId:user._id}).populate('authorId')
+        const blocks = await Block.find({userId:user._id}).populate('authorId')
+        const followers = await Follow.find({authorId:user._id})
+        res.render('./pages/user/profile/profile',{user,follows,blocks,followers,data:null})
+        //res.json({user,follows,blocks,followers})
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error)
+    }
 }

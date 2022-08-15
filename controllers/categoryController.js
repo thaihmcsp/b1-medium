@@ -63,10 +63,10 @@ async function GetAllCategory(req,res){
     try {
         let catList = await Category.find().sort('categoryName')
         if(catList.length> 0){
-        res.render('pages/admin/manageCategory/manageCategory', {catList})
+            res.render('pages/admin/manageCategory/manageCategory', {catList})
         }else{
         let catList = []
-        res.render('pages/admin/manageCategory/manageCategory', {catList})
+            res.render('pages/admin/manageCategory/manageCategory', {catList})
 
         }
         // res.status(200).json({catList})
