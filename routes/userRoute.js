@@ -9,4 +9,7 @@ const router = require('express').Router();
 // router.post('changeStatus', controller.changeStatus)
 // router.get('/getFindUserByNameUser', controller.getFindUserByNameUser)
 
+router.get('/me',(req,res)=>{
+    res.render('./pages/user/profile/profile')
+})
 module.exports = router;
