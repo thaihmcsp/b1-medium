@@ -3,7 +3,8 @@ const { Comment } = require('../models/Comment')
 const { User } = require('../models/User')
 
 async function GetPostById(req,res){
-    let { postId } = req.params
+    let postId = req.params.postId
+    // let { postId } = req.params
     let user = {_id:"62eb6f9997380d24834631f6",
                 email:"thp@gmail.com",
                 username:    "Tran Huu Phuoc",

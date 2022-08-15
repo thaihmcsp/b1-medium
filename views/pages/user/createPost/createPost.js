@@ -363,15 +363,16 @@ function checkURL(url) {
 // }
 
 buttonSubmit.click(async function (e) {
-    let contentSubmit = bodyContent.html();
-    contentSubmit = contentSubmit.replace('\n', '');
+    let content = $('.contentSubmit').html();
+    content = content.replace('\n', '');
+    content = content.replace('contenteditable', '');
     let title = $('.header-title').text()
     console.log(369, title)
-    console.log(contentSubmit)
+    console.log(371,content)
     let data = await $.ajax({
         type: "POST",
         url: "http://localhost:3000/api/post/createpost",
-        data: { title, content: contentSubmit, authorId: '62ef8e4b34fccdcfe1de826f' },
+        data: { title, content: content, authorId: '62ef8e4b34fccdcfe1de826f' },
     });
 });
 
