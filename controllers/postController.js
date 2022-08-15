@@ -1,9 +1,11 @@
 const { Post } = require('../models/Post')
 const { Comment } = require('../models/Comment')
 const { User } = require('../models/User')
+const { Follow } = require('../models/Follow')
+const { Block } = require('../models/Block')
 const jwt = require("jsonwebtoken");
 
-module.exports.getAllPosts = async (req, res) =>{
+async function getAllPosts (req, res){
     try{
         let posts = await  Post.find()
         let listPosts = await Post.find().limit(1)
@@ -23,7 +25,7 @@ module.exports.getAllPosts = async (req, res) =>{
     }
 }
 
-module.exports.getPaginationPost =async (req, res)=>{
+async function getPaginationPost (req, res){
     try{
         let  listPosts = await Post.find()
       .skip(req.query.limit * (req.query.page - 1))
@@ -39,7 +41,7 @@ module.exports.getPaginationPost =async (req, res)=>{
     }
 }
 
-module.exports.viewDetails = async(req, res)=>{
+ async function viewDetails(req, res){
     try{
         // let post = await Post.findOne({_id : req.body.id})
         // let user = await User.findOne({_id : post.authorId})
@@ -54,8 +56,7 @@ module.exports.viewDetails = async(req, res)=>{
         console.log(e);
     }
 }
-
-module.exports.changeStatusPost = async (req, res)=>{
+async function changeStatusPost(req, res){
     try{
         let post = await Post.findOne({_id: req.body.id})
         if(post){
@@ -75,7 +76,8 @@ module.exports.changeStatusPost = async (req, res)=>{
     }
 }
 
-module.exports.GetPostById = async function (req,res){
+ async function GetPostById (req,res){
+
     let { postId } = req.params
     let user = {_id:"62eb6f9997380d24834631f6",
                 email:"thp@gmail.com",
@@ -90,6 +92,7 @@ module.exports.GetPostById = async function (req,res){
             }
     try {
         const post = await Post.findById(postId).populate('category').populate('authorId')
+        
         const commentList = await Comment.find({ postId }).populate('authorId').sort({createdAt:-1})
         res.render('./pages/user/viewPost/viewPost',{post,commentList,user})
         //res.json({post,commentList,user})
@@ -97,3 +100,51 @@ module.exports.GetPostById = async function (req,res){
         res.status(500).json({mess:'error',error})
     }
 }
+
+async function GetUnblockPost(req,res){
+    let user = {_id:"62eb6f9997380d24834631f6",
+                email:"thp@gmail.com",
+                username:    "Tran Huu Phuoc",
+                password:    "thp123",
+                status:    "active",
+                role:    "user",
+                description:    "thp des",
+                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+                createdAt:    "2022-08-04T07:04:57.829+00:00",
+                updatedAt:    "2022-08-04T07:04:57.829+00:00",
+            }
+    try {
+        const blocks = await Block.find({userId:user._id},'authorId')
+        const authorList = blocks.map(e=>e.authorId)
+        const blockPosts = await Post.find({authorId:{$nin:authorList}}).populate('authorId').populate('category')
+        res.render('./pages/user/home/Home',{data:blockPosts})
+        //res.json({data:blockPosts})
+    } catch (error) {
+        res.status(500).json({mess:'error',error})
+    }
+}
+
+async function GetAllFollowPost(req,res){
+    let user = {_id:"62eb6f9997380d24834631f6",
+                email:"thp@gmail.com",
+                username:    "Tran Huu Phuoc",
+                password:    "thp123",
+                status:    "active",
+                role:    "user",
+                description:    "thp des",
+                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+                createdAt:    "2022-08-04T07:04:57.829+00:00",
+                updatedAt:    "2022-08-04T07:04:57.829+00:00",
+            }
+    try {
+        const follows = await Follow.find({userId:user._id},'authorId')
+        const authorList = follows.map(e=>e.authorId)
+        const followPosts = await Post.find({authorId:{$in:authorList}}).populate('authorId').populate('category')
+        res.render('./pages/user/home/Home',{data:followPosts})
+        //res.json({data:followPosts})
+    } catch (error) {
+        res.status(500).json({mess:'error',error})
+    }
+}
+
+module.exports = { GetUnblockPost,GetPostById, getAllPosts, getPaginationPost, changeStatusPost, viewDetails, GetAllFollowPost}
