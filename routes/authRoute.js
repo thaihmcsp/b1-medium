@@ -7,5 +7,6 @@ router.get('/viewRegister', controller.viewRegister)
 // login router
 router.post('/login', controller.login)
 router.get('/viewLogin', controller.viewLogin)
-
+// logout
+router.post('/logout', controller.logout)
 module.exports = router;

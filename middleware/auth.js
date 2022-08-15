@@ -1,7 +1,7 @@
 const {User} = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-module.exports.checkRole = async (req, res, next)=>{
+async function checkRole (req, res, next){
     try{
         if(req.user.role === 'admin'){
             next();
@@ -17,7 +17,7 @@ module.exports.checkRole = async (req, res, next)=>{
 async function checkToken(req, res, next) {
     let searchTokenUser
     try {
-        let token = req.headers.authorization
+        let token = req.cookies.user
         searchTokenUser = await User.findOne(
             { token: token }
         )
@@ -42,5 +42,4 @@ async function checkToken(req, res, next) {
     }
 }
 
-
-module.exports = { checkToken }
+module.exports = { checkToken, checkRole }

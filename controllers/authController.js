@@ -78,3 +78,19 @@ module.exports.register = async (req, res)=>{
         res.json(err);
       }
 }
+
+module.exports.logout = async (req, res)=>{
+  try{
+    let token = req.cookies
+    let user = User.findOne({token : token.user})
+    if(user){
+      user.token = "";
+      res.cookie("user", user.token);
+      res.render('/pages/admin/signInAdmin/singInAdmin')
+    }else{
+      res.json("nguwoif dung chua dang nhap")
+    }
+  }catch(e){
+    console.log(e)
+  }
+}

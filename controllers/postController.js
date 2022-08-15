@@ -8,7 +8,7 @@ const { Comment } = require('../models/Comment')
 module.exports.getAllPosts = async (req, res) =>{
     try{
         let posts = await  Post.find()
-        let listposts = await Post.find().limit(1)
+        let listPosts = await Post.find().limit(1)
         let total = posts.length
         let author = []
         for(let i = 0; i < listPosts.length; i++){
@@ -16,7 +16,7 @@ module.exports.getAllPosts = async (req, res) =>{
             author.push(user.username)
         }
         if(posts){
-            res.render('pages/admin/managePost/managePost',{posts, listposts, total: total/10})
+            res.render('pages/admin/managePost/managePost',{posts, listPosts, total: total/10})
         }else{
             console.log('khong co posts nao');
         }
