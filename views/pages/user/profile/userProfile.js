@@ -54,9 +54,9 @@ $('.editAvatar').on('click',(e)=>{
 $('.seeAllFollowing').on('click',(e)=>{
     $('.detailContainer').css({display:'flex'})
 })
-$('.detailHideBtn').on('click',(e)=>{
+function hideDetail(){
     $('.detailContainer').css({display:'none'})
-})
+}
 
 //show follow and block detail
 async function ShowDetail(route){
