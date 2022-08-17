@@ -3,73 +3,69 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        main {
+            display: flex;
+        }
+
+        div {
+            margin-right: 20px;
+        }
+
+        label,
+        button {
+            display: block;
+        }
+
+        .buttons {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+        }
+
+        select {
+            width: 200px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="wrap-title">
-        <div>
-            <i class="fa-solid fa-plus border-circle-title circle-action-title" style="visibility: hidden;"></i>
-            <i class="image-upload">
-                <label for="file-input">
-                    <i class="hidden-icon-title fa-solid fa-camera" style="display: none;"></i>
-                </label>
-                <input id="file-input" type="file" accept="image/*">
-                <img id="imagePreview" src="" alt="your image" width="100%">
-            </i>
-            <i class="hidden-icon-title fa-solid fa-play" style="display: none;"></i>
-            <i class="hidden-icon-title fa-solid fa-left-right" style="display: none;"></i>
-            <i class="hidden-icon-title fa-solid fa-ellipsis" style="display: none;"></i>
-        </div>
-        <h3 class="header-title" placeholder="Title..." contenteditable="true" onfocus="">
-            <span class="suggest-title">Title...</span>
-        </h3>
+    <!-- <div>
+        <label for="texture-selector">Choose a texture:</label>
+        <select id="texture-selector">
+            <option value="https://image.freepik.com/free-vector/memphis-seamless-patterns_9202-768.jpg">Memphis
+                Seamless</value>
+            <option value="https://image.freepik.com/free-vector/retro-styled-pattern-background_1048-6593.jpg">
+                Retro-styled</value>
+            <option value="https://image.freepik.com/free-vector/abstract-background-with-3d-pattern_1319-68.jpg">3D
+                Cubes</value>
+        </select>
     </div>
-    <div class="wrap-father-content">
-        <div class="wrap-content">
-            <div>
-                <i class="fa-solid fa-plus border-circle circle-action" style="visibility: hidden;"></i>
-                <i class="image-upload">
-                    <label for="file-input">
-                        <i class="hidden-icon fa-solid fa-camera" style="display: none;"></i>
-                    </label>
-                    <input id="file-input" type="file">
-                    <img id="imagePreview" src="" alt="your image" width="80%">
-                </i>
-                <i class="hidden-icon fa-solid fa-play" style="display: none;"></i>
-                <i class="hidden-icon fa-solid fa-left-right" style="display: none;"></i>
-                <i class="hidden-icon fa-solid fa-ellipsis" style="display: none;"></i>
-            </div>
-            <p class="content-story" placeholder="Tile..." contenteditable="true" onfocus="" autofocus=""><img
-                    class="imgFull" src="https://sieupet.com/sites/default/files/pictures/images/1-1473150685951-5.jpg">
-            </p>
-        </div>
 
-        <div class="wrap-content">
-            <div>
-                <i class="fa-solid fa-plus border-circle borderCircle1 circle-action" id="circle1"
-                    style="visibility: visible;"></i>
-                <i class="image-upload image1" id="image1">
-                    <label for="file-input1">
-                        <i class="hidden-icon hidden-icon1 fa-solid fa-camera" style="display: none;"></i>
-                    </label>
-                    <input id="file-input1" type="file">
-                    <img id="imagePreview1" src="" alt="your image" width="80%" style="display: none;">
-                </i>
-                <i class="hidden-icon hidden-icon1  fa-solid fa-play" style="display: none;"></i>
-                <i class="hidden-icon hidden-icon1 fa-solid fa-left-right" style="display: none;"></i>
-                <i class="hidden-icon hidden-icon1 fa-solid fa-ellipsis" style="display: none;"></i>
-            </div>
-            <p class="content-story content-story1" id="focus1" placeholder="Tile..." contenteditable="true" onfocus=""
-                autofocus="">
-                <span class="suggest suggest1"></span>
-            <div><br></div>
-            <div><br></div>
-            </p>
-        </div>
-    </div>
+    <div id="texture-background" style="width:400px; height: 400px; border: 1px solid #000;"></div>
+
+    <script>
+        const select = document.querySelector('#texture-selector');
+        select.addEventListener('change', (e) => {
+            console.log(e.target.value)
+            const background = document.querySelector('#texture-background');
+            background.style.background = `url(${e.target.value})`
+        })
+    </script> -->
+
 </body>
+<script>
+    let a = [1, 2]
+    let b = [4, 2]
+    let c = [3, 7]
+    let d = [6, 5]
+    let min = 0;
+    for (let index = 0; index < 4; index++) {
+        let min = Math.sqrt(Math.pow(b[0] - a[0], 2))
+        console.log(min)
+    }
+</script>
 
 </html>

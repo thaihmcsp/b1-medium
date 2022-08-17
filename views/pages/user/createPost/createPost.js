@@ -363,19 +363,23 @@ function checkURL(url) {
 // }
 
 buttonSubmit.click(async function (e) {
-    let contentSubmit = bodyContent.html();
-    contentSubmit = contentSubmit.replace('\n', '');
-    let title = $('.header-title').text()
-    console.log(369, title)
-    console.log(contentSubmit)
+    let content = $('.contentSubmit').html();
+    content = content.replace('\n', '');
+    content = content.replace('contenteditable', '');
+    let title = $('.header-title').text();
+    let checkSpanTitle = $('.header-title .suggest-title').length
+    if (checkSpanTitle || title === '') {
+        return
+    }
     let data = await $.ajax({
         type: "POST",
         url: "http://localhost:3000/api/post/createpost",
-        data: { title, content: contentSubmit, authorId: '62ef8e4b34fccdcfe1de826f' },
+        data: { title, content: content, authorId: '62ef8e4b34fccdcfe1de826f' },
     });
+    window.location.href = `http://localhost:3000/api/your-post`;
 });
 
 $('#buttonCancel').click(function (e) {
-    window.location.href = 'http://localhost:3000/api/post/createpost'
+    window.location.href = `http://localhost:3000/api/post/createpost`
 });
 
