@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="grid1">
+      <div class="adminMenu"><%- include('../../../components/adminMenu/adminMenu.ejs') %></div>
+      <div class="manageCategory">
+        <div>
+          <input type="text" id="name" placeholder="enter name you want">
+          <button onclick="search()">search</button>
+        </div>
+        <div>
+          <input type="text" id="categoryName" laceholder="name category" width="100px"> 
+         <button onclick="createCategory()">create category</button>
+        </div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"> category name</th>
+              <th>action</th>
+            </tr>
+          </thead>
+          <tbody>
+              <%catList.map((cat, index)=>{%>
+              <tr>
+                <th scope="row"><%= index + 1%></th>
+                <td ><a href="/api/admin/get-cat-by-id/<%= cat.id %>"><%= cat.categoryName %></a></td>
+                <td>
+                  <button onclick="update('<%= cat.id %>')">update</button> 
+                </td>
+              </tr>
+            <%  }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<link rel="stylesheet" href="/views/pages/admin/manageCategory/manageCategory.css">
+<script src="/views/pages/admin/manageCategory/manageCategory.js"></script> 
+</html>

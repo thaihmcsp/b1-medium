@@ -8,7 +8,11 @@ async function createPostController(req, res) {
         let data = await Post.create({
             title, content, authorId
         })
+        res.json({
+            mess: 'success'
+        })
     } catch (error) {
+        console.log(error)
     }
 
 }

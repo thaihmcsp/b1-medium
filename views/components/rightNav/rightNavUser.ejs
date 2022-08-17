@@ -1,0 +1,82 @@
+<div class="rightNavUser">
+    <div class="rightNavUser__getAccess">
+        <a href="http://">Get unlimited access</a>
+    </div>
+    <div class="rightNavUser__body">
+        <div class="rightNavUser__search">
+                <div class="rightNavUser__search--icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input class="rightNavUser__search--input" type="text" placeholder="Search">
+        </div>
+        <div class="rightNavUser__info">
+            <a href="http://" class="userInfo__avatar">
+                <img src="/<%= user.avatar %>" alt="" srcset="">
+            </a>
+            <a href="" class="userInfo__name">
+                <h2><%= user.username %></h2>
+            </a>
+            <div href="" class="userInfo__follower">
+                <button><%= followers.length %> follower(s)</button>
+            </div>
+            <p class="userInfo__description"><%= user.description %></p>
+        </div>
+        <div class="rightNavFollowing">
+            <span>Following</span>
+            <ul class="rightNavFollowing__container">
+                <% for(let i=0; i<follows.length;i++){ %>
+                    <li class="rightNavFollowing__item">
+                        <a href="http://" class="rightNavFollowing__itemLeft">
+                            <img src="/<%= follows[i].authorId.avatar %>" alt="">
+                            <p><%= follows[i].authorId.username %></p>
+                        </a>
+                        <div class="rightNavFollowing__itemRight" onclick="toggle('<%= follows[i].authorId._id %>','follow')">
+                            <i class="fa-solid fa-ellipsis"></i>
+                            <div class="followFeature" id="follow-<%= follows[i].authorId._id %>">
+                                <ul>
+                                    <li onclick="UnfollowAandUnblock('<%= follows[i].authorId._id %>','follow')"><a>Unfollow this Author</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <% if(i==4) break %>
+                <% } %>
+            </ul>
+            <button class="seeAllFollowing" onclick="ShowDetail('follow')">See all list(<%= follows.length %>)</button>
+        </div>
+        <div class="rightNavBlock">
+            <span>Block</span>
+            <ul class="rightNavBlock__container">
+                <% for(let i=0; i<blocks.length;i++){ %>
+                <li class="rightNavBlock__item">
+                    <a href="http://" class="rightNavBlock__itemLeft">
+                        <img src="/<%= blocks[i].authorId.avatar %>" alt="">
+                        <p><%= blocks[i].authorId.username %></p>
+                    </a>
+                    <div class="rightNavBlock__itemRight" onclick="toggle('<%= blocks[i].authorId._id %>','block')">
+                        <i class="fa-solid fa-ellipsis"></i>
+                        <div class="followFeature" id="block-<%= blocks[i].authorId._id %>">
+                            <ul>
+                                <li onclick="UnfollowAandUnblock('<%= blocks[i].authorId._id %>','block')"><a>Unblock this Author</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <% if(i==4) break %>
+                <% } %>
+            </ul>
+            <button class="seeAllBlock" onclick="ShowDetail('block')">See all list(<%= blocks.length %>)</button>
+        </div>
+    </div>
+    <div class="rightNavUser__footer">
+        <a href="http://">Help</a>
+        <a href="http://">Status</a>
+        <a href="http://">Writers</a>
+        <a href="http://">Blog</a>
+        <a href="http://">Careers</a>
+        <a href="http://">Privacy</a>
+        <a href="http://">Terms</a>
+        <a href="http://">About</a>
+        <a href="http://">Knowable</a>
+    </div>
+</div>

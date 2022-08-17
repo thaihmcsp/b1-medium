@@ -21,48 +21,25 @@
         <div class="home-SI">
             <h1>Sign In width Email</h1>
             <div  class="menu-text">
-                <% quotes.map((ele, index) => {%>
-                    <p class="quotes<%= index %>"><%= ele %></p>
-
-                <%}) %>
+                    <p class="quotes"></p>
             </div>
             <div  class="menu-text-input">
-                <% input.map((ele, index) => {%>
                     <p class="title-SI">Your Email</p>
-                    <input type="email" class="input<%= index %>"><%= ele %></input>
+                    <input type="email" id="email" class="input"></input>
                     <p class="title-SI">Your Password</p>
-                    <input type="password" class="input<%= index %>"><%= ele %></input>
-
-                <%}) %>
+                    <input type="password" id="password" class="input"></input>
             </div>
-
             <div class="menu-tex-button">
-                <% signIn.map((ele, index) => {%>
-                    <button class="signIn<%= index %>"><%= ele %></button>
-                <%}) %>
-            </div>
-
-            <div class="menu-tex-button">
-                <% signInGG.map((ele, index) => {%>
-                    <button class="signInGG<%= index %>"> <i class="fa-brands fa-google"></i> <%= ele %></button>
-                <%}) %>
-            </div>
-
-            <div class="menu-tex-button">
-                <% signInFB.map((ele, index) => {%>
-                    <button class="signInFB<%= index %>"> <i class="fa-brands fa-facebook-square"></i> <%= ele %></button>
-                <%}) %>
-            </div>
-
-
-            <div  class="menu-text-link">
-                <% link.map((ele, index) => {%>
-                    <p class="link<%= index %>"><a href=""><%= ele %></a></p>
-                <%}) %>
+                    <button class="signIn" onclick="login()">Sign in</button>
             </div>
         </div>
     </div>
-
 </body>
-
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  ></script>
+  <script src="/views/pages/user/signIn/login.js"></script>
 </html>

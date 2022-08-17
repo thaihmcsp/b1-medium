@@ -13,20 +13,42 @@
 </head>
 
 <body>
-    <%- post.title%>
-    <%- post.content%>
-    <div id="wrap">
-        <div id="buttonSubmit">
-            <button>Save Post</button>
-        </div>
-        <div id="buttonCancel">
-            <button>Cancel</button>
+        <div id="wrap">
+            <div id="buttonSubmit" data-idPost = '<%= postId %>'>
+                <button>Save Post</button>
+            </div>
+            <div id="buttonCancel">
+                <button>Cancel</button>
+            </div>
+            <div class="body-content">
+                <div class="wrap-title">
+                    <div>
+                        <i class="fa-solid fa-plus border-circle-title circle-action-title"></i>
+                        <i class="image-upload">
+                            <label for="file-input">
+                                <i class="hidden-icon-title fa-solid fa-camera"></i>
+                            </label>
+                            <input id="file-input" type="file" accept="image/*" />
+                            <img id="imagePreview" src="" alt="your image" width="100%" />
+                        </i>
+                        <i class="hidden-icon-title fa-solid fa-play"></i>
+                        <i class="hidden-icon-title fa-solid fa-left-right"></i>
+                        <i class="hidden-icon-title fa-solid fa-ellipsis"></i>
+                    </div>
+                    <h3 class="header-title" placeholder="Title..." contenteditable="true" onfocus="">
+                        <%= post.title%>
+                        <span class="suggest-title"></span>
+                    </h3>
+                </div>
+                <div class="wrap-father-content contentSubmit">
+                    <%- post.content%>
+                </div>
+            </div>
         </div>
 
-    </div>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/views/pages/user/createPost/createPost.js"></script>
+<script src="/views/pages/user/createPost/editPost.js"></script>
 
 </html>

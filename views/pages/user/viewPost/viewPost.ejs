@@ -145,80 +145,12 @@
             
             <!--comment zone-->
                 <div class="commentLayout">
-                    <div class="commentMainLayout">
-                        <div class="commentContainer">
-                            <div class="commentContainer__topFeature">
-                                <h2>Responses (<%= commentList.length %>)</h2>
-                                <div class="exitComment__Btn"><i class="fa-solid fa-x"></i></div>
-                            </div>
-                            <div class="typeInput">
-                                <div class="typeInput__yourInfo">
-                                    <img src="/<%= user.avatar %>" alt=""> <p><%= user.username %></p>
-                                </div>
-                                <div class="typeInput__comment">
-                                    <textarea name="" id="comment-content" placeholder="What are your thoughts?"></textarea>
-                                </div>
-                                <div class="typeInput__commentFeature">
-                                    <div class="typeInput__commentFeatureLeft">
-                                        <button class="bold-btn"><b><i class="fa-solid fa-b"></i></b></button>
-                                        <button><i class="fa-solid fa-italic"></i></button>
-                                    </div>
-                                    <div class="typeInput__commentFeatureRight">
-                                        <button>Cancel</button>
-                                        <button onclick="AddComment('<%= post._id %>')" type="button" >Respond</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <%
-                            function DateConversion(dateString){
-                                let secondDeviant = (Date.now() - new Date(dateString))/1000
-                                return secondDeviant < 60 ? `${Math.floor(secondDeviant)} second(s) ago` :
-                                        secondDeviant < 60*60 ? `${Math.floor(secondDeviant/60)} minute(s) ago` :
-                                        secondDeviant < 60*60*24 ? `${Math.floor(secondDeviant/60/24)} hour(s) ago` :
-                                        secondDeviant < 60*60*24*30 ? `${Math.floor(secondDeviant/60/24/30)} day(s) ago` :
-                                        `${Math.floor(secondDeviant/60/24/30/365)} year(s) ago`
-                            }
-                        %>
-                        <hr class="post-spliter">
-                        <div class="allCommentContainer">
-                            <% commentList.forEach( (cmt,index) =>{ %>
-                                <div class="showComment">
-                                <div class="showComment__info">
-                                    <a href="" class="showComment__info--avatar"><img src="/<%= cmt.authorId.avatar %>" alt=""></a>
-                                    <div class="showComment__info--nameAndTime">
-                                        <a href="http://"><%= cmt.authorId.username %></a>
-                                        <p><%= DateConversion(cmt.createdAt) %></p>
-                                    </div>
-                                    <div class="editFeatureContainer">
-                                        <button class="editFeatureContainer--btn display-<%= cmt.authorId._id == user._id %>" onclick="ShowCommentEditOption('option-<%=index%>')">
-                                            <i class="fa-solid fa-ellipsis"></i>
-                                            <div id="option-<%= index %>" class="editFeatureContainer--option">
-                                                <ul>
-                                                    <li onclick="ShowUpdateBtn('<%=index%>')"><a >Edit</a></li>
-                                                    <li onclick="RemoveComment('<%= cmt._id %>')"><a >Remove</a></li>
-                                                </ul>
-                                            </div>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="showComment__contentContainer">
-                                    <div class="showComment__content" id="content-<%= index %>"> 
-                                        <%= cmt.content %>
-                                    </div>
-                                    <button id="update-<%= index %>" onclick="UpdateComment('<%= cmt._id %>','<%= index %>')">Done</button>
-                                </div>
-                            </div>
-                            <% }) %>
-                            
-                        </div>
-                    </div>
-                    
+                    <%- include('./commentComponent') %>
                 </div>
             <!--comment zone-->
         </div>
         <!-- viewpost -->
-        
+            
         <!-- rightNav -->
         <%- include('../../../components/rightNav/rightNavHome') %>
         <!-- rightNav -->

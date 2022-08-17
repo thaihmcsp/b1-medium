@@ -24,106 +24,15 @@
         <!-- home -->
         <div class="mainHome">
             <div class="homeTab">
-                <a class="homeTab-forYou tabActive" href="#">
+                <a class="homeTab-forYou tabActive" onclick="PostRender('unblock',this)">
                     For you
                 </a>
-                <a class="homeTab-following" href="#">
+                <a class="homeTab-following" onclick="PostRender('follow',this)">
                     Following
                 </a>
             </div>
             <div class="homePost-container">
-                <div class="homePost">
-                    <div class="homePost__authInfo">
-                        <a href="http://" class="homePost__authInfoAvatar"><img src="https://miro.medium.com/fit/c/48/48/1*N3XzP2bucTYwTm8ZmUZkUA.jpeg" alt=""></a>
-                        <a href="http://" class="homePost__authInfoName">Teen</a>
-                        -
-                        <a href="http://" class="homePost__authInfoPostTime">time</a>
-                    </div>
-                    <div class="homePost__postInfo">
-                        <div class="homePost__postInfomation">
-                            <a href="http://">
-                                <h2 class="homePost__postInfomation--title">10 unusual behaviours tha sd asd ad ad a ad a ad   wef fwef wefewfwfad asd ad ada da ada dasda da ad ad ada da adada da t make people respect you more</h2>
-                                <div class="homePost__postInfomation--content">Years of sharing this planet with you we fsd fsd sfsdf sfs dfs sf sfs fsfsf sdfs fsdf sdfs fsdf sdfsd fsdf sdfsf sdf sdfs dfsdf sdffwsefsdfs dfsf sdf sdfsd fs dfs fsdf sdf sf sfsdf sdfsd fsd sdf sdfsdf sdf  sfsd fs fsdf sfirdos taught me much. Not all human behaviour makes a whole lot of sense. Here are some habits few us sdsd  sdf s sfsd sf </div>
-                            </a>
-                            <div class="homePost__otherInfo">
-                                <div class="homePost__otherInfoLeft">
-                                    <a href="" class="homePost__otherInfoLeft--category">
-                                        Music dfsf sdfsdf
-                                    </a>
-                                    <a href="" class="homePost__otherInfoLeft--timeRead">
-                                        6 mins
-                                    </a>
-                                </div>
-                                <div class="homePost__otherInfoRight">
-                                    <button class="homePost__otherInfoRight--save"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                                    <button class="homePost__otherInfoRight--showLess"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
-                                    <button class="homePost__otherInfoRight--moreFeature">
-                                        <i class="fas fa-comment-dots    "></i>
-                                        <div class="moreFeature">
-                                            <ul>
-                                                <li><a href="http://">Mute Author</a></li>
-                                                <hr class="post-spliter" style="margin:0px 20px">
-                                                <li><a href="http://">Report</a></li>
-                                            </ul>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                            </div>
-                        <div class="homePost__postAvatar">
-                            <a href="http://">
-                                <img src="https://miro.medium.com/fit/c/224/224/1*sLmBffo8hqet_h5JDovtdQ.jpeg" alt="" srcset="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <hr class="post-spliter">
-                <div class="homePost">
-                    <div class="homePost__authInfo">
-                        <a href="http://" class="homePost__authInfoAvatar"><img src="https://miro.medium.com/fit/c/48/48/1*N3XzP2bucTYwTm8ZmUZkUA.jpeg" alt=""></a>
-                        <a href="http://" class="homePost__authInfoName">Teen</a>
-                        -
-                        <a href="http://" class="homePost__authInfoPostTime">time</a>
-                    </div>
-                    <div class="homePost__postInfo">
-                        <div class="homePost__postInfomation">
-                            <a href="http://">
-                                <h2 class="homePost__postInfomation--title">10 unusual behaviours tha sd asd ad ad a ad a ad   wef fwef wefewfwfad asd ad ada da ada dasda da ad ad ada da adada da t make people respect you more</h2>
-                                <div class="homePost__postInfomation--content">Years of sharing this planet with you we fsd fsd sfsdf sfs dfs sf sfs fsfsf sdfs fsdf sdfs fsdf sdfsd fsdf sdfsf sdf sdfs dfsdf sdffwsefsdfs dfsf sdf sdfsd fs dfs fsdf sdf sf sfsdf sdfsd fsd sdf sdfsdf sdf  sfsd fs fsdf sfirdos taught me much. Not all human behaviour makes a whole lot of sense. Here are some habits few us sdsd  sdf s sfsd sf </div>
-                            </a>
-                            <div class="homePost__otherInfo">
-                                <div class="homePost__otherInfoLeft">
-                                    <a href="" class="homePost__otherInfoLeft--category">
-                                        Music dfsf sdfsdf
-                                    </a>
-                                    <a href="" class="homePost__otherInfoLeft--timeRead">
-                                        6 mins
-                                    </a>
-                                </div>
-                                <div class="homePost__otherInfoRight">
-                                    <button class="homePost__otherInfoRight--save"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                                    <button class="homePost__otherInfoRight--showLess"><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
-                                    <button class="homePost__otherInfoRight--moreFeature">
-                                        <i class="fas fa-comment-dots    "></i>
-                                        <div class="moreFeature">
-                                            <ul>
-                                                <li><a href="http://">Mute Author</a></li>
-                                                <hr class="post-spliter" style="margin:0px 20px">
-                                                <li><a href="http://">Report</a></li>
-                                            </ul>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                            </div>
-                        <div class="homePost__postAvatar">
-                            <a href="http://">
-                                <img src="https://miro.medium.com/fit/c/224/224/1*sLmBffo8hqet_h5JDovtdQ.jpeg" alt="" srcset="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <hr class="post-spliter">
+                <%- include('./postList') %>
             </div>
         </div>
         <!-- home -->

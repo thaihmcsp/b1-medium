@@ -30,7 +30,7 @@
     padding: 0px 15px 0px 15px;
 }
 
-.input0{
+.input{
    font-size:18px;
         padding:10px 10px 10px 5px;
         display:block;
@@ -52,7 +52,7 @@ font-weight: bold;
     margin-bottom: 20px;
 }
 
-.signIn0{
+.signIn{
     cursor: pointer;
     background-color: black;
     color: white;
@@ -62,22 +62,22 @@ font-weight: bold;
     font-size: 15px;
 }
 
-.signInGG0, .signInFB0{
+.signInGG, .signInFB{
     cursor: pointer;
     width: 200px;
     border-radius: 20px;
     padding: 10px;
 }
 
-.signInGG0 i {
+.signInGG i {
     text-align: start;
 }
 
-.signInFB0 i {
+.signInFB i {
     text-align: start;
 }
 
-.link0 a{
+.link a{
  color: rgb(87, 179, 116);
  text-decoration: none;
 }
