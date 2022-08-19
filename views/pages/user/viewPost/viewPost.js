@@ -31,9 +31,9 @@ $('.bottomFeatureLeft__comment').on('click',(e)=>{
     $('.commentLayout').css({display:'flex'})
 })
 //hide comment
-$('.exitComment__Btn').on('click',(e)=>{
+function exitComment(){
     $('.commentLayout').css({display:'none'})
-})
+}
 
 //toggle Comment edit option
 function ShowCommentEditOption(optionIndex){
