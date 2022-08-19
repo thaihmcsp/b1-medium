@@ -1,16 +1,17 @@
 const { GetPostById,GetAllFollowPost, GetAllUnblockPost } = require('../controllers/postController');
 const router = require('express').Router();
 const controller = require('../controllers/postController');
-
-router.get('/getAllPosts', controller.getAllPosts)
-router.get('/getPaginationPost', controller.getPaginationPost)
-router.get('/viewDetails', controller.viewDetails)
-router.post('/changeStatusPost', controller.changeStatusPost)
-router.get('/get-post-by-id/:postId',GetPostById)
 const { editPostID } = require('../controllers/editController');
 const { createPostController } = require('../controllers/createController');
 const { getPostController } = require('../controllers/getPostController');
 const { getEditController } = require('../controllers/getEditController');
+
+
+router.get('/getAllPosts', controller.getAllPosts)
+router.get('/getPaginationPost', controller.getPaginationPost)
+router.get('/viewDetails/:id', controller.viewDetails)
+router.post('/changeStatusPost', controller.changeStatusPost)
+router.get('/get-post-by-id/:postId',GetPostById)
 
 router.get('/createPost', getPostController)
 router.post('/createPost', createPostController)

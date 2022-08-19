@@ -26,12 +26,12 @@
       <tbody>
         <% listPosts.map((post, index)=>{%>
             <tr>
-                <th scope="row">1</th>
-                <td><% post.category %></td>
-                <td onclick="viewDetails('<%post._id%>')"><% post.title %></td>
-                <td> <% author.username %></td>
+                <th scope="row"><%= index +1%> </th>
+                <td>category</td>
+                <td><%= author[0].Name %></td>
+                <td><%=  post.title %></td>
                 <td>
-                  <button onclick="changeStatus('<%post._id%>')">View Details</button>
+                  <button onclick="viewDetails('<%=post.id%>')">View Details</button>
                 </td>
               </tr>
         <%})%>

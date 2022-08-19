@@ -20,7 +20,8 @@
           <th scope="col">#</th>
           <th scope="col">ten nguoi dung</th>
           <th scope="col">email</th>
-          <th scope="col">so bai post</th>
+          <th scope="col">mo ta</th>
+          <th scope="col">tat ca bai post</th>
           <th scope="col">action</th>
         </tr>
       </thead>
@@ -31,8 +32,14 @@
           <td><%= user.username %></td>
           <td><%=  user.email %> </td>
           <td><%= user.description%></td>
+          
+          <% if(post.authorId === user._id){%>
+            <td><%= post.title%></td>
+          <%}else{%>
+            <td></td>
+            <%}%>
           <td>
-            <button onclick="changeStatus('<%= user._id %>')"><%= user.status %></button>
+            <button onclick="changeStatue('<%= user._id %>')"><%= user.status %></button>
           </td>
         </tr>
         <%})%>
