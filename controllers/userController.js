@@ -1,4 +1,5 @@
 const {User} = require("../models/User");
+const {Post} = require("../models/Post");
 const {Follow} = require("../models/Follow");
 const {Block} = require("../models/Block");
 const jwt = require("jsonwebtoken");
@@ -7,12 +8,10 @@ const bcrypt = require('bcrypt')
 
 module.exports.getProfile = async (req, res) => {
   try{
-    let tokken = req.cookies
-    // console.log(req.headers.authorization);
-    // let token = jwt.verify(, 'kai') 
-    console.log(tokken);
+    let token = req.cookies
+    console.log(token);
 
-    let user = await User.findOne({tokken: tokken.user})
+    let user = await User.findOne({token: token.user})
     console.log(user);
     if(user){
       res.render("pages/admin/profileAdmin/profileAdmin",
@@ -34,7 +33,8 @@ module.exports.getAllUsers = async (req, res) => {
     let users = await User.find();
     let listUsers = await User.find().limit(10);
     let total = users.length;
-    res.render("pages/admin/manageUser/manageUser", { users, listUsers,  total: Math.ceil(total / 10),});
+    let post = await Post.find()
+    res.render("pages/admin/manageUser/manageUser", { users, listUsers,  total: Math.ceil(total / 10),post});
   } catch (e) {
     console.log(e);
   }
@@ -54,8 +54,9 @@ module.exports.getPaginationUsers = async (req, res) => {
 
 module.exports.changeProfile = async (req, res) => {
   try{
-    let token = jwt.verify(req.headers.authorization, 'kai') 
-    let user = await User.find({_id: token._id})
+    let token = req.cookies;
+    // let token = jwt.verify(req.headers.authorization, 'kai') 
+    let user = await User.find({_id: token.user})
     // console.log(user);
     // console.log(token);
     // console.log(56, req.body);
@@ -110,14 +111,14 @@ module.exports.changeStatus = async (req, res)=>{
   let user = await User.findOne({_id: req.body.id})
   let status = ""
   if(user.status === "banned"){
-    status === "active"
+    status = "active"
   }else{
-    status === "banned"
+    status = "banned"
   }
   if(!user){
     res.json('user khong ton tai')
   }else{
-    let user = await User.findOneAndUpdate({_id: user._id}, {status: status})
+    let user = await User.findOneAndUpdate({_id: req.body.id  }, {status: status})
   }
 }
 

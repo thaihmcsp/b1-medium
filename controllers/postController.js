@@ -8,15 +8,28 @@ const { Comment } = require('../models/Comment')
 module.exports.getAllPosts = async (req, res) =>{
     try{
         let posts = await  Post.find()
-        let listPosts = await Post.find().limit(1)
+        let listPosts = await Post.find()
+        // console.log(listPosts[0].authorId);
         let total = posts.length
+        let listAuthor = await User.find()
         let author = []
-        for(let i = 0; i < listPosts.length; i++){
-            let user = await User.find({_id : listPosts[i].authorId})
-            author.push(user.username)
+        if(listAuthor.length < listPosts.length){
+            for(let i = 0; i < listPosts.length; i++){
+                let user = await User.find({_id : listPosts[i].authorId})
+                author.push(user.username)
+            }
+        }else{
+                for(let j = 0; j < listPosts.length; j++){
+                let user = await User.find({_id : listPosts[j].authorId})
+                console.log(26 ,user[j].id);
+                author.push({id: user[j].id , Name: user[j].username})
+            }
         }
+        console.log(28, author);
+        console.log(31, listPosts);
         if(posts){
-            res.render('pages/admin/managePost/managePost',{posts, listPosts, total: total/10})
+            console.log(33);
+            res.render('pages/admin/managePost/managePost',{posts, listPosts,author, total: total/10})
         }else{
             console.log('khong co posts nao');
         }
@@ -30,10 +43,21 @@ module.exports.getPaginationPost =async (req, res)=>{
         let  listPosts = await Post.find()
       .skip(req.query.limit * (req.query.page - 1))
       .limit(req.query.limit);
+      let listAuthor = await User.find()
     let author = []
-    for(let i = 0; i < listPosts.length; i++){
-        let user = await User.find({_id : listPosts[i].authorId})
-        author.push(user.username)
+    if(listAuthor.length < listPosts.length){
+        for(let i = 0; i < listPosts.length; i++){
+            let user = await User.find({_id : listPosts[i].authorId})
+            author.push(user.username)
+        }
+    }else{
+        // for(let i = 0; i < listAuthor.length; i++){
+            for(let j = 0; j < listPosts.length; j++){
+            let user = await User.find({_id : listPosts[j].authorId})
+            // console.log(26 ,user[j].id);
+            author.push(user[j].id)
+            // }
+        }
     }
         res.render('pages/admin/managePost/paginationPost',{listPosts, author})
     }catch(err){
@@ -43,11 +67,11 @@ module.exports.getPaginationPost =async (req, res)=>{
 
 module.exports.viewDetails = async(req, res)=>{
     try{
-        // let post = await Post.findOne({_id : req.body.id})
-        // let user = await User.findOne({_id : post.authorId})
+        let post = await Post.findOne({_id : req.params.id})
+        let user = await User.findOne({_id : post.authorId})
         // if(post){
             res.render('pages/admin/managePost/viewdetails',
-            // {post, user}
+            {post, user}
             )
         // }else{
             // console.log('post khoong ton tai');

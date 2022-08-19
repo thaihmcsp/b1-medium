@@ -1,12 +1,13 @@
 async function viewDetails(id){
     try{
-        let data = $.ajax({
-            url:"/post/viewDetails",
-            type: "GET",
-            data:{
-                id
-            }
-        })
+        // let data = $.ajax({
+        //     url:"/api/post/viewDetails",
+        //     type: "GET",
+        //     data:{
+        //         id
+        //     }
+        // })
+        window.location.href = `/api/post/viewDetails/${id}`;
     }catch(err){
         console.log(err);
     }
@@ -20,22 +21,6 @@ async function pagination(page, limit) {
     $(".pagination").html(data);
   }
   
-async function changeStatus(id){
-    try{
-        let data = await $.ajax({
-            url: 'post/changeStatusPost',
-            type: "POST",
-            data: {
-                id
-            }
-        })
-        if(data.status == 200){
-            console.log("change status successful");
-        }
-    }catch(e){
-        console.log(e);
-    }
-}
 
 
 

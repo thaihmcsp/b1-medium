@@ -16,7 +16,6 @@ module.exports.login = async (req, res)=>{
         const data = await User.findOne({
           email: req.body.email,
         });
-
         if (data) {
           const checkPassword = await bcrypt.compare(
             req.body.password,
@@ -48,6 +47,54 @@ module.exports.login = async (req, res)=>{
         console.log(76, err);
       }
 }
+
+// view login admin
+module.exports.viewLoginAdmin = async(req, res)=>{
+  try{
+    res.render('pages/admin/signInAdmin/signInAdmin')
+  }catch(e){
+    console.log(e);
+  }
+}
+
+module.exports.loginAdmin = async (req, res)=>{ 
+  try{
+    console.log(req.body.email);
+    let admin = await User.findOne({email : req.body.email})
+    console.log(admin)
+    if(admin && admin.role === 'admin'){
+      let checkPassword = await bcrypt.compare(req.body.password, admin.password)
+      if (checkPassword) {
+        const UserID = admin._id;
+        const token = jwt.sign(`${UserID}`, "kai");
+        const a = await User.updateOne(
+          { _id: admin._id },
+          { token: token }
+        );
+        res.cookie("user", token, {
+          expires: new Date(Date.now() + 6000000),
+        });
+        res.json({
+          message: "login success",
+          status: 200,
+          err: false,
+          userid: UserID,
+        });
+      } else {
+        res.json({ message: " incorrect password" });
+      }
+    } else {
+      res.json({ message: "login failed", status: 400, err: false });
+    }
+    
+  }catch(e){
+    console.log(e);
+  }
+}
+
+
+
+
 // view regiter
 module.exports.viewRegister = async (req, res) => {
     try{

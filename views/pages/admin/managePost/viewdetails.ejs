@@ -20,18 +20,15 @@
           <th scope="col">thể loại</th>
           <th scope="col">tiêu đề</th>
           <th scope="col">người viết</th>
-          <th scope="col">action</th>
+          <!-- <th scope="col">action</th> -->
         </tr>
       </thead>
       <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td><% post.category %></td>
-                <td><% post.title %></td>
-                <td> <% user.username %></td>
-                <!-- <td>
-                  <button onclick="viewDetails(post._id)">View Details</button>view details</button>
-                </td> -->
+                <td><%= post.category %></td>
+                <td><%= post.title %></td>
+                <td><%= user.username %></td>
               </tr>
       </tbody>
     </table>
