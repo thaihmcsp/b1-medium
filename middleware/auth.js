@@ -22,7 +22,7 @@ async function checkToken(req, res, next) {
             { token: token }
         )
         if (searchTokenUser) {
-            let id = jwt.verify(token, 'check')
+            let id = jwt.verify(token, 'kai')
             if (id) {
                 delete searchTokenUser._doc.token
                 delete searchTokenUser._doc.password

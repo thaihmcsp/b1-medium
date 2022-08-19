@@ -79,17 +79,18 @@ module.exports.changeStatusPost = async (req, res)=>{
 
 module.exports.GetPostById = async function (req,res){
     let { postId } = req.params
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const post = await Post.findById(postId).populate('category').populate('authorId')
         
@@ -101,17 +102,18 @@ module.exports.GetPostById = async function (req,res){
     }
 }
 module.exports.GetAllFollowPost = async function (req,res){
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const follows = await Follow.find({userId:user._id},'authorId')
         const authorList = follows.map(e=>e.authorId)
@@ -123,17 +125,18 @@ module.exports.GetAllFollowPost = async function (req,res){
     }
 }
 module.exports.GetAllUnblockPost = async function(req,res){
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const blocks = await Block.find({userId:user._id},'authorId')
         const authorList = blocks.map(e=>e.authorId)
@@ -145,22 +148,23 @@ module.exports.GetAllUnblockPost = async function(req,res){
     }
 }
 module.exports.GetUnblockPostForHomeRendering = async function (req,res){
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const blocks = await Block.find({userId:user._id},'authorId')
         const authorList = blocks.map(e=>e.authorId)
         const blockPosts = await Post.find({authorId:{$nin:authorList}}).populate('authorId').populate('category')
-        res.render('./pages/user/home/Home',{data:blockPosts})
+        res.render('./pages/user/home/Home',{data:blockPosts,user})
     } catch (error) {
         res.status(500).json({mess:'error',error})
     }
