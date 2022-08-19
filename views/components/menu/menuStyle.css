@@ -111,7 +111,76 @@
     border-radius: 100%;
     width: 25px;
 }
-
+.menuPC_feature,.menuMobile_feature{
+    z-index: 499;
+    position: absolute;
+    box-shadow: rgb(230 230 230) 0px 1px 4px;
+    border: 2px solid rgba(230, 230, 230, 1);
+    border-radius: 4px;
+    display: none;
+}
+.menuPC_feature{
+    bottom: 0;
+    left: 75px;
+}
+.menuMobile_feature{
+    bottom: 50px;
+    right: 0px;
+}
+.menuPC_feature > ul,.menuMobile_feature > ul{
+    align-items: stretch;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    background: white;
+}
+.menuPC_feature > ul > li,.menuMobile_feature > ul > li{
+    padding: 8px 20px;
+}
+.menuPC_feature > ul > li:hover,.menuMobile_feature > ul > li:hover{
+    background: #eaeaea;
+}
+.menuPC_feature > ul > li >a,.menuMobile_feature > ul > li >a{
+    color: rgba(117, 117, 117, 1);
+    font-size:  14px;
+    line-height: 20px;
+}
+.tooltiptext{
+    visibility: hidden;
+    position: relative;
+    width: fit-content;
+    background-color: #555;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    z-index: 600;
+    opacity: 0;
+    height: 21px;
+    transition: opacity .6s;
+}
+.tooltip-right {
+    left: 58px;
+    top: -18px;
+}
+.tooltip-right::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #555 transparent transparent;
+}
+.menu__feature-1:hover .tooltip-home, .menu__feature-2:hover .tooltip-noti, .menu__feature-3:hover .tooltip-save, 
+.menu__feature-4:hover .tooltip-your, .menu__feature-6:hover .tooltip-write
+{
+    visibility: visible;
+    opacity: 1;
+}
 @media (max-width:600px) {
     .menu__mobile{
         display: block;
