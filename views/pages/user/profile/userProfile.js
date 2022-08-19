@@ -4,7 +4,6 @@ let imgSrc = $('.preview-avatar').attr('src')
 imgInp.onchange = e =>{
     const [file] = imgInp.files 
     if(file)    blah.src = URL.createObjectURL(file)
-    console.log(file);
 }
 let proName = $('.Name-span').text()
 let proDes = $('.Des-span').text()
@@ -73,4 +72,71 @@ async function UnfollowAndUnblockDetail(authorId,route,element){
     })
     $(element).text(`Un${route}ed`)
     $(element).css({background:'rgb(26, 137, 23)',color:'white'})
+}
+//change
+async function ChangeName(){
+    let newName = $('.Name-span').text();
+    let res = await $.ajax({
+        type:"PATCH",
+        url:'/api/user/change-name',
+        data:{newName}
+    })
+    alert(res.mess)
+    window.location.href = "/api/user/me";
+}
+async function ChangeDes(){
+    let newDes = $('.Des-span').text();
+    let res = await $.ajax({
+        type:"PATCH",
+        url:'/api/user/change-des',
+        data:{newDes}
+    })
+    alert(res.mess)
+    window.location.href = "/api/user/me";
+}
+async function ChangeAvatar(){
+    try {
+        const form = $('.changeAvatar-form')[0]//chuyen ve DOM
+        const formData = new FormData(form)//Tra ve formData
+        // for (const pair of formData.entries()){
+        //     console.log(pair[0],pair[1]);
+        // } // nay la de xem cho hieu thoi
+
+        const res = await $.ajax({
+            url:'/api/user/change-avatar',
+            type:'POST',
+            data:formData,
+            processData:false,
+            contentType:false,
+        })
+        alert(res.mess)
+        window.location.href = "/api/user/me";
+    } catch (error) {
+        console.log(error);
+    }
+}
+async function ChangeEmail(){
+    let newEmail = $('.Email-span').text();
+    let res = await $.ajax({
+        type:"PATCH",
+        url:'/api/user/change-email',
+        data:{newEmail}
+    })
+    alert(res.mess)
+    window.location.href = "/api/user/me";
+}
+async function ChangePassword(){
+    let oldPass = $('#oldPassword').val()
+    let newPass = $('#newPassword').val()
+    if(!oldPass || !newPass){
+        return alert('k dc bo trong')
+    }
+    let res = await $.ajax({
+        type:"PATCH",
+        url:'/api/user/change-password',
+        data:{oldPass,newPass}
+    })
+    alert(res.mess)
+    if(res.mess == 'success')
+        return window.location.href = "/api/sign-in";
 }

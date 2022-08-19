@@ -1,4 +1,5 @@
 const { GetUnblockPostForHomeRendering } = require('../controllers/postController');
+const { checkToken } = require('../middleware/auth');
 
 const router = require('express').Router();
 router.get('/sign-in', async (req, res)  => {
@@ -36,7 +37,7 @@ router.get('/sign-up', async (req, res)  => {
         res.status(500).json({massage: "server error", error})
     }
 })
-router.get('/', GetUnblockPostForHomeRendering)
+router.get('/', checkToken, GetUnblockPostForHomeRendering)
 
 router.get('/reading-list', async (req, res)  => {
     try {

@@ -1,9 +1,10 @@
 const { AddComment,RemoveComment,UpdateComment,GetCommentByPostId } = require('../controllers/commentController');
+const { checkToken } = require('../middleware/auth');
 
 const router = require('express').Router();
 
-router.post('/add-comment',AddComment)
-router.delete('/remove-comment/:commentId',RemoveComment)
+router.post('/add-comment', checkToken, AddComment)
+router.delete('/remove-comment/:commentId', checkToken, RemoveComment)
 router.patch('/update-comment',UpdateComment)
-router.get('/get-cmt-by-post-id/:postId',GetCommentByPostId)
+router.get('/get-cmt-by-post-id/:postId', checkToken, GetCommentByPostId)
 module.exports = router;

@@ -1,15 +1,16 @@
 const { GetPostById,GetAllFollowPost, GetAllUnblockPost } = require('../controllers/postController');
 const router = require('express').Router();
 const controller = require('../controllers/postController');
+const { checkToken } = require('../middleware/auth');
 
 router.get('/getAllPosts', controller.getAllPosts)
 router.get('/getPaginationPost', controller.getPaginationPost)
 router.get('/viewDetails', controller.viewDetails)
 router.post('/changeStatusPost', controller.changeStatusPost)
-router.get('/get-post-by-id/:postId',GetPostById)
+router.get('/get-post-by-id/:postId', checkToken, GetPostById)
 
-router.get('/get-all-follow-post',GetAllFollowPost)
-router.get('/get-all-unblock-post',GetAllUnblockPost)
+router.get('/get-all-follow-post', checkToken, GetAllFollowPost)
+router.get('/get-all-unblock-post', checkToken, GetAllUnblockPost)
 router.get('/createPost', (req, res) => {
     res.render('pages/user/createPost/createPost')
 })
