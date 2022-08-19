@@ -13,8 +13,10 @@ async function login(){
         })
         console.log(data);
         if(data.status == 200){
-            console.log('login successful');
+            alert('login successful');
             window.location.href = '/api'
+        }else{
+            alert('login failed');
         }
     }catch(e){
         console.log(e);

@@ -108,17 +108,29 @@ module.exports.changePassword = async(req, res)=>{
 }
 
 module.exports.changeStatus = async (req, res)=>{
-  let user = await User.findOne({_id: req.body.id})
-  let status = ""
-  if(user.status === "banned"){
-    status = "active"
-  }else{
-    status = "banned"
-  }
-  if(!user){
-    res.json('user khong ton tai')
-  }else{
-    let user = await User.findOneAndUpdate({_id: req.body.id  }, {status: status})
+  let status =''
+  try{
+      // console.log(allUser)
+      let user = await User.findOne({_id: req.body.id})
+      // console.log(user);
+      console.log(90, user.status === 'active');
+      if(user.status === 'active'){
+        status = 'banned'
+      }else{
+        status = 'active'
+      }
+      if(!user){
+        res.json('user khong ton tai')
+      }else{
+        await User.findOneAndUpdate({_id: req.body.id}, {status: status})
+      }
+      res.json({
+        status: 200, 
+        message: 'Success'
+      })
+
+  }catch(e){
+      res.json({message: 'Error ban user'});
   }
 }
 

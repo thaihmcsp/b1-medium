@@ -14,6 +14,8 @@ async function register(){
         if(data.status == 200){
             alert('Success')
             window.location.href = '/api/auth/viewLogin'
+        }else{
+            alert('register failed')
         }
     }catch(e){
         console.log(e);
