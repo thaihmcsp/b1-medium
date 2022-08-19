@@ -6,70 +6,156 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/views/pages/user/createPost/createPost.css">
 </head>
 
 <body>
-    <div class="wrap-title">
-        <div>
-            <i class="fa-solid fa-plus border-circle-title circle-action-title" style="visibility: hidden;"></i>
-            <i class="image-upload">
-                <label for="file-input">
-                    <i class="hidden-icon-title fa-solid fa-camera" style="display: none;"></i>
-                </label>
-                <input id="file-input" type="file" accept="image/*">
-                <img id="imagePreview" src="" alt="your image" width="100%">
-            </i>
-            <i class="hidden-icon-title fa-solid fa-play" style="display: none;"></i>
-            <i class="hidden-icon-title fa-solid fa-left-right" style="display: none;"></i>
-            <i class="hidden-icon-title fa-solid fa-ellipsis" style="display: none;"></i>
+    <div id="wrap">
+        <div id="buttonSubmit" data-idPost='62fc613a2750b6da80957b14'>
+            <button>Save Post</button>
         </div>
-        <h3 class="header-title" placeholder="Title..." contenteditable="true" onfocus="">
-            <span class="suggest-title">Title...</span>
-        </h3>
-    </div>
-    <div class="wrap-father-content">
-        <div class="wrap-content">
-            <div>
-                <i class="fa-solid fa-plus border-circle circle-action" style="visibility: hidden;"></i>
-                <i class="image-upload">
-                    <label for="file-input">
-                        <i class="hidden-icon fa-solid fa-camera" style="display: none;"></i>
-                    </label>
-                    <input id="file-input" type="file">
-                    <img id="imagePreview" src="" alt="your image" width="80%">
-                </i>
-                <i class="hidden-icon fa-solid fa-play" style="display: none;"></i>
-                <i class="hidden-icon fa-solid fa-left-right" style="display: none;"></i>
-                <i class="hidden-icon fa-solid fa-ellipsis" style="display: none;"></i>
+        <div id="buttonCancel">
+            <button>Cancel</button>
+        </div>
+        <div class="body-content">
+            <div class="wrap-title">
+                <div>
+                    <i class="fa-solid fa-plus border-circle-title circle-action-title"></i>
+                    <i class="image-upload">
+                        <label for="file-input">
+                            <i class="hidden-icon-title fa-solid fa-camera"></i>
+                        </label>
+                        <input id="file-input" type="file" accept="image/*" />
+                        <img id="imagePreview" src="" alt="your image" width="100%" />
+                    </i>
+                    <i class="hidden-icon-title fa-solid fa-play"></i>
+                    <i class="hidden-icon-title fa-solid fa-left-right"></i>
+                    <i class="hidden-icon-title fa-solid fa-ellipsis"></i>
+                </div>
+                <h3 class="header-title" placeholder="Title..." contenteditable="true" onfocus="">
+                    ok
+                    <span class="suggest-title"></span>
+                </h3>
             </div>
-            <p class="content-story" placeholder="Tile..." contenteditable="true" onfocus="" autofocus=""><img
-                    class="imgFull" src="https://sieupet.com/sites/default/files/pictures/images/1-1473150685951-5.jpg">
-            </p>
-        </div>
+            <div class="wrap-father-content contentSubmit">
+                <div class="wrap-content">
+                    <div>
+                        <i class="fa-solid border-circle circle-action fa-x"
+                            style="visibility: hidden; display: none;"></i>
+                        <i class="image-upload">
+                            <label for="file-input">
+                                <i class="hidden-icon fa-solid fa-camera" style="display: none;"></i>
+                            </label>
+                            <input id="file-input" type="file">
+                            <img id="imagePreview" src="" alt="your image" width="80%">
+                        </i>
+                        <i class="hidden-icon fa-solid fa-play" style="display: none;"></i>
+                        <i class="hidden-icon fa-solid fa-left-right" style="display: none;"></i>
+                        <i class="hidden-icon fa-solid fa-ellipsis" style="display: none;"></i>
+                    </div>
+                    <p class="content-story" placeholder="Tile..."="true" onfocus="" autofocus="">
+                        <span class="suggest" style="display: none;">Tell your story...</span>
+                        <img class="imgPreview1" alt="" id="image-preview" width="60%"
+                            src="http://res.cloudinary.com/dl0kozyhk/image/upload/v1660707112/thaytoancovua/ptnntoijpeys6v4bzdyi.png"
+                            style="display: block;">
+                    </p>
+                </div>
 
-        <div class="wrap-content">
-            <div>
-                <i class="fa-solid fa-plus border-circle borderCircle1 circle-action" id="circle1"
-                    style="visibility: visible;"></i>
-                <i class="image-upload image1" id="image1">
-                    <label for="file-input1">
-                        <i class="hidden-icon hidden-icon1 fa-solid fa-camera" style="display: none;"></i>
-                    </label>
-                    <input id="file-input1" type="file">
-                    <img id="imagePreview1" src="" alt="your image" width="80%" style="display: none;">
-                </i>
-                <i class="hidden-icon hidden-icon1  fa-solid fa-play" style="display: none;"></i>
-                <i class="hidden-icon hidden-icon1 fa-solid fa-left-right" style="display: none;"></i>
-                <i class="hidden-icon hidden-icon1 fa-solid fa-ellipsis" style="display: none;"></i>
+                <div class="wrap-content">
+                    <div>
+                        <i class="fa-solid fa-plus border-circle borderCircle1 circle-action" id="circle1"
+                            style="visibility: hidden;"></i>
+                        <i class="image-upload image1" id="image1">
+                            <label for="file-input1">
+                                <i class="hidden-icon hidden-icon1 fa-solid fa-camera" style="display: none;"></i>
+                            </label>
+                            <input id="file-input1" type="file">
+                            <img id="imagePreview1" src="" alt="your image" width="80%" style="display: none;">
+                        </i>
+                        <i class="hidden-icon hidden-icon1  fa-solid fa-play" style="display: none;"></i>
+                        <i class="hidden-icon hidden-icon1 fa-solid fa-left-right" style="display: none;"></i>
+                        <i class="hidden-icon hidden-icon1 fa-solid fa-ellipsis" style="display: none;"></i>
+                    </div>
+                    <p class="content-story content-story1" id="focus1" placeholder="Tile..." contenteditable="true"
+                        onfocus="" autofocus="">xin chào 2</p>
+                </div>
+
+                <div class="wrap-content">
+                    <div>
+                        <i class="fa-solid fa-plus border-circle borderCircle2 circle-action" id="circle2"
+                            style="visibility: hidden;"></i>
+                        <i class="image-upload image2" id="image2">
+                            <label for="file-input2">
+                                <i class="hidden-icon hidden-icon2 fa-solid fa-camera" style="display: none;"></i>
+                            </label>
+                            <input id="file-input2" type="file">
+                            <img id="imagePreview2" src="" alt="your image" width="80%" style="display: none;">
+                        </i>
+                        <i class="hidden-icon hidden-icon2  fa-solid fa-play" style="display: none;"></i>
+                        <i class="hidden-icon hidden-icon2 fa-solid fa-left-right" style="display: none;"></i>
+                        <i class="hidden-icon hidden-icon2 fa-solid fa-ellipsis" style="display: none;"></i>
+                    </div>
+                    <p class="content-story content-story2" id="focus2" placeholder="Tile..." contenteditable="true"
+                        onfocus="" autofocus=""><iframe width="560" height="315" src="
+                            
+                        https://www.youtube.com/embed/G9Hsbkfo7HU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                            encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></p>
+                </div>
+
+                <div class="wrap-content">
+                    <div>
+                        <i class="fa-solid fa-plus border-circle borderCircle3 circle-action" id="circle3"
+                            style="visibility: hidden;"></i>
+                        <i class="image-upload image3" id="image3">
+                            <label for="file-input3">
+                                <i class="hidden-icon hidden-icon3 fa-solid fa-camera" style="display: none;"></i>
+                            </label>
+                            <input id="file-input3" type="file">
+                            <img id="imagePreview3" src="" alt="your image" width="80%" style="display: none;">
+                        </i>
+                        <i class="hidden-icon hidden-icon3  fa-solid fa-play" style="display: none;"></i>
+                        <i class="hidden-icon hidden-icon3 fa-solid fa-left-right" style="display: none;"></i>
+                        <i class="hidden-icon hidden-icon3 fa-solid fa-ellipsis" style="display: none;"></i>
+                    </div>
+                    <p class="content-story content-story3" id="focus3" placeholder="Tile..." contenteditable="true"
+                        onfocus="" autofocus=""><img class="imgFull" src="
+                            
+                        https://image.thanhnien.vn/w660/Uploaded/2022/vrwqzdjwp/2018_12_07/traucuoi_pccz.jpg"></p>
+                </div>
+
+                <div class="wrap-content">
+                    <div>
+                        <i class="fa-solid fa-plus border-circle borderCircle4 circle-action" id="circle4"
+                            style="visibility: visible;"></i>
+                        <i class="image-upload image4" id="image4">
+                            <label for="file-input4">
+                                <i class="hidden-icon hidden-icon4 fa-solid fa-camera"></i>
+                            </label>
+                            <input id="file-input4" type="file">
+                            <img id="imagePreview4" src="" alt="your image" width="80%" style="display: none;">
+                        </i>
+                        <i class="hidden-icon hidden-icon4  fa-solid fa-play"></i>
+                        <i class="hidden-icon hidden-icon4 fa-solid fa-left-right"></i>
+                        <i class="hidden-icon hidden-icon4 fa-solid fa-ellipsis"></i>
+                    </div>
+                    <p class="content-story content-story4" id="focus4" placeholder="Tile..." contenteditable="true"
+                        onfocus="" autofocus="">
+                        <span class="suggest suggest4"></span>
+                    <div><br></div>
+                    <div><br></div>
+                    </p>
+                </div>
+
             </div>
-            <p class="content-story content-story1" id="focus1" placeholder="Tile..." contenteditable="true" onfocus=""
-                autofocus="">
-                <span class="suggest suggest1"></span>
-            <div><br></div>
-            <div><br></div>
-            </p>
         </div>
     </div>
+
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/views/pages/user/createPost/editPost.js"></script>
 
 </html>

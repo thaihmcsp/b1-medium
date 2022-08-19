@@ -474,3 +474,8 @@ button{
         margin-top: 5px;
     }
 }
+
+/* CSS Le Trong De Toan để ẩn hình tròn */
+.border-circle {
+    display: none !important;
+}
