@@ -1,20 +1,26 @@
 const {User} = require("../models/User");
 const {Follow} = require("../models/Follow");
 const {Block} = require("../models/Block");
-
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+const bcrypt = require('bcrypt')
+
 module.exports.getProfile = async (req, res) => {
   try{
-    // let token = jwt.verify(req.headers.authorization, '123') 
-    // let user = await User.findOne({_id: token._id})
-    // if(user){
+    let tokken = req.cookies
+    // console.log(req.headers.authorization);
+    // let token = jwt.verify(, 'kai') 
+    console.log(tokken);
+
+    let user = await User.findOne({tokken: tokken.user})
+    console.log(user);
+    if(user){
       res.render("pages/admin/profileAdmin/profileAdmin",
-      //  {user}
+       {user}
        )
-    // }else{
-      // res.json('user khong toon tai')
-    // }
+    }else{
+      res.json('user khong toon tai')
+    }
   }catch (err) {
     res.json(err);
   }
@@ -48,7 +54,7 @@ module.exports.getPaginationUsers = async (req, res) => {
 
 module.exports.changeProfile = async (req, res) => {
   try{
-    let token = jwt.verify(req.headers.authorization, '123') 
+    let token = jwt.verify(req.headers.authorization, 'kai') 
     let user = await User.find({_id: token._id})
     // console.log(user);
     // console.log(token);
@@ -100,7 +106,7 @@ module.exports.changePassword = async(req, res)=>{
   }
 }
 
-module.exports.changeStatue = async (req, res)=>{
+module.exports.changeStatus = async (req, res)=>{
   let user = await User.findOne({_id: req.body.id})
   let status = ""
   if(user.status === "banned"){
@@ -136,17 +142,7 @@ module.exports.getFindUserByNameUser = async (req, res)=>{
   }
 }
 module.exports.UserProfileRender = async (req,res) => {
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    let user = req.user;
     try {
         const follows = await Follow.find({userId:user._id}).populate('authorId')
         const blocks = await Block.find({userId:user._id}).populate('authorId')
@@ -154,7 +150,72 @@ module.exports.UserProfileRender = async (req,res) => {
         res.render('./pages/user/profile/profile',{user,follows,blocks,followers,data:null})
         //res.json({user,follows,blocks,followers})
     } catch (error) {
-        console.log(error);
         res.status(500).json(error)
     }
+}
+module.exports.ChangeUserName = async (req,res) =>{
+  let { newName } = req.body
+  let userId = req.user._id
+  try {
+    await User.updateOne({_id:userId},{username:newName})
+    res.json({mess:'success'})
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+module.exports.ChangeUserDes = async (req,res) =>{
+  let { newDes } = req.body
+  let userId = req.user._id
+  try {
+    await User.updateOne({_id:userId},{description:newDes})
+    res.json({mess:'success'})
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+module.exports.ChangeUserAvatar = async (req,res) =>{
+  let userId = req.user._id
+  let {path} = req.file;
+  try {
+    let userInfo = await User.find({_id:userId})
+    let defaultAvatarPath = 'publics/statics/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg'
+    if(userInfo[0].avatar != defaultAvatarPath){
+      fs.unlinkSync(userInfo[0].avatar)
+    };
+    await User.updateOne({_id:userId},{avatar:path})
+    res.json({mess:"success"})
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+module.exports.ChangeUserEmail = async (req,res) =>{
+  let { newEmail } = req.body
+  let userId = req.user._id
+  try {
+    let findByEmail = await User.find({email:newEmail})
+    if(findByEmail.length)
+      return res.json({mess:'Email da ton tai'})
+    await User.updateOne({_id:userId},{email:newEmail})
+    res.json({mess:'success'})
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+module.exports.ChangeUserPassword = async (req,res) =>{
+  let { oldPass,newPass } = req.body
+  let userId = req.user._id
+  try {
+    let findUser = await User.find({_id:userId})
+    const checkPassword = await bcrypt.compare(
+      oldPass,
+      findUser[0].password
+    );
+    if(!checkPassword)
+      return res.json({mess:'Nhap sai password'})
+    const password = await bcrypt.hash(newPass, 10);
+    await User.updateOne({_id:userId},{password})
+    res.json({mess:'success'})
+  } catch (error) {
+    res.status(500).json(error)
+  }
 }

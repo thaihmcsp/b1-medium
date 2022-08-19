@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 router.get('/profile',controller.getProfile)
-router.post('/changStatus', controller.changeStatue)
+router.post('/changStatus', controller.changeStatus)
 // lấyy user về và phân trang
 router.get('/getAllUsers', controller.getAllUsers)
 router.get('/findUserByName/:username', controller.getFindUserByNameUser)

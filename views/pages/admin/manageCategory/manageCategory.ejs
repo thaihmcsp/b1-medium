@@ -13,35 +13,39 @@
     <title>Document</title>
   </head>
   <body>
-    <div>
-      <input type="text" id="name" placeholder="enter name you want">
-      <button onclick="search()">search</button>
+    <div class="grid1">
+      <div class="adminMenu"><%- include('../../../components/adminMenu/adminMenu.ejs') %></div>
+      <div class="manageCategory">
+        <div>
+          <input type="text" id="name" placeholder="enter name you want">
+          <button onclick="search()">search</button>
+        </div>
+        <div>
+          <input type="text" id="categoryName" laceholder="name category" width="100px"> 
+         <button onclick="createCategory()">create category</button>
+        </div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"> category name</th>
+              <th>action</th>
+            </tr>
+          </thead>
+          <tbody>
+              <%catList.map((cat, index)=>{%>
+              <tr>
+                <th scope="row"><%= index + 1%></th>
+                <td ><a href="/api/admin/get-cat-by-id/<%= cat.id %>"><%= cat.categoryName %></a></td>
+                <td>
+                  <button onclick="update('<%= cat.id %>')">update</button> 
+                </td>
+              </tr>
+            <%  }) %>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div>
-      <input type="text" id="categoryName" laceholder="name category" width="100px"> 
-     <button onclick="createCategory()">create category</button>
-    </div>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col"> category name</th>
-          <th>action</th>
-        </tr>
-      </thead>
-      <tbody>
-          <%catList.map((cat, index)=>{%>
-          <tr>
-            <th scope="row"><%= index + 1%></th>
-            <td ><a href="/api/category/get-cat-by-id/<%= cat.id %>"><%= cat.categoryName %></a></td>
-            <td>
-              <button onclick="update('<%= cat.id %>')">update</button>
-              
-            </td>
-          </tr>
-        <%  }) %>
-      </tbody>
-    </table>
   </body>
   <script
   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -49,5 +53,6 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 ></script>
+<link rel="stylesheet" href="/views/pages/admin/manageCategory/manageCategory.css">
 <script src="/views/pages/admin/manageCategory/manageCategory.js"></script> 
 </html>

@@ -45,7 +45,7 @@
                     <p><%= DateConversion(cmt.createdAt) %></p>
                 </div>
                 <div class="editFeatureContainer">
-                    <button class="editFeatureContainer--btn display-<%= cmt.authorId._id == user._id %>" onclick="ShowCommentEditOption('option-<%=index%>')">
+                    <button class="editFeatureContainer--btn display-<%= `${cmt.authorId._id}` == `${user._id}` %>" onclick="ShowCommentEditOption('option-<%=index%>')">
                         <i class="fa-solid fa-ellipsis"></i>
                         <div id="option-<%= index %>" class="editFeatureContainer--option">
                             <ul>

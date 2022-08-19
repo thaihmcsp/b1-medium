@@ -4,17 +4,18 @@ const { Follow } = require('../models/Follow')
 
 async function FollowAuthor(req,res){
     let { authorId } = req.params
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         let findFollow = await Follow.find({userId:user._id,authorId})
         if(!findFollow.length){
@@ -30,17 +31,18 @@ async function FollowAuthor(req,res){
 }
 async function UnfollowAuthor(req,res){
     let { authorId } = req.params
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         await Follow.deleteOne({userId:user._id,authorId})
         res.json({mess:'unfollow success'})
@@ -49,17 +51,18 @@ async function UnfollowAuthor(req,res){
     }
 }
 async function GetAllFollowAuthor(req,res){
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         let followAuthors = await Follow.find({userId:user._id}).populate('authorId')
         res.render('./pages/user/profile/followAndBlockDetail',{data:followAuthors,type:'follow'})

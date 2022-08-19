@@ -87,7 +87,7 @@ async function GetCategoryByName(req,res){
             let catList = []
             res.render('pages/admin/manageCategory/manageCategory', {catList})
         }
-        res.status(200).json({mess:'found Category'})
+        // res.status(200).json({mess:'found Category'})
     } catch (error) {
         res.status(500).json({mess:'server error'})
     }

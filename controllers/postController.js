@@ -8,7 +8,7 @@ const { Comment } = require('../models/Comment')
 module.exports.getAllPosts = async (req, res) =>{
     try{
         let posts = await  Post.find()
-        let listposts = await Post.find().limit(1)
+        let listPosts = await Post.find().limit(1)
         let total = posts.length
         let author = []
         for(let i = 0; i < listPosts.length; i++){
@@ -16,7 +16,7 @@ module.exports.getAllPosts = async (req, res) =>{
             author.push(user.username)
         }
         if(posts){
-            res.render('pages/admin/managePost/managePost',{posts, listposts, total: total/10})
+            res.render('pages/admin/managePost/managePost',{posts, listPosts, total: total/10})
         }else{
             console.log('khong co posts nao');
         }
@@ -79,17 +79,18 @@ module.exports.changeStatusPost = async (req, res)=>{
 
 module.exports.GetPostById = async function (req,res){
     let { postId } = req.params
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const post = await Post.findById(postId).populate('category').populate('authorId')
         
@@ -101,17 +102,18 @@ module.exports.GetPostById = async function (req,res){
     }
 }
 module.exports.GetAllFollowPost = async function (req,res){
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const follows = await Follow.find({userId:user._id},'authorId')
         const authorList = follows.map(e=>e.authorId)
@@ -123,17 +125,18 @@ module.exports.GetAllFollowPost = async function (req,res){
     }
 }
 module.exports.GetAllUnblockPost = async function(req,res){
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const blocks = await Block.find({userId:user._id},'authorId')
         const authorList = blocks.map(e=>e.authorId)
@@ -145,23 +148,23 @@ module.exports.GetAllUnblockPost = async function(req,res){
     }
 }
 module.exports.GetUnblockPostForHomeRendering = async function (req,res){
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    // let user = {_id:"62eb6f9997380d24834631f6",
+    //             email:"thp@gmail.com",
+    //             username:    "Tran Huu Phuoc",
+    //             password:    "thp123",
+    //             status:    "active",
+    //             role:    "user",
+    //             description:    "thp des",
+    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
+    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
+    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
+    //         }
+    let user = req.user;
     try {
         const blocks = await Block.find({userId:user._id},'authorId')
         const authorList = blocks.map(e=>e.authorId)
         const blockPosts = await Post.find({authorId:{$nin:authorList}}).populate('authorId').populate('category')
-        res.render('./pages/user/home/Home',{data:blockPosts})
-        //res.json({data:blockPosts})
+        res.render('./pages/user/home/Home',{data:blockPosts,user})
     } catch (error) {
         res.status(500).json({mess:'error',error})
     }

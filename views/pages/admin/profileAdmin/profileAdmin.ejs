@@ -11,37 +11,41 @@
     />
   </head>
   <body>
-    <div class="container">
-      <h1>User Profile</h1>
-      <div class="wrapper">
-        <div class="content">
-          <div>
-            <input type="text" placeholder="Enter new password" id="newPassword">
-            <button onclick="changePassword()">changePassword</button>
+    <div class="grid1">
+      <div class="adminMenu"><%- include('../../../components/adminMenu/adminMenu.ejs') %></div>
+      <div class="manageCategory">
+        <div class="container">
+          <h1>User Profile</h1>
+          <div class="wrapper">
+            <div class="content">
+              <div>
+                <input type="text" placeholder="Enter new password" id="newPassword">
+                <button onclick="changePassword()">changePassword</button>
+              </div>
+              <h1>Personal Info</h1>
+              <form action="" enctype="multipart/form-data">
+                <div class="form-control">
+                  <div class="label">Name</div>
+                  <div class="input">
+                    <input type="text" id="username"/>
+                  </div>
+                </div>
+                <div class="form-control">
+                  <div class="label">avatar</div>
+                  <div class="input">
+                    <input type="file" id="avatar" />
+                  </div>
+                </div>
+                <div class="form-control">
+                  <div class="label">description</div>
+                  <div class="input-textarea">
+                    <textarea rows="6" cols="100" id="description"></textarea>
+                  </div>
+                </div>
+                <button class="btn-submit" onclick="changInfo()">SAVE CHANGE</button>
+              </form>
+            </div>
           </div>
-          <h1>Personal Info</h1>
-          <form action="" enctype="multipart/form-data">
-            <div class="form-control">
-              <div class="label">Name</div>
-              <div class="input">
-                <input type="text" id="username"/>
-              </div>
-            </div>
-            <div class="form-control">
-              <div class="label">avatar</div>
-              <div class="input">
-                <input type="file" id="avatar" />
-              </div>
-            </div>
-            <div class="form-control">
-              <div class="label">description</div>
-              <div class="input-textarea">
-                <textarea rows="6" cols="100" id="description"></textarea>
-              </div>
-            </div>
-            <button class="btn-submit" onclick="changInfo()">SAVE CHANGE</button>
-          </form>
-        </div>
       </div>
     </div>
   </body>

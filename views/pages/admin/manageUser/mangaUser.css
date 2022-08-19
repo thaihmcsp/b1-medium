@@ -7,6 +7,19 @@ body {
   margin: 0;
 }
 
+
+.grid1{
+  display: flex;
+}
+.adminMenu{
+  width: 300px;
+  position: fixed;
+}
+
+.manageCategory{
+  margin-left: 300px;
+  width: calc(100vw - 300px);
+}
 .wrapper {
   width: 100vw;
   height: 100vh;
