@@ -1,7 +1,6 @@
 async function login(){
     let email = $('#email').val();
     let password = $('#password').val();
-    // console.log(password);
     try{
         let data = await $.ajax({
             url: '/api/auth/loginAdmin',
@@ -13,8 +12,10 @@ async function login(){
         })
         console.log(data);
         if(data.status == 200){
-            console.log('login successful');
+            alert('login successful');
             window.location.href = '/api/admin/profile'
+        }else{
+            alert('login failed');
         }
     }catch(e){
         console.log(e);

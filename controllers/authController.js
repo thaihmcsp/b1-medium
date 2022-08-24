@@ -106,7 +106,6 @@ module.exports.viewRegister = async (req, res) => {
 // register 
 module.exports.register = async (req, res)=>{
     try {
-        console.log(61, req.body);
         const password = await bcrypt.hash(req.body.password, 10);
         let newUser = await User.create({
           username: req.body.username,
@@ -115,7 +114,6 @@ module.exports.register = async (req, res)=>{
           email: req.body.email,
           role: "user",
         });
-        console.log(72,newUser);
         res.json({
           message: "login success",
           status: 200,

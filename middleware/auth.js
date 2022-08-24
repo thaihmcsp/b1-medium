@@ -30,8 +30,7 @@ async function checkToken(req, res, next) {
                 next()
             }
         } else {
-            res.json('cant not find user')
-
+            return res.redirect('/api/sign-in')
         }
     } catch (error) {
         if (error.message == 'jwt expired') {

@@ -188,7 +188,6 @@ module.exports.GetUnblockPostForHomeRendering = async function (req,res){
         const blocks = await Block.find({userId:user._id},'authorId')
         const authorList = blocks.map(e=>e.authorId)
         const blockPosts = await Post.find({authorId:{$nin:authorList}}).populate('authorId').populate('category')
-        console.log(191, blockPosts);
         res.render('./pages/user/home/Home',{data:blockPosts,user})
     } catch (error) {
         res.status(500).json({mess:'error',error})
