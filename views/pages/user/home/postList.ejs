@@ -10,12 +10,12 @@
             <div class="homePost__postInfomation">
                 <a href="/api/post/get-post-by-id/<%= post._id %>">
                     <h2 class="homePost__postInfomation--title"><%= post.title %></h2>
-                    <div class="homePost__postInfomation--content"><%= post.content %></div>
+                    <div class="homePost__postInfomation--content"><%- post.content %></div>
                 </a>
                 <div class="homePost__otherInfo">
                     <div class="homePost__otherInfoLeft">
                         <a href="" class="homePost__otherInfoLeft--category">
-                            <%= post.category[0].categoryName %>
+                            <%= post.category[0]?.categoryName %>
                         </a>
                         <a href="" class="homePost__otherInfoLeft--timeRead">
                             6 mins
@@ -23,7 +23,7 @@
                     </div>
                     <div class="homePost__otherInfoRight">
                         <button class="homePost__otherInfoRight--save"><i class="fa-solid fa-bookmark"></i></button>
-                        <button class="homePost__otherInfoRight--showLess" onclick="ShowLess('<%= post.category[0]._id %>')"><i class="fa-solid fa-circle-minus"></i></button>
+                        <button class="homePost__otherInfoRight--showLess" onclick="ShowLess('<%= post.category[0]?._id %>')"><i class="fa-solid fa-circle-minus"></i></button>
                         <button class="homePost__otherInfoRight--moreFeature" onclick="ShowHomeFeature('homeFeature-<%= post._id %>')">
                             <i class="fa-solid fa-ellipsis"></i>
                             <div class="moreFeature" id="homeFeature-<%= post._id %>">

@@ -35,10 +35,13 @@ async function checkToken(req, res, next) {
         }
     } catch (error) {
         if (error.message == 'jwt expired') {
-            res.json({ message: 'jwt expired' })
-        } else {
-            res.json(error)
+            return res.json({ message: 'jwt expired' })
+        } 
+        if(error.message == 'jwt must be provided'){
+            return res.redirect('/api/sign-in')
         }
+        return res.json(error)
+        
     }
 }
 

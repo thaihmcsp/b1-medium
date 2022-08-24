@@ -374,13 +374,13 @@ buttonSubmit.click(async function (e) {
     }
     let data = await $.ajax({
         type: "POST",
-        url: "http://localhost:3000/api/post/createpost",
+        url: "/api/post/createpost",
         data: { title, content: content },
     });
-    window.location.href = `http://localhost:3000/api/your-post`;
+    window.location.href = `/api/your-post`;
 });
 
 $('#buttonCancel').click(function (e) {
-    window.location.href = `http://localhost:3000/api/post/createpost`
+    window.location.href = `/api/post/createpost`
 });
 
