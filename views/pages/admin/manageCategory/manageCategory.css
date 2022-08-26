@@ -1,17 +1,22 @@
-body{
-    margin: 0;
-    padding: 0;
+* {
     box-sizing: border-box;
-}
-.grid1{
+  }
+  
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  .grid1{
     display: flex;
-}
-.adminMenu{
+  }
+  .adminMenu{
     width: 300px;
     position: fixed;
-}
-
-.manageCategory{
+  }
+  
+  .manageCategory{
     margin-left: 300px;
     width: calc(100vw - 300px);
-}
+  }
