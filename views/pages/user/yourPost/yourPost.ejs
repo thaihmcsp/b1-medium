@@ -34,22 +34,21 @@
                     <p>Responses</p>
                 </div>
             </div>
-            <div class="content-title">
-                <h3>Tiêu Đề</h3>
-                <p>Nội dung post</p>
-                <p>last edited about 1 hour ago . 1 min read(6 words) so far <i class="fa-solid fa-angle-down"></i></p>
-            </div>
-            <div class="content-title">
-                <h3>Tiêu Đề</h3>
-                <p>Nội dung post</p>
-                <p>last edited about 1 hour ago . 1 min read(6 words) so far <i class="fa-solid fa-angle-down"></i></p>
-            </div>
-            <div class="content-title">
-                <h3>Tiêu Đề</h3>
-                <p>Nội dung post</p>
-                <p>last edited about 1 hour ago . 1 min read(6 words) so far <i class="fa-solid fa-angle-down"></i></p>
-            </div>
+            <% listPost.map((post, index)=> {%>
+                <div class="content-title">
+                    <h3>
+                        <%= post.title %>
+                    </h3>
+                    <p>
+                        <%- post.content %>
+                    </p>
+                    <p>
+                        <%= post.createdAt.toLocaleString()%><i class="fa-solid fa-angle-down"></i>
+                    </p>
+                </div>
+                <%})%>
         </div>
 </body>
 
 </html>
+<Script src="/views/pages/user/yourPost/yourPost.js"></Script>

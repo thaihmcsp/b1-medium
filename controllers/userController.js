@@ -238,8 +238,9 @@ module.exports.getPostUser = async function (req, res) {
   try {
     let cookies = req.cookies
     let user = await User.findOne({ token: cookies.user })
+    let listPost = await Post.find({ authorId: user.id })
     console.log(242, user)
-    res.render("pages/user/yourPost/yourPost", { user })
+    res.render("pages/user/yourPost/yourPost", { user, listPost })
   } catch (error) {
     console.log(error);
   }
@@ -249,13 +250,15 @@ module.exports.getAuthor = async (req, res) => {
   try {
     let user = await User.findOne({ _id: req.params.id })
     let follower = await Follow.find({ authorId: user.id })
+    let listPost = await Post.find({ authorId: user.id })
+
     let listUser = []
     for (let i = 0; i < follower.length; i++) {
       let user = await User.findOne({ _id: follower[i].UserID })
       listUser.push(user)
     }
     if (user) {
-      res.render('pages/user/author/author', { listUser, user })
+      res.render('pages/user/author/author', { listUser, user, listPost })
     }
   } catch (e) {
     console.log(e)
