@@ -7,29 +7,13 @@ const { Comment } = require('../models/Comment')
 
 module.exports.getAllPosts = async (req, res) => {
     try {
-        let posts = await Post.find()
-        let listPosts = await Post.find()
+        let posts = await Post.find().populate('authorId')
+        let listPosts = await Post.find().populate('authorId')
         // console.log(listPosts[0].authorId);
         let total = posts.length
-        let listAuthor = await User.find()
-        let author = []
-        if (listAuthor.length < listPosts.length) {
-            for (let i = 0; i < listPosts.length; i++) {
-                let user = await User.find({ _id: listPosts[i].authorId })
-                author.push(user.username)
-            }
-        } else {
-            for (let j = 0; j < listPosts.length; j++) {
-                let user = await User.find({ _id: listPosts[j].authorId })
-                console.log(26, user[j].id);
-                author.push({ id: user[j].id, Name: user[j].username })
-            }
-        }
-        console.log(28, author);
-        console.log(31, listPosts);
         if (posts) {
             console.log(33);
-            res.render('pages/admin/managePost/managePost', { posts, listPosts, author, total: total / 10 })
+            res.render('pages/admin/managePost/managePost', { listPosts, total: total / 10 })
         } else {
             console.log('khong co posts nao');
         }
@@ -43,23 +27,7 @@ module.exports.getPaginationPost = async (req, res) => {
         let listPosts = await Post.find()
             .skip(req.query.limit * (req.query.page - 1))
             .limit(req.query.limit);
-        let listAuthor = await User.find()
-        let author = []
-        if (listAuthor.length < listPosts.length) {
-            for (let i = 0; i < listPosts.length; i++) {
-                let user = await User.find({ _id: listPosts[i].authorId })
-                author.push(user.username)
-            }
-        } else {
-            // for(let i = 0; i < listAuthor.length; i++){
-            for (let j = 0; j < listPosts.length; j++) {
-                let user = await User.find({ _id: listPosts[j].authorId })
-                // console.log(26 ,user[j].id);
-                author.push(user[j].id)
-                // }
-            }
-        }
-        res.render('pages/admin/managePost/paginationPost', { listPosts, author })
+        res.render('pages/admin/managePost/paginationPost', { listPosts })
     } catch (err) {
         console.log(err);
     }
@@ -103,17 +71,6 @@ module.exports.changeStatusPost = async (req, res) => {
 
 module.exports.GetPostById = async function (req, res) {
     let { postId } = req.params
-    // let user = {_id:"62eb6f9997380d24834631f6",
-    //             email:"thp@gmail.com",
-    //             username:    "Tran Huu Phuoc",
-    //             password:    "thp123",
-    //             status:    "active",
-    //             role:    "user",
-    //             description:    "thp des",
-    //             avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-    //             createdAt:    "2022-08-04T07:04:57.829+00:00",
-    //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
-    //         }
     let user = req.user;
     try {
         const post = await Post.findById(postId).populate('category').populate('authorId')

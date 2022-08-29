@@ -4,7 +4,7 @@ const { User } = require("../models/User");
 async function createPostController(req, res) {
     let title = req.body.title;
     let content = req.body.content;
-    let authorId = req.body.authorId;
+    let authorId = req.user._id
     let category = req.body['categoriesID[]'];
     console.log(category);
     try {

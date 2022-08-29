@@ -413,9 +413,9 @@ buttonSubmit.click(async function (e) {
     let data = await $.ajax({
         type: "POST",
         url: "http://localhost:3000/api/post/createpost",
-        data: { title, content: content, authorId: '62ef8e4b34fccdcfe1de826f' },
+        data: { title, content: content },
     });
-    window.location.href = `http://localhost:3000/api/your-post`;
+    window.location.href = `http://localhost:3000/api/user/your-post`;
 });
 
 $('#buttonCancel').click(function (e) {
