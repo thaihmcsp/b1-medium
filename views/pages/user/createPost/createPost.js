@@ -386,11 +386,8 @@ function handleOption() {
     //     showcategory.innerHTML += `<div> ${e} </div>`
     // })
     const newcategory = categorySelected.cloneNode(true);
-    console.log(newcategory);
     showcategory.appendChild(newcategory);
     categorySelected.parentNode.removeChild(categorySelected);
-
-    console.log(categoriesID);
 }
 
 function changeCategory(e) {
@@ -399,7 +396,7 @@ function changeCategory(e) {
             categoriesID.splice(index, 1);
         }
     })
-    categoryIdElement.prepend(e);
+    categoryIdElement.appendChild(e);
 }
 
 buttonSubmit.click(async function (e) {
