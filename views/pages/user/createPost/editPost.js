@@ -265,18 +265,18 @@ function addEventImg() {
 
 }
 // imgInp.onchange = function () {
-    // const [file] = imgInp.files
-    // if (file) {
-    //     imagePreview.src = URL.createObjectURL(file)
-    //     imagePreview.style.display = 'block';
-    //     $(hiddenIcon).css({ display: 'none' });
-    //     $(hiddenIconTitle).css({ display: 'none' });
-    //     $(borderCircleTitle).css({ visibility: 'hidden' });
-    //     $(borderCircle).css({ visibility: 'hidden' });
-    //     $(suggest).hide();
-    //     addEnter({ key: "Enter" });
-    //     x = false;
-    // }
+// const [file] = imgInp.files
+// if (file) {
+//     imagePreview.src = URL.createObjectURL(file)
+//     imagePreview.style.display = 'block';
+//     $(hiddenIcon).css({ display: 'none' });
+//     $(hiddenIconTitle).css({ display: 'none' });
+//     $(borderCircleTitle).css({ visibility: 'hidden' });
+//     $(borderCircle).css({ visibility: 'hidden' });
+//     $(suggest).hide();
+//     addEnter({ key: "Enter" });
+//     x = false;
+// }
 //     let file = this.files[0];
 //     let url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
@@ -366,22 +366,27 @@ img.onchange = function () {
 const idPost = buttonSubmit.attr('data-idPost');
 
 buttonSubmit.click(async function (e) {
+    console.log(1);
     let content = $('.contentSubmit').html();
     content = content.replace('\n', '');
     content = content.replace('contenteditable', '');
     let title = $('.header-title').text();
-    let checkSpanTitle = $('.header-title .suggest-title').length;
-    if (checkSpanTitle < 1 || title === '') {
-        return
+    console.log(title);
+    try {
+        let data = await $.ajax({
+            type: "POST",
+            url: `http://localhost:3000/api/post/editPost/${idPost}`,
+            data: { title, content: content, authorId: '62ef8e4b34fccdcfe1de826f' },
+        });
+        window.location.href = `http://localhost:3000/api/your-post`;
+    } catch (error) {
+        console.log(error);
     }
-    let data = await $.ajax({
-        type: "POST",
-        url: `http://localhost:3000/api/post/editPost/${idPost}`,
-        data: { title, content: content, authorId: '62ef8e4b34fccdcfe1de826f' },
-    });
-    window.location.href = `http://localhost:3000/api/your-post`;
+
 });
 
 $('#buttonCancel').click(function (e) {
     window.location.href = `http://localhost:3000/api/your-post`
 });
+
+

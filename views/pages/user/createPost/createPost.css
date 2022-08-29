@@ -69,10 +69,11 @@
     word-wrap: break-word;
 }
 
-.hidden-icon, .hidden-icon-title {
+.hidden-icon,
+.hidden-icon-title {
     display: none;
     z-index: 100;
-    position:relative;
+    position: relative;
     border-radius: 50%;
     border: 1px solid #333;
     margin-right: 12px;
@@ -82,7 +83,7 @@
 
 .image-upload>input {
     display: none;
-  }
+}
 
 #imagePreview {
     display: none
@@ -102,4 +103,10 @@
     position: fixed;
     bottom: 100px;
     right: 400px;
+}
+
+#selectCategory {
+    position: fixed;
+    top: 100px;
+    right: 300px;
 }

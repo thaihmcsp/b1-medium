@@ -21,6 +21,20 @@
         <div id="buttonCancel">
             <button>Cancel</button>
         </div>
+        <div id="selectCategory" >Choose Category
+            <select id="selectNode" onchange="handleOption()">
+                <option value="" selected>Selectect</option>
+                <% category.forEach(e => {%>
+                    <option value="category" onclick="changeCategory(this)"
+                    id="<%= e._id %>" > 
+                        <%= e.categoryName %> 
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+        <div id="showcategory">
+
+        </div>
         <div class="body-content">
             <div class="wrap-title">
                 <div>
