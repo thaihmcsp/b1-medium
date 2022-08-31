@@ -1,16 +1,31 @@
 <% data.forEach((post,index)=>{ %>
     <div class="homePost">
         <div class="homePost__authInfo">
-            <a href="" class="homePost__authInfoAvatar"><img src="/<%= post.authorId.avatar %> " alt=""></a>
-            <a href="http://" class="homePost__authInfoName"><%= post.authorId.username %></a>
+            <a href="" class="homePost__authInfoAvatar"><img src="/<%= post.authorId?.avatar %> " alt=""></a>
+            <a href="http://" class="homePost__authInfoName"><a href="api/user/author/<%= post.authorId?.id %>">
+                    <%= post.authorId?.username %>
+                </a>
+            </a>
             -
-            <a href="http://" class="homePost__authInfoPostTime"><%= post.authorId.createdAt.toLocaleDateString() %></a>
+            <a href="http://" class="homePost__authInfoPostTime">
+                <%= post.authorId?.createdAt.toLocaleDateString() %>
+            </a>
         </div>
         <div class="homePost__postInfo">
             <div class="homePost__postInfomation">
+<<<<<<< HEAD
                 <a href="/api/post/get-post-by-id/<%= post._id %>">
                     <h2 class="homePost__postInfomation--title"><%= post.title %></h2>
                     <div class="homePost__postInfomation--content"><%- post.content.replace(/contenteditable="true"/g,'')  %></div>
+=======
+                <a href="/api/post/get-post-by-id/<%= post?._id %>">
+                    <h2 class="homePost__postInfomation--title">
+                        <%= post?.title %>
+                    </h2>
+                    <div class="homePost__postInfomation--content img1">
+                        <%- post?.content %>
+                    </div>
+>>>>>>> 6037ec6ba01343cb5f256a3cc72425fd97b7b370
                 </a>
                 <div class="homePost__otherInfo">
                     <div class="homePost__otherInfoLeft">
@@ -22,13 +37,23 @@
                         </a>
                     </div>
                     <div class="homePost__otherInfoRight">
+<<<<<<< HEAD
                         <button class="homePost__otherInfoRight--save"><i class="fa-solid fa-bookmark"></i></button>
                         <button class="homePost__otherInfoRight--showLess" onclick="ShowLess('<%= post.category[0]?._id %>')"><i class="fa-solid fa-circle-minus"></i></button>
                         <button class="homePost__otherInfoRight--moreFeature" onclick="ShowHomeFeature('homeFeature-<%= post._id %>')">
+=======
+                        <button class="homePost__otherInfoRight--save"><i class="fa-solid fa-bookmark"
+                                onclick="savePost('<%=post?._id%>')"></i></button>
+                        <button class="homePost__otherInfoRight--showLess"
+                            onclick="ShowLess('<%= post.category[0]?._id %>')"><i
+                                class="fa-solid fa-circle-minus"></i></button>
+                        <button class="homePost__otherInfoRight--moreFeature"
+                            onclick="ShowHomeFeature('homeFeature-<%= post?._id %>')">
+>>>>>>> 6037ec6ba01343cb5f256a3cc72425fd97b7b370
                             <i class="fa-solid fa-ellipsis"></i>
-                            <div class="moreFeature" id="homeFeature-<%= post._id %>">
+                            <div class="moreFeature" id="homeFeature-<%= post?._id %>">
                                 <ul>
-                                    <li onclick="BlockAuthor('<%= post.authorId._id %>')"><a >Block Author</a></li>
+                                    <li onclick="BlockAuthor('<%= post.authorId?._id %>')"><a>Block Author</a></li>
                                     <hr class="post-spliter" style="margin:0px 20px">
                                     <li><a href="http://">Report</a></li>
                                 </ul>
@@ -36,7 +61,7 @@
                         </button>
                     </div>
                 </div>
-                </div>
+            </div>
             <div class="homePost__postAvatar">
                 <a href="http://">
                     <%

@@ -1,6 +1,8 @@
+const { Category } = require("../models/Category");
 
 async function getPostController(req, res) {
-    res.render('pages/user/createPost/createPost')
+    const category = await Category.find({});
+    res.render('pages/user/createPost/createPost', { category })
 }
 
 module.exports = {
