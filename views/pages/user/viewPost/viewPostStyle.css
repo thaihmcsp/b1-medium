@@ -134,6 +134,13 @@ button{
     margin-top: 16px;
     display: flex;
     flex-direction: column;
+    text-align: left;
+}
+.viewPost__post--content img{
+    margin: auto;
+}
+.viewPost__post--content input{
+    display: none !important;
 }
 .viewPost__bottomFeature{
     display: flex;

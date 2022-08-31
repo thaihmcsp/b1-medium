@@ -20,6 +20,7 @@ router.post('/createPost', createPostController)
 router.get('/editPost/:idEditPost', getEditController)
 router.post('/editPost/:idPost', editPostID)
 router.get('/get-post-by-id/:postId',GetPostById)
-router.get('/get-all-follow-post',GetAllFollowPost)
-router.get('/get-all-unblock-post',GetAllUnblockPost)
+router.get('/get-all-follow-post',checkToken,GetAllFollowPost)
+router.get('/get-all-unblock-post',checkToken,GetAllUnblockPost)
+
 module.exports = router

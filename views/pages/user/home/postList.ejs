@@ -10,7 +10,7 @@
             <div class="homePost__postInfomation">
                 <a href="/api/post/get-post-by-id/<%= post._id %>">
                     <h2 class="homePost__postInfomation--title"><%= post.title %></h2>
-                    <div class="homePost__postInfomation--content"><%- post.content %></div>
+                    <div class="homePost__postInfomation--content"><%- post.content.replace(/contenteditable="true"/g,'')  %></div>
                 </a>
                 <div class="homePost__otherInfo">
                     <div class="homePost__otherInfoLeft">
@@ -39,7 +39,15 @@
                 </div>
             <div class="homePost__postAvatar">
                 <a href="http://">
-                    <img src="https://miro.medium.com/fit/c/224/224/1*sLmBffo8hqet_h5JDovtdQ.jpeg" alt="" srcset="">
+                    <%
+                    let source = 'https://miro.medium.com/fit/c/224/224/1*sLmBffo8hqet_h5JDovtdQ.jpeg'
+                    const regex = /\bhttps?:[^)''"]+\.(?:jpg|jpeg|gif|png)(?![a-z/])/;
+                    const found = post.content.match(regex);
+                    if(found){
+                        source = found
+                    }
+                    %>
+                    <img src="<%= source %>" alt="" srcset="">
                 </a>
             </div>
         </div>
