@@ -10,7 +10,6 @@ const userRoute = require('../routes/userRoute');
 const index = require('../routes/index');
 const adminRoute = require('../routes/adminRoute');
 
-
 router.use('/auth', authRoute);
 router.use('/block', blockRoute);
 router.use('/category', categoryRoute);
@@ -21,5 +20,5 @@ router.use('/save-post', savePostRoute);
 router.use('/user', userRoute);
 router.use('/admin', adminRoute);
 router.use('/', index);
-
+router.use('/savePost', savePostRoute);
 module.exports = router;

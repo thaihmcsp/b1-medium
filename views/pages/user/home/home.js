@@ -24,6 +24,7 @@ $(document).ready(function () {
 
 
 
+
     let imageUpload = document.querySelectorAll('.image-upload');
     // console.log(imageUpload);
 
@@ -64,6 +65,25 @@ $(document).ready(function () {
 
 const img1 = document.getElementsByClassName('img1');
 for (let i = 0; i < img1.length; i++) {
-    console.log(64, img1[i].children);
+    // console.log(64, img1[i].children);
 
+}
+
+async function savePost(id) {
+    console.log(id);
+    try {
+        let data = await $.ajax({
+            type: "POST",
+            url: 'api/savePost/savePost',
+            data: {
+                id
+            }
+        })
+        if (data.status === 200) {
+            alert('Success')
+            window.location.reload()
+        }
+    } catch (e) {
+        console.log(e)
+    }
 }
