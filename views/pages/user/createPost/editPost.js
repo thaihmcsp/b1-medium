@@ -362,67 +362,31 @@ img.onchange = function () {
     fd.append('file', file);
     xhr.send(fd);
 }
-const categoryIdElement = document.querySelector('#selectNode');
 
-// function selectCategory (select) {
-//     let result = [];
-//     for (let i = 0; i < select.options.length; i++) {
-//         if (select.options[i].selected) {
-//             result.push(select.options[i].id);
-//           }
-//     }
-//     return result
-// }
-let categories = [];
-let categoriesID = [];
-function handleOption() {
-    const showcategory = document.getElementById('showcategory');
-    const categorySelected = categoryIdElement.options[categoryIdElement.options.selectedIndex];
-
-    categories.push(categorySelected.text);
-    categoriesID.push(categorySelected.id);
-    // showcategory.replaceChildren();
-    // categories.forEach(e => {
-    //     showcategory.innerHTML += `<div> ${e} </div>`
-    // })
-    const newcategory = categorySelected.cloneNode(true);
-    showcategory.appendChild(newcategory);
-    categorySelected.parentNode.removeChild(categorySelected);
-}
-
-function changeCategory(e) {
-    categoriesID.forEach((cate, index) => {
-        if (cate == e.id) {
-            categoriesID.splice(index, 1);
-        }
-    })
-    categoryIdElement.appendChild(e);
-}
+const idPost = buttonSubmit.attr('data-idPost');
 
 buttonSubmit.click(async function (e) {
+    console.log(1);
     let content = $('.contentSubmit').html();
     content = content.replace('\n', '');
     content = content.replace('contenteditable', '');
-    // const categoryIdElement = document.querySelector('#selectNode');
-    // let categoryId = categoryIdElement.options[categoryIdElement.selectedIndex].id
     let title = $('.header-title').text();
-    let checkSpanTitle = $('.header-title .suggest-title').length
-    if (checkSpanTitle || title === '') {
-        return
+    console.log(title);
+    try {
+        let data = await $.ajax({
+            type: "POST",
+            url: `http://localhost:3000/api/post/editPost/${idPost}`,
+            data: { title, content: content, authorId: '62ef8e4b34fccdcfe1de826f' },
+        });
+        window.location.href = `http://localhost:3000/api/your-post`;
+    } catch (error) {
+        console.log(error);
     }
-    let data = await $.ajax({
-        type: "POST",
-        url: "/api/post/createpost",
-        data: { title, content: content },
-    });
-<<<<<<< HEAD
-    window.location.href = `/api/your-post`;
-=======
-    window.location.href = `http://localhost:3000/api/user/your-post`;
->>>>>>> 6037ec6ba01343cb5f256a3cc72425fd97b7b370
+
 });
 
 $('#buttonCancel').click(function (e) {
-    window.location.href = `/api/post/createpost`
+    window.location.href = `http://localhost:3000/api/your-post`
 });
+
 

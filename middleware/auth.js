@@ -1,14 +1,14 @@
-const {User} = require("../models/User");
+const { User } = require("../models/User");
 const jwt = require("jsonwebtoken");
 
-async function checkRole (req, res, next){
-    try{
-        if(req.user.role === 'admin'){
+async function checkRole(req, res, next) {
+    try {
+        if (req.user.role === 'admin') {
             next();
-        }else{
-            res.status(403).json({message: 'role is not allowed'})
+        } else {
+            res.status(403).json({ message: 'role is not allowed' })
         }
-    }catch(err){
+    } catch (err) {
         console.log(err)
     }
 }
@@ -18,6 +18,9 @@ async function checkToken(req, res, next) {
     let searchTokenUser
     try {
         let token = req.cookies.user
+        if (!token) {
+            return res.redirect('/api/sign-in')
+        }
         searchTokenUser = await User.findOne(
             { token: token }
         )
@@ -30,15 +33,17 @@ async function checkToken(req, res, next) {
                 next()
             }
         } else {
-            res.json('cant not find user')
-
+            return res.redirect('/api/sign-in')
         }
     } catch (error) {
         if (error.message == 'jwt expired') {
-            res.json({ message: 'jwt expired' })
-        } else {
-            res.json(error)
+            return res.json({ message: 'jwt expired' })
+        } 
+        if(error.message == 'jwt must be provided'){
+            return res.redirect('/api/sign-in')
         }
+        return res.json(error)
+        
     }
 }
 

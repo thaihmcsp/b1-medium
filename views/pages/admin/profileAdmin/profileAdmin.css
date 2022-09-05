@@ -7,6 +7,7 @@
   .grid1{
       display: flex;
   }
+
   .adminMenu{
       width: 300px;
       position: fixed;
@@ -16,9 +17,9 @@
       margin-left: 300px;
       width: calc(100vw - 300px);
   }
-  .container {
-    width: 100vw;
+  .container1 {
     height: 100vh;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,8 +48,7 @@
     margin-top: 10px;
   }
   
-  .label {
-  }
+
   
   .input {
     width: 100%;

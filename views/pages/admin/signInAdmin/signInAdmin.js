@@ -1,25 +1,24 @@
-async function login() {
+async function login(){
     let email = $('#email').val();
     let password = $('#password').val();
-    console.log(password);
-    try {
+    try{
         let data = await $.ajax({
-            url: '/api/auth/login',
+            url: '/api/auth/loginAdmin',
             type: 'POST',
-            data: {
+            data:{
                 email,
                 password,
             }
         })
         console.log(data);
-        if (data.status == 200) {
+        if(data.status == 200){
             alert('login successful');
-            window.location.href = '/api'
-        } else {
+            window.location.href = '/api/admin/profile'
+        }else{
             alert('login failed');
         }
-    } catch (e) {
+    }catch(e){
         console.log(e);
     }
-
+    
 }

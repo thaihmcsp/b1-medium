@@ -1,12 +1,17 @@
 async function changeStatue(id){
     try{
-        let data = $.ajax({
-            url:"/admin/changeStatus",
+        let data = await  $.ajax({
+            url:"/api/admin/changStatus",
             type: "POST",
             data:{
                 id
             }
         })
+        // console.log(data.status);
+        if(data.status === 200){
+            alert('changStatus successful')
+            window.location.reload();
+        }
     }catch(err){
         console.log(err);
     }

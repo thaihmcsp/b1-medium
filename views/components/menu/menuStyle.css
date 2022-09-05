@@ -110,6 +110,7 @@
 .bottomFeature-avatar img{
     border-radius: 100%;
     width: 25px;
+    height: 25px;
 }
 .menuPC_feature,.menuMobile_feature{
     z-index: 499;

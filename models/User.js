@@ -11,5 +11,12 @@ const UserSchema = mongoose.Schema({
     avatar: {type: String, default: 'publics/statics/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg'}
 }, {collection: 'users', timestamps: true});
 
+// UserSchema.create({
+//     email: 'ducmvgch18581@fpt.edu.vn',
+//     username: 'duc',
+//     password: '123',
+//     role: 'admin',
+// })
+
 module.exports.User = mongoose.model('users', UserSchema);
 

@@ -1,54 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="/views/components/header/headerStyle.css">
+    <link rel="stylesheet" href="/views/pages/user/viewPost/viewPostStyle.css">
+    <link rel="stylesheet" href="/views/components/menu/menuStyle.css">
+    <link rel="stylesheet" href="/views/components/rightNav/rightNavHomeStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/views/pages/user/yourPost/yourpost.css">
-    <title>Document</title>
+    <title>Your post</title>
 </head>
+
 <body>
-    <div class="container_yourpost">
-        <div class="yourpost_title">
-            <h1>Your Stories</h1>
-            <div class="Story-select">
-                <p>Write a story</p>
-                <p>Import a story</p>
+    <div class="allContainer">
+        <!-- header -->
+        <%- include('../../../components/header/header') %>
+        <!-- header -->
+
+        <!-- menu -->
+        <%- include('../../../components/menu/menuUser') %>
+        <!-- menu -->
+
+        <!-- yourwpost -->
+        <div class="container_yourpost">
+            <div class="yourpost_title">
+                <h1>Your Stories</h1>
+                <div class="Story-select">
+                    <p>Write a story</p>
+                    <p>Import a story</p>
+                </div>
             </div>
-        </div>
-        <div class="yourpost_menu">
-            <div class="menu-drafts">
-                <p>Drafts 6</p>
+            <div class="yourpost_menu">
+                <div class="menu-drafts">
+                    <p>Drafts 6</p>
+                </div>
+                <div class="menu-published">
+                    <p>Published</p>
+                </div>
+                <div class="menu-responses">
+                    <p>Responses</p>
+                </div>
             </div>
-            <div class="menu-published">
-                <p>Published</p>
-            </div>
-            <div class="menu-responses">
-                <p>Responses</p>
-            </div>
+            <% listPost.map((post, index)=> {%>
+                <div class="content-title">
+                    <h3>
+                        <%= post.title %>
+                    </h3>
+                    <p>
+                        <%- post.content %>
+                    </p>
+                    <p>
+                        <%= post.createdAt.toLocaleString()%><i class="fa-solid fa-angle-down"></i>
+                    </p>
+                </div>
+                <%})%>
         </div>
-        <div class="content-title">
-            <h3>Tiêu Đề</h3>
-            <p>Nội dung post</p>
-            <p>last edited about 1 hour ago . 1 min read(6 words) so far <i class="fa-solid fa-angle-down"></i></p>
-        </div>
-        <div class="content-title">
-            <h3>Tiêu Đề</h3>
-            <p>Nội dung post</p>
-            <p>last edited about 1 hour ago . 1 min read(6 words) so far <i class="fa-solid fa-angle-down"></i></p>
-        </div>
-        <div class="content-title">
-            <h3>Tiêu Đề</h3>
-            <p>Nội dung post</p>
-            <p>last edited about 1 hour ago . 1 min read(6 words) so far <i class="fa-solid fa-angle-down"></i></p>
-        </div>
+        <!-- yourpost -->
+            
+        <!-- rightNav -->
+        <%- include('../../../components/rightNav/rightNavHome') %>
+        <!-- rightNav -->
     </div>
+        
 </body>
+
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/views/pages/user/home/home.js"></script>
+<script src="/views/components/menu/menu.js"></script>
+<Script src="/views/pages/user/yourPost/yourPost.js"></Script>
