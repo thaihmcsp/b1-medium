@@ -13,19 +13,10 @@
         </div>
         <div class="homePost__postInfo">
             <div class="homePost__postInfomation">
-<<<<<<< HEAD
                 <a href="/api/post/get-post-by-id/<%= post._id %>">
                     <h2 class="homePost__postInfomation--title"><%= post.title %></h2>
                     <div class="homePost__postInfomation--content"><%- post.content.replace(/contenteditable="true"/g,'')  %></div>
-=======
-                <a href="/api/post/get-post-by-id/<%= post?._id %>">
-                    <h2 class="homePost__postInfomation--title">
-                        <%= post?.title %>
-                    </h2>
-                    <div class="homePost__postInfomation--content img1">
-                        <%- post?.content %>
-                    </div>
->>>>>>> 6037ec6ba01343cb5f256a3cc72425fd97b7b370
+
                 </a>
                 <div class="homePost__otherInfo">
                     <div class="homePost__otherInfoLeft">
@@ -37,19 +28,10 @@
                         </a>
                     </div>
                     <div class="homePost__otherInfoRight">
-<<<<<<< HEAD
                         <button class="homePost__otherInfoRight--save"><i class="fa-solid fa-bookmark"></i></button>
                         <button class="homePost__otherInfoRight--showLess" onclick="ShowLess('<%= post.category[0]?._id %>')"><i class="fa-solid fa-circle-minus"></i></button>
                         <button class="homePost__otherInfoRight--moreFeature" onclick="ShowHomeFeature('homeFeature-<%= post._id %>')">
-=======
-                        <button class="homePost__otherInfoRight--save"><i class="fa-solid fa-bookmark"
-                                onclick="savePost('<%=post?._id%>')"></i></button>
-                        <button class="homePost__otherInfoRight--showLess"
-                            onclick="ShowLess('<%= post.category[0]?._id %>')"><i
-                                class="fa-solid fa-circle-minus"></i></button>
-                        <button class="homePost__otherInfoRight--moreFeature"
-                            onclick="ShowHomeFeature('homeFeature-<%= post?._id %>')">
->>>>>>> 6037ec6ba01343cb5f256a3cc72425fd97b7b370
+
                             <i class="fa-solid fa-ellipsis"></i>
                             <div class="moreFeature" id="homeFeature-<%= post?._id %>">
                                 <ul>

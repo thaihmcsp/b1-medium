@@ -1,5 +1,6 @@
-        <% if(data){ %>
+        
             <button class="detailHideBtn" onclick="hideDetail()"><i class="fa-solid fa-x"></i></button>
+            <% if(data){ %>
             <div class="detailPart">
                 <div class="detailTitle">
                     <%= `${data.length} ${type}ing` %>
@@ -18,8 +19,7 @@
                             <button onclick="UnfollowAndUnblockDetail('<%= author.authorId._id %>','<%= type %>',this)"><%= `Un${type}` %></button>
                         </div>
                     </div> 
-                    <% }) %>
-                                    
+                    <% }) %>              
                 </div>
             </div>
         <% } %>

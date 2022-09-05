@@ -23,7 +23,7 @@ a{
     flex-basis: auto;
     display: flex;
     flex-direction: column ;
-    max-width: 692px;
+    width: 692px;
 }
 .homeTab{
     margin-top: 10px;
@@ -207,6 +207,9 @@ a{
         flex-direction: column;
         margin: auto;
         padding: 56px 24px;
+    }
+    .mainHome{
+        max-width: 98%;
     }
     .homePost__postInfomation--title{
         max-height: 40px;

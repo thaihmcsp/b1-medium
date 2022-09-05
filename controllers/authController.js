@@ -104,27 +104,25 @@ module.exports.viewRegister = async (req, res) => {
   }
 }
 // register 
+module.exports.register = async (req, res)=>{
+    try {
+        const password = await bcrypt.hash(req.body.password, 10);
+        let newUser = await User.create({
+          username: req.body.username,
+          password: password,
+          name: req.body.username,
+          email: req.body.email,
+          role: "user",
+        });
+        res.json({
+          message: "login success",
+          status: 200,
+          err: false,
+        });
+      } catch (err) {
+        res.json(err);
+      }
 
-module.exports.register = async (req, res) => {
-  try {
-    console.log(61, req.body);
-    const password = await bcrypt.hash(req.body.password, 10);
-    let newUser = await User.create({
-      username: req.body.username,
-      password: password,
-      name: req.body.username,
-      email: req.body.email,
-      role: "user",
-    });
-    console.log(72, newUser);
-    res.json({
-      message: "login success",
-      status: 200,
-      err: false,
-    });
-  } catch (err) {
-    res.json(err);
-  }
 }
 
 module.exports.logoutAdmin = async (req, res) => {

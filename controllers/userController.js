@@ -247,18 +247,19 @@ module.exports.getPostUser = async function (req, res) {
 }
 
 module.exports.getAuthor = async (req, res) => {
+  let user = req.user;
   try {
-    let user = await User.findOne({ _id: req.params.id })
-    let follower = await Follow.find({ authorId: user.id })
-    let listPost = await Post.find({ authorId: user.id })
-
-    let listUser = []
-    for (let i = 0; i < follower.length; i++) {
-      let user = await User.findOne({ _id: follower[i].UserID })
-      listUser.push(user)
-    }
+    let author = await User.findOne({ _id: req.params.id })
+    let listUser = await Follow.find({ authorId: author._id }).populate('userId')
+    let listPost = await Post.find({ authorId: author._id })
+    const listFollow = await Follow.find({userId:author._id}).populate('authorId')
+    // let listUser = []
+    // for (let i = 0; i < follower.length; i++) {
+    //   let user = await User.findOne({ _id: follower[i].UserID })
+    //   listUser.push(user)
+    // }
     if (user) {
-      res.render('pages/user/author/author', { listUser, user, listPost })
+      res.render('pages/user/author/author', { listUser, author, listPost ,listFollow,user})
     }
   } catch (e) {
     console.log(e)

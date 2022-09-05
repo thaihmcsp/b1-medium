@@ -28,16 +28,16 @@
                 <div class="infoLeft">
                     <div class="infoLeft__avatar">
                         <a href="http://">
-                            
+                            <img src="/<%= author.avatar %>" alt="">
                         </a>
                     </div>
                     <div class="infoLeft__nameAndMore">
                         <div class="infoLeft__name">
-                            
+                            <%= author.username %>
                         </div>
                         <div class="infoLeft__more">
                             <div>
-                              
+                                <%= post.createdAt.toLocaleDateString() %>
                             </div>
                             <p>-</p>
                             <a href="http://">Time read</a>
@@ -152,7 +152,7 @@
         <!-- viewpost -->
             
         <!-- rightNav -->
-        <%- include('../author/author') %>
+        <%- include('../author/rightNavAuthor') %>
         <!-- rightNav -->
     </div>
 </body>
