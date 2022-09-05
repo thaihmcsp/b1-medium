@@ -23,7 +23,7 @@ a{
     flex-basis: auto;
     display: flex;
     flex-direction: column ;
-    max-width: 692px;
+    width: 692px;
 }
 .homeTab{
     margin-top: 10px;
@@ -43,6 +43,9 @@ a{
 .tabActive{
     border-bottom: 1px solid rgba(41, 41, 41, 1);
     color: black !important;
+}
+.homePost{
+    margin-top: 32px;
 }
 .homePost-container{
     padding-top: 40px;
@@ -81,6 +84,7 @@ a{
 .homePost__postInfomation{
     display: flex;
     flex-direction: column;
+    width: 82%;
 }
 .homePost__postInfomation > a{
     text-decoration: none;
@@ -107,6 +111,10 @@ a{
     -webkit-line-clamp: 3;/* Số dòng */
     -webkit-box-orient: vertical;
     font-weight: 400;
+}
+.homePost__postInfomation--content img,.homePost__postInfomation--content input,
+.homePost__postInfomation--content br, .homePost__postInfomation--content i{
+    display: none !important;
 }
 .homePost__otherInfo{
     display: flex;
@@ -178,7 +186,7 @@ a{
 }
 .homePost__postAvatar{
     margin-left: 60px;
-    
+    width: 18%;  
 }
 .homePost__postAvatar > a{
     text-decoration: none;
@@ -199,6 +207,9 @@ a{
         flex-direction: column;
         margin: auto;
         padding: 56px 24px;
+    }
+    .mainHome{
+        max-width: 98%;
     }
     .homePost__postInfomation--title{
         max-height: 40px;

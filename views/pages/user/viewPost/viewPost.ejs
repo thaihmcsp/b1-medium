@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/views/components/header/headerStyle.css">
     <link rel="stylesheet" href="/views/pages/user/viewPost/viewPostStyle.css">
     <link rel="stylesheet" href="/views/components/menu/menuStyle.css">
-    <link rel="stylesheet" href="/views/components/rightNav/rightNavHomeStyle.css">
+    <link rel="stylesheet" href="/views/pages/user/author/author.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/views/pages/user/createPost/createPost.css">
     <title>View Post</title>
@@ -28,16 +28,16 @@
                 <div class="infoLeft">
                     <div class="infoLeft__avatar">
                         <a href="http://">
-                            
+                            <img src="/<%= author.avatar %>" alt="">
                         </a>
                     </div>
                     <div class="infoLeft__nameAndMore">
                         <div class="infoLeft__name">
-                            
+                            <%= author.username %>
                         </div>
                         <div class="infoLeft__more">
                             <div>
-                              
+                                <%= post.createdAt.toLocaleDateString() %>
                             </div>
                             <p>-</p>
                             <a href="http://">Time read</a>
@@ -75,7 +75,7 @@
                     <%= post.title %>
                 </h1>
                 <div class="viewPost__post--content">
-                    <%- post.content %>
+                    <%- post.content?.replace(/contenteditable="true"/g,'') %>
                 </div>
             </div>
             <div class="viewPost__bottomFeature">
@@ -152,7 +152,7 @@
         <!-- viewpost -->
             
         <!-- rightNav -->
-        <%- include('../../../components/rightNav/rightNavHome') %>
+        <%- include('../author/rightNavAuthor') %>
         <!-- rightNav -->
     </div>
 </body>

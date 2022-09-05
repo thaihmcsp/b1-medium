@@ -35,6 +35,6 @@ router.patch('/change-email', checkToken, ChangeUserEmail)
 router.patch('/change-password', checkToken, ChangeUserPassword)
 router.get('/me', checkToken, UserProfileRender)
 router.get('/your-post', getPostUser)
-router.get('/author/:id', getAuthor)
+router.get('/author/:id', checkToken,getAuthor)
 
 module.exports = router;

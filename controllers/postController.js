@@ -74,10 +74,12 @@ module.exports.GetPostById = async function (req, res) {
     let user = req.user;
     try {
         const post = await Post.findById(postId).populate('category').populate('authorId')
-
+        const listUser = await Follow.find({authorId:post.authorId._id}).populate('userId')
+        const listFollow = await Follow.find({userId:post.authorId._id}).populate('authorId')
+        const author = await User.findById(post.authorId._id)
         const commentList = await Comment.find({ postId }).populate('authorId').sort({ createdAt: -1 })
-        res.render('./pages/user/viewPost/viewPost', { post, commentList, user })
-        //res.json({post,commentList,user})
+        res.render('./pages/user/viewPost/viewPost', { post, commentList, user,listUser,author,listFollow })
+        //res.json({listUser})
     } catch (error) {
         res.status(500).json({ mess: 'error', error })
     }

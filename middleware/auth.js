@@ -33,8 +33,7 @@ async function checkToken(req, res, next) {
                 next()
             }
         } else {
-            res.redirect('/api/sign-in')
-
+            return res.redirect('/api/sign-in')
         }
     } catch (error) {
         if (error.message == 'jwt expired') {
