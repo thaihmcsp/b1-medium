@@ -375,10 +375,10 @@ buttonSubmit.click(async function (e) {
     try {
         let data = await $.ajax({
             type: "POST",
-            url: `http://localhost:3000/api/post/editPost/${idPost}`,
+            url: `/api/post/editPost/${idPost}`,
             data: { title, content: content, authorId: '62ef8e4b34fccdcfe1de826f' },
         });
-        window.location.href = `http://localhost:3000/api/your-post`;
+        window.location.href = `/api/your-post`;
     } catch (error) {
         console.log(error);
     }
@@ -386,5 +386,7 @@ buttonSubmit.click(async function (e) {
 });
 
 $('#buttonCancel').click(function (e) {
-    window.location.href = `http://localhost:3000/api/your-post`
+    window.location.href = `/api/your-post`
 });
+
+

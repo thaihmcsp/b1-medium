@@ -22,6 +22,8 @@ $(document).ready(function () {
         $('.homePost-container').html(res)
     }
 
+
+
     let imageUpload = document.querySelectorAll('.image-upload');
     // console.log(imageUpload);
 
@@ -48,7 +50,7 @@ $(document).ready(function () {
     });
 
     const dontFix = document.querySelectorAll('.content-story')
-    console.log(51, dontFix);
+    // console.log(51, dontFix);
     dontFix.forEach(element => {
         element.removeAttribute('contenteditable');
     })
@@ -59,3 +61,9 @@ $(document).ready(function () {
     })
 
 });
+
+const img1 = document.getElementsByClassName('img1');
+for (let i = 0; i < img1.length; i++) {
+    console.log(64, img1[i].children);
+
+}

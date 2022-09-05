@@ -265,18 +265,18 @@ function addEventImg() {
 
 }
 // imgInp.onchange = function () {
-    // const [file] = imgInp.files
-    // if (file) {
-    //     imagePreview.src = URL.createObjectURL(file)
-    //     imagePreview.style.display = 'block';
-    //     $(hiddenIcon).css({ display: 'none' });
-    //     $(hiddenIconTitle).css({ display: 'none' });
-    //     $(borderCircleTitle).css({ visibility: 'hidden' });
-    //     $(borderCircle).css({ visibility: 'hidden' });
-    //     $(suggest).hide();
-    //     addEnter({ key: "Enter" });
-    //     x = false;
-    // }
+// const [file] = imgInp.files
+// if (file) {
+//     imagePreview.src = URL.createObjectURL(file)
+//     imagePreview.style.display = 'block';
+//     $(hiddenIcon).css({ display: 'none' });
+//     $(hiddenIconTitle).css({ display: 'none' });
+//     $(borderCircleTitle).css({ visibility: 'hidden' });
+//     $(borderCircle).css({ visibility: 'hidden' });
+//     $(suggest).hide();
+//     addEnter({ key: "Enter" });
+//     x = false;
+// }
 //     let file = this.files[0];
 //     let url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
@@ -362,11 +362,49 @@ img.onchange = function () {
     fd.append('file', file);
     xhr.send(fd);
 }
+const categoryIdElement = document.querySelector('#selectNode');
+
+// function selectCategory (select) {
+//     let result = [];
+//     for (let i = 0; i < select.options.length; i++) {
+//         if (select.options[i].selected) {
+//             result.push(select.options[i].id);
+//           }
+//     }
+//     return result
+// }
+let categories = [];
+let categoriesID = [];
+function handleOption() {
+    const showcategory = document.getElementById('showcategory');
+    const categorySelected = categoryIdElement.options[categoryIdElement.options.selectedIndex];
+
+    categories.push(categorySelected.text);
+    categoriesID.push(categorySelected.id);
+    // showcategory.replaceChildren();
+    // categories.forEach(e => {
+    //     showcategory.innerHTML += `<div> ${e} </div>`
+    // })
+    const newcategory = categorySelected.cloneNode(true);
+    showcategory.appendChild(newcategory);
+    categorySelected.parentNode.removeChild(categorySelected);
+}
+
+function changeCategory(e) {
+    categoriesID.forEach((cate, index) => {
+        if (cate == e.id) {
+            categoriesID.splice(index, 1);
+        }
+    })
+    categoryIdElement.appendChild(e);
+}
 
 buttonSubmit.click(async function (e) {
     let content = $('.contentSubmit').html();
     content = content.replace('\n', '');
-    // content = content.replace('contenteditable', '');
+    content = content.replace('contenteditable', '');
+    // const categoryIdElement = document.querySelector('#selectNode');
+    // let categoryId = categoryIdElement.options[categoryIdElement.selectedIndex].id
     let title = $('.header-title').text();
     let checkSpanTitle = $('.header-title .suggest-title').length
     if (checkSpanTitle || title === '') {
@@ -377,7 +415,7 @@ buttonSubmit.click(async function (e) {
         url: "/api/post/createpost",
         data: { title, content: content },
     });
-    window.location.href = `/api/your-post`;
+    window.location.href = `/api/user/your-post`;
 });
 
 $('#buttonCancel').click(function (e) {

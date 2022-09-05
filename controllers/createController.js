@@ -4,17 +4,17 @@ const { User } = require("../models/User");
 async function createPostController(req, res) {
     let title = req.body.title;
     let content = req.body.content;
-    let token = req.cookies
-    let user = await User.findOne({token : token.user})
-    let authorId = user._id
-    // console.log(authorId);
+    let authorId = req.user._id
+    let category = req.body['categoriesID[]'];
+    console.log(category);
     try {
         let data = await Post.create({
-            title, content, authorId
+            title, content, authorId, category
         })
         res.json({
             mess: 'success'
         })
+        console.log(data);
     } catch (error) {
         console.log(error)
     }
