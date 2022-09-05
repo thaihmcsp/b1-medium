@@ -17,7 +17,7 @@ router.post('/changeStatusPost', controller.changeStatusPost)
 router.get('/get-post-by-id/:postId',checkToken, GetPostById)
 
 router.get('/createPost', getPostController)
-router.post('/createPost', createPostController)
+router.post('/createPost', checkToken, createPostController)
 router.get('/editPost/:idEditPost', getEditController)
 router.post('/editPost/:idPost', editPostID)
 router.get('/get-all-follow-post',checkToken,GetAllFollowPost)

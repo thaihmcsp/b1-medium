@@ -2,7 +2,7 @@ const { BlockAuthor, UnblockAuthor, GetAllBlockAuthor } = require('../controller
 const { checkToken, checkRole } = require('../middleware/auth');
 const router = require('express').Router();
 
-router.post('/block-author/:authorId', checkToken, checkRole, BlockAuthor)
-router.delete('/unblock-author/:authorId', checkToken, checkRole, UnblockAuthor)
-router.get('/get-all-block-author', checkToken, checkRole, GetAllBlockAuthor)
+router.post('/block-author/:authorId', checkToken, BlockAuthor)
+router.delete('/unblock-author/:authorId', checkToken, UnblockAuthor)
+router.get('/get-all-block-author', checkToken, GetAllBlockAuthor)
 module.exports = router;

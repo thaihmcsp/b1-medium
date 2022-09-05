@@ -239,7 +239,6 @@ module.exports.getPostUser = async function (req, res) {
     let cookies = req.cookies
     let user = await User.findOne({ token: cookies.user })
     let listPost = await Post.find({ authorId: user.id })
-    console.log(242, user)
     res.render("pages/user/yourPost/yourPost", { user, listPost })
   } catch (error) {
     console.log(error);
