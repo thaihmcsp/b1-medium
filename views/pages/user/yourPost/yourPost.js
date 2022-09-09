@@ -30,3 +30,15 @@ dontFix.forEach(element => {
 })
 
 
+async function followAuthor(id){
+    try {
+        let res = await $.ajax({
+            type:'POST',
+            url:`/api/follow/follow-author/${id}`
+        })
+        alert(res.mess)
+        window.location.reload()
+    } catch (error) {
+        alert(error)
+    }
+}

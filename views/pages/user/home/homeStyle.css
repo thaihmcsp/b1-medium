@@ -9,6 +9,7 @@ body{
 }
 a{
     text-decoration: none;
+    color: black;
 }
 .allContainer{
     display: flex;
@@ -33,6 +34,7 @@ a{
     box-sizing: border-box;
 }
 .homeTab > a{
+    cursor: pointer;
     min-width: max-content;
     margin-right: 32px;
     padding-bottom: 16px;
@@ -58,6 +60,10 @@ a{
 }
 .homePost__authInfo > a{
     text-decoration: none;
+}
+.homePost__authInfoAvatar{
+    display: flex;
+    align-items: center;
 }
 .homePost__authInfoAvatar > img{
     width: 24px;

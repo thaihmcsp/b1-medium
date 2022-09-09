@@ -23,3 +23,6 @@ async function login() {
     }
 
 }
+function move_to_sign_up(){
+    window.location.href = '/api/sign-up'
+}

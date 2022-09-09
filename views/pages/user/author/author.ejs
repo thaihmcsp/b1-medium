@@ -36,17 +36,17 @@
                 </div>
             </div>
             <% listPost.map((post, index)=> {%>
-                <div class="content-title">
+                <a href="/api/post/get-post-by-id/<%= post._id %>" class="content-title">
                     <h3>
                         <%= post.title %>
                     </h3>
-                    <p>
+                    <div class="post-content">
                         <%- post.content %>
-                    </p>
+                    </div>
                     <p>
                         <%= post.createdAt.toLocaleString()%><i class="fa-solid fa-angle-down"></i>
                     </p>
-                </div>
+                </a>
                 <%})%>
         </div>
         <!-- authorpost -->
@@ -63,6 +63,7 @@
 <script src="/views/pages/user/home/home.js"></script>
 <script src="/views/components/menu/menu.js"></script>
 <Script src="/views/pages/user/yourPost/yourPost.js"></Script>
+<script src="/views/pages/user/author/rightNavAuthor.js"></script>
 
 
 

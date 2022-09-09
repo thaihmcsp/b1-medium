@@ -4,7 +4,8 @@ const { checkToken } = require('../middleware/auth');
 const router = require('express').Router();
 //cau hinh multer
 const multer = require('multer')
-const path = require('path')
+const path = require('path');
+const { rightNavData } = require('../middleware/rightNavMiddleWare');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './publics/statics')
@@ -34,7 +35,7 @@ router.post('/change-avatar', checkToken, upload.single('user-avatar'), ChangeUs
 router.patch('/change-email', checkToken, ChangeUserEmail)
 router.patch('/change-password', checkToken, ChangeUserPassword)
 router.get('/me', checkToken, UserProfileRender)
-router.get('/your-post', getPostUser)
+router.get('/your-post', checkToken,rightNavData,getPostUser)
 router.get('/author/:id', checkToken,getAuthor)
 
 module.exports = router;

@@ -30,24 +30,13 @@
     align-items: center;
 }
 
-.Story-select p{
-
-}
-
-.Story-select p:nth-child(1){
+.Story-select a:nth-child(1){
     background-color: rgb(8, 133, 25);
     border-radius: 20px;
     padding: 10px 15px 10px 15px;
     margin-right: 10px;
     color: white;
 
-}
-
-.Story-select p:nth-child(2){
-    background-color:white;
-    border-radius: 20px;
-    padding: 10px 15px 10px 15px;
-    border: 1px solid black;
 }
 
 .yourpost_menu{

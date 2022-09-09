@@ -97,11 +97,12 @@ module.exports.GetAllFollowPost = async function (req, res) {
     //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
     //         }
     let user = req.user;
+    let rightNavData = req.rightNavData
     try {
         const follows = await Follow.find({ userId: user._id }, 'authorId')
         const authorList = follows.map(e => e.authorId)
         const followPosts = await Post.find({ authorId: { $in: authorList } }).populate('authorId').populate('category')
-        res.render('./pages/user/home/postList', { data: followPosts })
+        res.render('./pages/user/home/postList', { data: followPosts,rightNavData })
         //res.json({data:followPosts})
     } catch (error) {
         res.status(500).json({ mess: 'error', error })
@@ -120,11 +121,12 @@ module.exports.GetAllUnblockPost = async function (req, res) {
     //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
     //         }
     let user = req.user;
+    let rightNavData = req.rightNavData
     try {
         const blocks = await Block.find({ userId: user._id }, 'authorId')
         const authorList = blocks.map(e => e.authorId)
         const blockPosts = await Post.find({ authorId: { $nin: authorList } }).populate('authorId').populate('category')
-        res.render('./pages/user/home/postList', { data: blockPosts })
+        res.render('./pages/user/home/postList', { data: blockPosts ,rightNavData})
         //res.json({data:blockPosts})
     } catch (error) {
         res.status(500).json({ mess: 'error', error })
@@ -143,11 +145,12 @@ module.exports.GetUnblockPostForHomeRendering = async function (req, res) {
     //             updatedAt:    "2022-08-04T07:04:57.829+00:00",
     //         }
     let user = req.user;
+    let rightNavData = req.rightNavData
     try {
         const blocks = await Block.find({ userId: user._id }, 'authorId')
         const authorList = blocks.map(e => e.authorId)
         const blockPosts = await Post.find({ authorId: { $nin: authorList } }).populate('authorId').populate('category')
-        res.render('./pages/user/home/Home', { data: blockPosts, user })
+        res.render('./pages/user/home/Home', { data: blockPosts, user ,rightNavData})
     } catch (error) {
         res.status(500).json({ mess: 'error', error })
     }

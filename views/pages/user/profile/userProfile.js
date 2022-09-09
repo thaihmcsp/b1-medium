@@ -55,7 +55,7 @@ $('.seeAllFollowing').on('click',(e)=>{
 })
 function hideDetail(){
     $('.detailContainer').css({display:'none'})
-    window.location.href = "/api/user/me";
+    window.location.reload()
 }
 
 //show follow and block detail

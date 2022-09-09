@@ -27,7 +27,7 @@
             <div class="viewPost__authorInfo">
                 <div class="infoLeft">
                     <div class="infoLeft__avatar">
-                        <a href="http://">
+                        <a href="/api/user/author/<%= author._id %>">
                             <img src="/<%= author.avatar %>" alt="">
                         </a>
                     </div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="infoRight">
                     <div class="infoRight__feature">
-                        <button>
+                        <button onclick="savePost('<%=post?._id%>')">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>
                         
@@ -56,10 +56,7 @@
                             <i class="fa-solid fa-ellipsis"></i>
                             <div class="moreFeature__top">
                                 <ul>
-                                    <li><a href="http://">Show Less Like This</a></li>
-                                    <hr class="post-spliter" style="margin:0px 20px">
-                                    <li><a href="http://">Mute Author</a></li>
-                                    <li><a href="http://">Report</a></li>
+                                    <li onclick="blockAuthor('<%= author._id %>')"><a>Block Author</a></li>
                                 </ul>
                             </div>
                         </button>
@@ -67,8 +64,8 @@
                 </div>
             </div>
             <div class="featureMobile">
-                <button class="featureMobile__button--save"><i class="fa-regular fa-bookmark"></i> Save</button>
-                <button class="featureMobile__button--follow"><i class="fa-solid fa-plus"></i> Follow </button>
+                <button class="featureMobile__button--save" onclick="savePost('<%=post?._id%>')"><i class="fa-regular fa-bookmark"></i> Save</button>
+                <button class="featureMobile__button--follow" onclick="followAuthor('<%= post.authorId?._id %>')"><i class="fa-solid fa-plus"></i> Follow </button>
             </div>
             <div class="viewPost__post">
                 <h1 class="viewPost__post--title">
@@ -94,7 +91,7 @@
                 </div>
                 <div class="viewPost__bottomFeatureRight">
                     <div class="bottomFeatureRight__feature">
-                        <button>
+                        <button onclick="savePost('<%=post?._id%>')">
                             <i class="fa-regular fa-bookmark"></i> 
                         </button>
                     </div>
@@ -103,10 +100,7 @@
                             <i class="fa-solid fa-ellipsis"></i>
                             <div class="moreFeature__bottom">
                                 <ul>
-                                    <li><a href="http://">Show Less Like This</a></li>
-                                    <hr class="post-spliter" style="margin:0px 20px">
-                                    <li><a href="http://">Mute Author</a></li>
-                                    <li><a href="http://">Report</a></li>
+                                    <li onclick="blockAuthor('<%= author._id %>')"><a>Block Author</a></li>
                                 </ul>
                             </div>
                         </button>
@@ -131,10 +125,7 @@
                         <i class="fa-solid fa-ellipsis"></i>
                         <div class="moreFeature__stickyBar">
                             <ul>
-                                <li><a href="http://">Show Less Like This</a></li>
-                                <hr class="post-spliter" style="margin:0px 20px">
-                                <li><a href="http://">Mute Author</a></li>
-                                <li><a href="http://">Report</a></li>
+                                <li onclick="blockAuthor('<%= author._id %>')"><a>Block Author</a></li>
                             </ul>
                         </div>
                     </button>
@@ -159,4 +150,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/views/pages/user/viewPost/viewPost.js"></script>
 <script src="/views/components/menu/menu.js"></script>
+<script src="/views/pages/user/author/rightNavAuthor.js"></script>
 </html>

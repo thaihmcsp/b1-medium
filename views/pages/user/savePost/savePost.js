@@ -16,3 +16,27 @@ async function unSave(id) {
         console.log(e)
     }
 }
+async function unsavePost(id){
+    try {
+        let res = await $.ajax({
+            type:'DELETE',
+            url:`/api/savePost/unsave-post/${id}`
+        })
+        alert(res.mess)
+        window.location.reload()
+    } catch (error) {
+        alert(error)
+    }
+}
+async function followAuthor(id){
+    try {
+        let res = await $.ajax({
+            type:'POST',
+            url:`/api/follow/follow-author/${id}`
+        })
+        alert(res.mess)
+        window.location.reload()
+    } catch (error) {
+        alert(error)
+    }
+}

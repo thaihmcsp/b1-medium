@@ -235,11 +235,12 @@ module.exports.ChangeUserPassword = async (req, res) => {
 
 
 module.exports.getPostUser = async function (req, res) {
+  let rightNavData = req.rightNavData
   try {
     let cookies = req.cookies
     let user = await User.findOne({ token: cookies.user })
     let listPost = await Post.find({ authorId: user.id })
-    res.render("pages/user/yourPost/yourPost", { user, listPost })
+    res.render("pages/user/yourPost/yourPost", { user, listPost,rightNavData })
   } catch (error) {
     console.log(error);
   }

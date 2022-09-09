@@ -31,17 +31,8 @@ async function SavePostByPostId(req,res){
 }
 async function UnsavePost(req,res){
     let { postId } = req.params
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    let user = req.user
+    console.log(user);
     try {
         await SavePost.deleteOne({userId:user._id,postId})
         res.json({mess:'unsave success'})
@@ -88,10 +79,14 @@ module.exports.savePost = async (req, res) => {
 }
 
 module.exports.getPost = async (req, res) => {
+    let user = req.user;
+    let rightNavData = req.rightNavData
     try {
-        let savePost = await SavePost.find({ userId: req.user._id }).populate(['userId', 'postId']);
+        let savePost = await SavePost.find({ userId: req.user._id },'postId')
+        const postList = savePost.map(e => e.postId)
+        const data = await Post.find({ _id: { $in: postList } }).populate('authorId').populate('category')
         // console.log(savePost);
-        res.render('pages/user/savePost/savePost', { savePost })
+        res.render('pages/user/savePost/savePost', { data, user,type:'save',rightNavData})
     } catch (err) {
         console.log(err)
     }
