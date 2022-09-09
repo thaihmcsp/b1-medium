@@ -99,3 +99,32 @@ async function followAuthor(id){
         alert(error)
     }
 }
+$(function () {
+  
+    
+    if ($('.rightNavbar').offset()!=null) {
+      var top = $('.rightNavbar').offset().top - parseFloat($('.rightNavbar').css('margin-top').replace(/auto/, 0));
+      var height = $('.rightNavbar').height();
+      var winHeight = $(window).height();	
+      var footerTop = $('.allContainer').height()
+      $(window).scroll(function (event) {
+        // what the y position of the scroll is
+        var y = $(this).scrollTop();
+        
+        // whether that's below the form
+        if (y+winHeight >= top+ height && y+winHeight<=footerTop) {
+          // if so, ad the fixed class
+          $('.rightNavbar').addClass('sidebarfixed').css('top',winHeight-height +'px');
+        } 
+        else if (y+winHeight>footerTop) {
+          // if so, ad the fixed class
+         $('.rightNavbar').addClass('sidebarfixed').css('top',footerTop-height-y+'px');
+        } 
+        else 	  
+        {
+          // otherwise remove it
+          $('.rightNavbar').removeClass('sidebarfixed').css('top','0px');
+        }
+      });
+    }  
+  });
