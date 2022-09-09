@@ -5,17 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="/views/pages/admin/profileAdmin/profileAdmin.css"
-    />
+
   </head>
   <body>
+
     <div class="grid1">
       <div class="adminMenu"><%- include('../../../components/adminMenu/adminMenu.ejs') %></div>
       <div class="manageCategory">
-        <div class="container">
+        <div class="container1">
           <h1>User Profile</h1>
+          <div>
+            <h1><%= user.username %> Profile</h1>
+            <h2>email : <%= user.email %></h2>
+            <h2> money : <%= user.monney %></h2>
+            </div>
+            <div class="wrapper">
+              <div class="content">
           <div class="wrapper">
             <div class="content">
               <div>
@@ -55,5 +60,9 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 ></script>
+<link
+rel="stylesheet"
+href="/views/pages/admin/profileAdmin/profileAdmin.css"
+/>
   <script src="/views/pages/admin/profileAdmin/profileAdmin.js"></script>
 </html>

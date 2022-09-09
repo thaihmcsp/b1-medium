@@ -87,4 +87,44 @@ async function UpdateComment(cmtId,index){
     
     $('.commentLayout').html(cmtRes)
     //alert(res.mess)
-}                 
+}       
+async function blockAuthor(id){
+    try {
+        let res = await $.ajax({
+            type:'POST',
+            url:`/api/block/block-author/${id}`
+        })
+        alert(res.mess)
+    } catch (error) {
+        alert(error)
+    }
+}   
+async function savePost(id) {
+    try {
+        let data = await $.ajax({
+            type: "POST",
+            url: '/api/savePost/savePost',
+            data: {
+                id
+            }
+        })
+        if (data.status === 200) {
+            alert('Success')
+            window.location.reload()
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+async function followAuthor(id){
+    try {
+        let res = await $.ajax({
+            type:'POST',
+            url:`/api/follow/follow-author/${id}`
+        })
+        alert(res.mess)
+        window.location.reload()
+    } catch (error) {
+        alert(error)
+    }
+}

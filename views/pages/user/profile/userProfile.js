@@ -55,6 +55,7 @@ $('.seeAllFollowing').on('click',(e)=>{
 })
 function hideDetail(){
     $('.detailContainer').css({display:'none'})
+    window.location.reload()
 }
 
 //show follow and block detail

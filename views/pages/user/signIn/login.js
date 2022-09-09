@@ -1,23 +1,28 @@
-async function login(){
+async function login() {
     let email = $('#email').val();
     let password = $('#password').val();
     console.log(password);
-    try{
+    try {
         let data = await $.ajax({
             url: '/api/auth/login',
             type: 'POST',
-            data:{
+            data: {
                 email,
                 password,
             }
         })
         console.log(data);
-        if(data.status == 200){
-            console.log('login successful');
+        if (data.status == 200) {
+            alert('login successful');
             window.location.href = '/api'
+        } else {
+            alert('login failed');
         }
-    }catch(e){
+    } catch (e) {
         console.log(e);
     }
-    
+
+}
+function move_to_sign_up(){
+    window.location.href = '/api/sign-up'
 }

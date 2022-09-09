@@ -6,4 +6,5 @@ async function UnfollowAandUnblock(authorId,route){
         url:`/api/${route}/un${route}-author/${authorId}`,
         type:'DELETE'
     })
+    window.location.reload()
 }

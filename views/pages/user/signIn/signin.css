@@ -52,13 +52,14 @@ font-weight: bold;
     margin-bottom: 20px;
 }
 
-.signIn{
+.signIn,.sign-up{
     cursor: pointer;
     background-color: black;
     color: white;
     border-radius: 20px;
     padding: 10px;
     width: 200px;
+    margin-bottom: 10px;
     font-size: 15px;
 }
 

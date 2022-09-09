@@ -13,12 +13,27 @@
 </head>
 
 <body>
+
     <div id="wrap">
         <div id="buttonSubmit">
             <button>Save Post</button>
         </div>
         <div id="buttonCancel">
             <button>Cancel</button>
+        </div>
+        <div id="selectCategory" >Choose Category
+            <select id="selectNode" onchange="handleOption()">
+                <option value="" selected>Selectect</option>
+                <% category.forEach(e => {%>
+                    <option value="category" onclick="changeCategory(this)"
+                    id="<%= e._id %>" > 
+                        <%= e.categoryName %> 
+                    </option>
+                <% }) %>
+            </select>
+        </div>
+        <div id="showcategory">
+
         </div>
         <div class="body-content">
             <div class="wrap-title">
@@ -39,7 +54,7 @@
                     <span class="suggest-title">Title...</span>
                 </h3>
             </div>
-            <div class="wrap-father-content">
+            <div class="wrap-father-content contentSubmit">
                 <div class="wrap-content">
                     <div>
                         <i class="fa-solid fa-plus border-circle circle-action"></i>

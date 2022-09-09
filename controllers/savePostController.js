@@ -1,3 +1,4 @@
+
 const { Post } = require('../models/Post')
 const { User } = require('../models/User')
 const { SavePost } = require('../models/SavePost')
@@ -30,17 +31,8 @@ async function SavePostByPostId(req,res){
 }
 async function UnsavePost(req,res){
     let { postId } = req.params
-    let user = {_id:"62eb6f9997380d24834631f6",
-                email:"thp@gmail.com",
-                username:    "Tran Huu Phuoc",
-                password:    "thp123",
-                status:    "active",
-                role:    "user",
-                description:    "thp des",
-                avatar:    "publics/static/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg",
-                createdAt:    "2022-08-04T07:04:57.829+00:00",
-                updatedAt:    "2022-08-04T07:04:57.829+00:00",
-            }
+    let user = req.user
+    console.log(user);
     try {
         await SavePost.deleteOne({userId:user._id,postId})
         res.json({mess:'unsave success'})
@@ -64,3 +56,56 @@ async function paginationSavePost(req,res,next){
     }
 }
 module.exports = { SavePostByPostId,UnsavePost,paginationSavePost }
+
+
+
+module.exports.savePost = async (req, res) => {
+    try {
+        let userID = req.user._id
+        let save = await SavePost.find({ userId: req.user._id, postId: req.body.id })
+        // console.log(save);
+        if (save.length) {
+            let deletePost = await SavePost.findOneAndDelete({ userId: req.user._id, postId: req.body.id })
+        } else {
+            let savePost = await SavePost.create({
+                userId: userID,
+                postId: req.body.id,
+            })
+        }
+        res.json({ status: 200 })
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+module.exports.getPost = async (req, res) => {
+    let user = req.user;
+    let rightNavData = req.rightNavData
+    try {
+        let savePost = await SavePost.find({ userId: req.user._id },'postId')
+        const postList = savePost.map(e => e.postId)
+        const data = await Post.find({ _id: { $in: postList } }).populate('authorId').populate('category')
+        // console.log(savePost);
+        res.render('pages/user/savePost/savePost', { data, user,type:'save',rightNavData})
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+module.exports.deletePost = async (req, res) => {
+    console.log(req.body.id);
+    console.log(req.user.id)
+    try {
+        let Post = await SavePost.findOne({ _id: req.body.id })
+        console.log(Post);
+        if (Post) {
+            let deletePost = await SavePost.findOneAndDelete({ _id: Post._id })
+            console.log(deletePost);
+        } else {
+            console.log('past k ton tai');
+        }
+        res.json({ status: 200 })
+    } catch (err) {
+        console.log(err);
+    }
+}

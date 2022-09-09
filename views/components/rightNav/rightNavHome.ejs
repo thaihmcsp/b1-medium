@@ -11,41 +11,22 @@
         </div>
         <div class="rightNavbar__blogToday">
             <div class="rightNavbar__blogToday--access">
-                <a href="http://"><div></div>What We're Reading Today</a>
+                <a href="http://"><div></div>New blog</a>
             </div>
-            <div class="rightNavbar__blogToday--blog">
-                <div class="blogToday__author">
-                    <a href="http://">
-                        <img class="blogToday__author--avatar" src="https://miro.medium.com/fit/c/110/110/2*dSp37z2eGDFMXd_L_l1xdw.jpeg" alt="">
-                        <span class="blogToday__author--name">Adrienne Gibbs</span>
+            <% rightNavData.blogs.map(blog=>{ %>
+                <div class="rightNavbar__blogToday--blog">
+                    <div class="blogToday__author">
+                        <a  href="/api/user/author/<%= blog.authorId?.id %>">
+                            <img class="blogToday__author--avatar" src="/<%= blog.authorId?.avatar %>" alt="">
+                            <span class="blogToday__author--name"><%= blog.authorId?.username %></span>
+                        </a>
+                    </div>
+                    <a href="/api/post/get-post-by-id/<%= blog._id %>" class="blogToday__title">
+                        <%= blog.title %>
                     </a>
                 </div>
-                <div class="blogToday__title">
-                    🐝Evacuating 25,000 Honey Bees Out My House🐝
-                </div>
-            </div>
-            <div class="rightNavbar__blogToday--blog">
-                <div class="blogToday__author">
-                    <a href="http://">
-                        <img class="blogToday__author--avatar" src="https://miro.medium.com/fit/c/110/110/2*dSp37z2eGDFMXd_L_l1xdw.jpeg" alt="">
-                        <span class="blogToday__author--name">Adrienne Gibbs</span>
-                    </a>
-                </div>
-                <div class="blogToday__title">
-                    🐝Evacuating 25,000 Honey Bees Out My House🐝
-                </div>
-            </div>
-            <div class="rightNavbar__blogToday--blog">
-                <div class="blogToday__author">
-                    <a href="http://">
-                        <img class="blogToday__author--avatar" src="https://miro.medium.com/fit/c/110/110/2*dSp37z2eGDFMXd_L_l1xdw.jpeg" alt="">
-                        <span class="blogToday__author--name">Adrienne Gibbs</span>
-                    </a>
-                </div>
-                <div class="blogToday__title">
-                    🐝Evacuating 25,000 Honey Bees Out My House🐝
-                </div>
-            </div>
+            <% }) %>
+            
             <a class="rightNavbar__blogToday--accessList" href="http://">See the full list</a>
         </div>
     </div>
@@ -54,50 +35,30 @@
             <p>Recommended topics</p>
         </div>
         <div class="rightNavbar__recommendedTopics--topics">
-            <a href="http://">Business</a>
-            <a href="http://">Technology</a>
-            <a href="http://">Wear</a>
-            <a href="http://">Shoes</a>
-            <a href="http://">Mindfulness</a>
-            <a href="http://">Art</a>
-            <a href="http://">Productivity</a>
+            <% rightNavData.categories.map(category=>{ %>
+                <a href="http://"><%= category.categoryName %></a>
+            <% }) %>
         </div>
     </div>
     <div class="rightNavbar__recommendedAuthor">
         <div class="rightNavbar__recommendedAuthor--header">
-            <p>Who to follow</p>
+            <p>Most active</p>
         </div>
         <div class="rightNavbar__recommendedAuthor--author">
-            <div class="recomendedAuthor">
-                <div class="recomendedAuthor__avatar">
-                    <img src="https://miro.medium.com/fit/c/110/110/2*dSp37z2eGDFMXd_L_l1xdw.jpeg" alt="">
+            <% rightNavData.authors.map(author=>{ %>
+                <div class="recomendedAuthor">
+                    <a href="/api/user/author/<%= author?._id?.id %>">
+                        <div class="recomendedAuthor__avatar">
+                            <img src="/<%= author?._id?.avatar %>" alt="">
+                        </div>
+                        <a class="recomendedAuthor__info" href="/api/user/author/<%= author?._id?.id %>">
+                            <div class="recomendedAuthor__info--name"><%= author?._id?.username %></div>
+                            <div class="recomendedAuthor__info--description"><%= author?._id?.description %></div>
+                        </a>
+                    </a>
+                    <button onclick="followAuthor('<%= author?._id?._id %>')" class="recomendedAuthor__followButton">Follow</button>
                 </div>
-                <a class="recomendedAuthor__info" href="http://">
-                    <div class="recomendedAuthor__info--name">Roger Martin</div>
-                    <div class="recomendedAuthor__info--description">Showing my daughter my favourite movie helped me understand its message better — WARNING: Spoilers ahead — if you have yet to</div>
-                </a>
-                <button class="recomendedAuthor__followButton">Follow</button>
-            </div>
-            <div class="recomendedAuthor">
-                <div class="recomendedAuthor__avatar">
-                    <img src="https://miro.medium.com/fit/c/110/110/2*dSp37z2eGDFMXd_L_l1xdw.jpeg" alt="">
-                </div>
-                <a class="recomendedAuthor__info" href="http://">
-                    <div class="recomendedAuthor__info--name">Felicia C. Sullivan</div>
-                    <div class="recomendedAuthor__info--description">Showing my daughter my favourite movie helped me understand its message better — WARNING: Spoilers ahead — if you have yet to</div>
-                </a>
-                <button class="recomendedAuthor__followButton">Follow</button>
-            </div>
-            <div class="recomendedAuthor">
-                <div class="recomendedAuthor__avatar">
-                    <img src="https://miro.medium.com/fit/c/110/110/2*dSp37z2eGDFMXd_L_l1xdw.jpeg" alt="">
-                </div>
-                <a class="recomendedAuthor__info" href="http://">
-                    <div class="recomendedAuthor__info--name">Roger Martin</div>
-                    <div class="recomendedAuthor__info--description">Showing my daughter my favourite movie helped me understand its message better — WARNING: Spoilers ahead — if you have yet to</div>
-                </a>
-                <button class="recomendedAuthor__followButton">Follow</button>
-            </div>
+            <% }) %>
         </div>
         <a href="" class="rightNavbar__recommendedAuthor--moreAuthor">
             See more suggestions

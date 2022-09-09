@@ -1,32 +1,28 @@
-const { GetPostById,GetAllFollowPost, GetAllUnblockPost } = require('../controllers/postController');
+const { GetPostById, GetAllFollowPost, GetAllUnblockPost } = require('../controllers/postController');
 const router = require('express').Router();
 const controller = require('../controllers/postController');
+const { editPostID } = require('../controllers/editController');
+const { createPostController } = require('../controllers/createController');
+const { getPostController } = require('../controllers/getPostController');
+const { getEditController } = require('../controllers/getEditController');
 const { checkToken } = require('../middleware/auth');
+const { rightNavData } = require('../middleware/rightNavMiddleWare');
+
+
 
 router.get('/getAllPosts', controller.getAllPosts)
 router.get('/getPaginationPost', controller.getPaginationPost)
-router.get('/viewDetails', controller.viewDetails)
+router.get('/viewDetails/:id', controller.viewDetails)
+
 router.post('/changeStatusPost', controller.changeStatusPost)
-router.get('/get-post-by-id/:postId', checkToken, GetPostById)
+router.get('/get-post-by-id/:postId',checkToken, GetPostById)
 
-router.get('/get-all-follow-post', checkToken, GetAllFollowPost)
-router.get('/get-all-unblock-post', checkToken, GetAllUnblockPost)
-router.get('/createPost', (req, res) => {
-    res.render('pages/user/createPost/createPost')
-})
-router.post('/createPost', async (req, res) => {
-    let title = req.body.title;
-    let content = req.body.content;
-    let authorId = req.body.authorId;
-    try {
-        let data = await Post.create({
-            title, content, authorId
-        })
-        console.log(16, data)
-    } catch (error) {
-        console.log(error)
-    }
+router.get('/createPost', getPostController)
+router.post('/createPost', checkToken, createPostController)
+router.get('/editPost/:idEditPost', getEditController)
+router.post('/editPost/:idPost', editPostID)
+router.get('/get-all-follow-post',checkToken,rightNavData,GetAllFollowPost)
+router.get('/get-all-unblock-post',checkToken,rightNavData,GetAllUnblockPost)
 
-})
 
-module.exports = router;
+module.exports = router

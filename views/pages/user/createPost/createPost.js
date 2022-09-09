@@ -17,9 +17,9 @@ const bodyContent = $('.body-content');
 
 const imagePreview = document.getElementById('imagePreview');
 const imgInp = document.getElementById('file-input');
-const cloudName = 'dl0kozyhk';
-const unsignedUploadPreset = 'thaytoancovua';
-const img = document.querySelector('#file-input');
+// const cloudName = 'dl0kozyhk';
+// const unsignedUploadPreset = 'thaytoancovua';
+// const img = document.querySelector('#file-input');
 
 $(borderCircleTitle).css({ visibility: 'hidden' });
 
@@ -264,42 +264,42 @@ function addEventImg() {
     }
 
 }
-imgInp.onchange = function () {
-    // const [file] = imgInp.files
-    // if (file) {
-    //     imagePreview.src = URL.createObjectURL(file)
-    //     imagePreview.style.display = 'block';
-    //     $(hiddenIcon).css({ display: 'none' });
-    //     $(hiddenIconTitle).css({ display: 'none' });
-    //     $(borderCircleTitle).css({ visibility: 'hidden' });
-    //     $(borderCircle).css({ visibility: 'hidden' });
-    //     $(suggest).hide();
-    //     addEnter({ key: "Enter" });
-    //     x = false;
-    // }
-    let file = this.files[0];
-    let url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+// imgInp.onchange = function () {
+// const [file] = imgInp.files
+// if (file) {
+//     imagePreview.src = URL.createObjectURL(file)
+//     imagePreview.style.display = 'block';
+//     $(hiddenIcon).css({ display: 'none' });
+//     $(hiddenIconTitle).css({ display: 'none' });
+//     $(borderCircleTitle).css({ visibility: 'hidden' });
+//     $(borderCircle).css({ visibility: 'hidden' });
+//     $(suggest).hide();
+//     addEnter({ key: "Enter" });
+//     x = false;
+// }
+//     let file = this.files[0];
+//     let url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var respondDataJson = JSON.parse(this.responseText);
-            console.log(respondDataJson);
-            let urlRepond = respondDataJson.public_id;
-            let urlFix = `http://res.cloudinary.com/dl0kozyhk/image/upload/c_pad,w_200/${urlRepond}`
-            document.getElementById('image-preview').src = respondDataJson.url
-            $(`.hidden-icon`).css({ display: 'none' });
-            $(`.border-circle`).css({ display: 'none' });
-            addEnter({ key: "Enter" });
-        }
-    }
-    xhr.open('POST', url, true);
-    var fd = new FormData();
-    fd.append('upload_preset', unsignedUploadPreset);
-    fd.append('tags', 'browser upload');
-    fd.append('file', file);
-    xhr.send(fd);
-}
+//     var xhr = new XMLHttpRequest();
+//     xhr.onreadystatechange = function () {
+//         if (this.readyState === 4 && this.status === 200) {
+//             var respondDataJson = JSON.parse(this.responseText);
+//             console.log(respondDataJson);
+//             let urlRepond = respondDataJson.public_id;
+//             let urlFix = `http://res.cloudinary.com/dl0kozyhk/image/upload/c_pad,w_200/${urlRepond}`
+//             document.getElementById('image-preview').src = respondDataJson.url
+//             $(`.hidden-icon`).css({ display: 'none' });
+//             $(`.border-circle`).css({ display: 'none' });
+//             addEnter({ key: "Enter" });
+//         }
+//     }
+//     xhr.open('POST', url, true);
+//     var fd = new FormData();
+//     fd.append('upload_preset', unsignedUploadPreset);
+//     fd.append('tags', 'browser upload');
+//     fd.append('file', file);
+//     xhr.send(fd);
+// }
 // Sự kiện clich vào video
 $(video).click(videoHandle);
 
@@ -333,49 +333,92 @@ function checkURL(url) {
     return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
 
-// const cloudName = 'dl0kozyhk';
-// const unsignedUploadPreset = 'thaytoancovua';
-// const img = document.querySelector('#file-input');
+const cloudName = 'dl0kozyhk';
+const unsignedUploadPreset = 'thaytoancovua';
+const img = document.querySelector('#file-input');
 
-// img.onchange = function () {
-//     let file = this.files[0];
-//     let url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+img.onchange = function () {
+    let file = this.files[0];
+    let url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
-//     var xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = function () {
-//         if (this.readyState === 4 && this.status === 200) {
-//             var respondDataJson = JSON.parse(this.responseText);
-//             console.log(respondDataJson);
-//             let urlRepond = respondDataJson.public_id;
-//             let urlFix = `http://res.cloudinary.com/dl0kozyhk/image/upload/c_pad,w_200/${urlRepond}`
-//             document.getElementById('image-preview').src = respondDataJson.url
-//             $(`.hidden-icon`).css({ display: 'none' });
-//             $(`.border-circle`).css({ display: 'none' });
-//             addEnter({ key: "Enter" });
-//         }
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var respondDataJson = JSON.parse(this.responseText);
+            console.log(respondDataJson);
+            // let urlRepond = respondDataJson.public_id;
+            // let urlFix = `http://res.cloudinary.com/dl0kozyhk/image/upload/c_pad,w_200/${urlRepond}`
+            document.getElementById('image-preview').src = respondDataJson.url
+            document.getElementById('image-preview').style.display = 'block';
+            $(`.hidden-icon`).css({ display: 'none' });
+            $(`.border-circle`).css({ display: 'none' });
+            addEnter({ key: "Enter" });
+        }
+    }
+    xhr.open('POST', url, true);
+    var fd = new FormData();
+    fd.append('upload_preset', unsignedUploadPreset);
+    fd.append('tags', 'browser upload');
+    fd.append('file', file);
+    xhr.send(fd);
+}
+const categoryIdElement = document.querySelector('#selectNode');
+
+// function selectCategory (select) {
+//     let result = [];
+//     for (let i = 0; i < select.options.length; i++) {
+//         if (select.options[i].selected) {
+//             result.push(select.options[i].id);
+//           }
 //     }
-//     xhr.open('POST', url, true);
-//     var fd = new FormData();
-//     fd.append('upload_preset', unsignedUploadPreset);
-//     fd.append('tags', 'browser upload');
-//     fd.append('file', file);
-//     xhr.send(fd);
+//     return result
 // }
+let categories = [];
+let categoriesID = [];
+function handleOption() {
+    const showcategory = document.getElementById('showcategory');
+    const categorySelected = categoryIdElement.options[categoryIdElement.options.selectedIndex];
+
+    categories.push(categorySelected.text);
+    categoriesID.push(categorySelected.id);
+    // showcategory.replaceChildren();
+    // categories.forEach(e => {
+    //     showcategory.innerHTML += `<div> ${e} </div>`
+    // })
+    const newcategory = categorySelected.cloneNode(true);
+    showcategory.appendChild(newcategory);
+    categorySelected.parentNode.removeChild(categorySelected);
+}
+
+function changeCategory(e) {
+    categoriesID.forEach((cate, index) => {
+        if (cate == e.id) {
+            categoriesID.splice(index, 1);
+        }
+    })
+    categoryIdElement.appendChild(e);
+}
 
 buttonSubmit.click(async function (e) {
-    let contentSubmit = bodyContent.html();
-    contentSubmit = contentSubmit.replace('\n', '');
-    let title = $('.header-title').text()
-    console.log(369, title)
-    console.log(contentSubmit)
+    let content = $('.contentSubmit').html();
+    content = content.replace('\n', '');
+    content = content.replace('contenteditable', '');
+    // const categoryIdElement = document.querySelector('#selectNode');
+    // let categoryId = categoryIdElement.options[categoryIdElement.selectedIndex].id
+    let title = $('.header-title').text();
+    let checkSpanTitle = $('.header-title .suggest-title').length
+    if (checkSpanTitle || title === '') {
+        return
+    }
     let data = await $.ajax({
         type: "POST",
-        url: "http://localhost:3000/api/post/createpost",
-        data: { title, content: contentSubmit, authorId: '62ef8e4b34fccdcfe1de826f' },
+        url: "/api/post/createpost",
+        data: { title, content: content },
     });
+    window.location.href = `/api/user/your-post`;
 });
 
 $('#buttonCancel').click(function (e) {
-    window.location.href = 'http://localhost:3000/api/post/createpost'
+    window.location.href = `/api/post/createpost`
 });
 
